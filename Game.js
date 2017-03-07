@@ -19,9 +19,9 @@ document.addEventListener('keydown', function(event) {
     else if(event.keyCode == 39) {
         createjs.Tween.get(World_Container).to({x:World_Container.x-64}, 500, Ease.linear);
     }else if(event.keyCode == 38){
-	 createjs.Tween.get(World_Container).to({y:World_Container.x-64}, 500, Ease.linear);   
+	 createjs.Tween.get(World_Container).to({y:World_Container.y-64}, 500, Ease.linear);   
     }else if(event.keyCode == 40){
-	 createjs.Tween.get(World_Container).to({y:World_Container.x+64}, 500, Ease.linear);   
+	 createjs.Tween.get(World_Container).to({y:World_Container.y+64}, 500, Ease.linear);   
     }
 });
 
