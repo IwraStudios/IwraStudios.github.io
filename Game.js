@@ -14,7 +14,8 @@ window.onload = Init;
 var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
-	createjs.Tween.get(World_Container).to({x:World_Container.x+40}, 500, Ease.linear);
+        
+		createjs.Tween.get(World_Container).to({x:World_Container.x+40}, 500, Ease.linear);
     }
     else if(event.keyCode == 39) {
         createjs.Tween.get(World_Container).to({x:World_Container.x-40}, 500, Ease.linear);
@@ -60,7 +61,8 @@ function Init(){
 	
 	World_Container = new createjs.Container();
 	stage.addChild(World_Container);
-	
+	World_Container.scaleX = 2;
+	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 }
@@ -73,6 +75,7 @@ function Init(){
          World_Container.sortChildren(sortByLayer);
 		 }
 		 timer++;
+		 stage.update();
      }
  }
 
