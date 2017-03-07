@@ -11,6 +11,17 @@ var grid = 32;
 var World_Container;
 window.onload = Init;
 
+var Ease = createjs.Ease;
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+	createjs.Tween.get(World_Container).to({x:World_Container.x+40}, 500, Ease.linear);
+    }
+    else if(event.keyCode == 39) {
+        createjs.Tween.get(World_Container).to({x:World_Container.x-40}, 500, Ease.linear);
+    }
+});
+
+
 var toType = function(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
