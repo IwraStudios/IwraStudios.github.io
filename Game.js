@@ -15,6 +15,7 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     var tx = World_Container.x * -1;
     var ty = World_Container.y * -1;
+  try{
     if(event.keyCode == 37) {
 	if(hitmap[(tx/64)+1][ty/64] != 1){
 	createjs.Tween.get(World_Container).to({
@@ -34,6 +35,10 @@ document.addEventListener('keydown', function(event) {
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
 	 }
     }
+  }
+except(e){
+console.log(e);
+   }
 });
 
 
