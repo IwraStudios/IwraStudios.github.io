@@ -14,11 +14,10 @@ window.onload = Init;
 var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
-        
-		createjs.Tween.get(World_Container).to({x:World_Container.x+40}, 500, Ease.linear);
+	createjs.Tween.get(World_Container).to({x:World_Container.x+64}, 500, Ease.linear);
     }
     else if(event.keyCode == 39) {
-        createjs.Tween.get(World_Container).to({x:World_Container.x-40}, 500, Ease.linear);
+        createjs.Tween.get(World_Container).to({x:World_Container.x-64}, 500, Ease.linear);
     }
 });
 
@@ -100,7 +99,7 @@ function LoadMap(tm, data){
 					objs.splice(0, 0, a);
 					//InitClone(a);
 					World_Container.addChild(a);
-					stage.update();
+					stage.update()
 				}
 			}
 		}
@@ -117,6 +116,8 @@ function tp(x,y){
 		return;
 	}
 	console.log("tp" + (x).toString() + " " + (y).toString());
+	World_Container.setTransform(64*x,64*y);
+	stage.update();
 }
  
 function sortByLayer(a,b){
