@@ -15,23 +15,25 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     var tx = World_Container.x * -1;
     var ty = World_Container.y * -1;
+    var cx = tx/64;
+    var cy = ty/64;
   try{
     if(event.keyCode == 37) {
-	if(hitmap[(tx/64)+1][(ty/64)] != 1){
+	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({
 		x:(World_Container.x+64).clamp(-10000,0)
 		}, 500, Ease.linear);
 	}
     }else if(event.keyCode == 39) {
-	if(hitmap[(tx/64)-1][(ty/64)] != 1){
+	if(hitmap[cx-1][cy] != 1){
         createjs.Tween.get(World_Container).to({x:(World_Container.x-64).clamp(-10000,0)}, 500, Ease.linear);
 	}
     }else if(event.keyCode == 38){
-	 if(hitmap[(tx/64)][(ty/64)+1] != 1){
+	 if(hitmap[cx][cy+1] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y+64).clamp(-10000,0)}, 500, Ease.linear);   
 	 }
     }else if(event.keyCode == 40){
-	 if(hitmap[(tx/64)][(ty/64)-1] != 1){
+	 if(hitmap[cx][cy-1] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
 	 }
     }
