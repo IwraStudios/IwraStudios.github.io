@@ -36,7 +36,7 @@ document.addEventListener('keydown', function(event) {
 	 }
     }
   }
-except(e){
+catch(e){
 console.log(e);
    }
 });
