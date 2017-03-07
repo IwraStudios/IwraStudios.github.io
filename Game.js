@@ -14,14 +14,21 @@ window.onload = Init;
 var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
-	createjs.Tween.get(World_Container).to({x:World_Container.x+64}, 500, Ease.linear);
-    }
-    else if(event.keyCode == 39) {
+	if(hitmap[(World_Container.x/64)+1][(World_Container.y/64)] != 1){
+		createjs.Tween.get(World_Container).to({x:World_Container.x+64}, 500, Ease.linear);
+	    }
+    }else if(event.keyCode == 39) {
+	if(hitmap[(World_Container.x/64)-1][(World_Container.y/64)] != 1){
         createjs.Tween.get(World_Container).to({x:World_Container.x-64}, 500, Ease.linear);
+	}
     }else if(event.keyCode == 38){
-	 createjs.Tween.get(World_Container).to({y:World_Container.y-64}, 500, Ease.linear);   
-    }else if(event.keyCode == 40){
+	 if(hitmap[(World_Container.x/64)][(World_Container.y/64) +1] != 1){
 	 createjs.Tween.get(World_Container).to({y:World_Container.y+64}, 500, Ease.linear);   
+	 }
+    }else if(event.keyCode == 40){
+	 if(hitmap[(World_Container.x/64)+1][(World_Container.y/64)-1] != 1){
+	 createjs.Tween.get(World_Container).to({y:World_Container.y-64}, 500, Ease.linear);
+	 }
     }
 });
 
