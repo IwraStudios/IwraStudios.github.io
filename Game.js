@@ -7,6 +7,7 @@ var objs = [];
 var stage;
 var timer = 0;
 var grid = 32;
+var moving = false;
 
 var World_Container;
 window.onload = Init;
@@ -18,6 +19,10 @@ document.addEventListener('keydown', function(event) {
     var cx = tx/64;
     var cy = ty/64;
   try{
+	if(moving != false){
+		return;
+	}
+	  moving = true;
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({
@@ -43,6 +48,9 @@ console.log(e);
    }
 });
 
+document.addEventListener('keyup', function(event) {
+	moving = false;
+}
 
 var toType = function(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
