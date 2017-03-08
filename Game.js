@@ -8,8 +8,7 @@ var stage;
 var timer = 0;
 var grid = 32;
 var moving = false;
-var but = false;
-var movetim = 0;
+var mt = 0;
 
 var World_Container;
 window.onload = Init;
@@ -53,7 +52,7 @@ console.log(e);
 });
 
 document.addEventListener('keyup', function(event) {
-	but = true;
+	moving = true;
 });
 
 var toType = function(obj) {
@@ -104,14 +103,13 @@ function Init(){
  function handleTick(event) {
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
-	     	 if(timer % 30 ==0){ //second
-			 movetim++;
-			 if(movetim > 1 && but == true){
-				movetim = 0;
-				moving = false;
-			 }
-		 }
 	     	 if(timer % 4 ==0){
+			 if(moving == true){
+				mt++;
+				if(mt > 6){
+					moving = false;	
+				}
+			 }else{mt = 0;}
         		 World_Container.sortChildren(sortByLayer);
 			 World_Container.scaleX = 2;
 			 World_Container.scaleY = 2;
