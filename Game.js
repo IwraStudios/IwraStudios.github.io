@@ -8,6 +8,7 @@ var stage;
 var timer = 0;
 var grid = 32;
 var moving = false;
+var movetim = 0;
 
 var World_Container;
 window.onload = Init;
@@ -23,6 +24,7 @@ document.addEventListener('keydown', function(event) {
 		return;
 	}
 	  moving = true;
+	  movetim = 0;
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({
@@ -100,12 +102,20 @@ function Init(){
  function handleTick(event) {
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
-		 if(timer % 4 ==0){
+	     	 if(timer % 30 ==0){ //second
+			 movetim++;
+			 if(movetim >1){
+				movetim = 0;
+				moving = false;
+			 }
+		 }
+	     	 if(timer % 4 ==0){
         		 World_Container.sortChildren(sortByLayer);
 			 World_Container.scaleX = 2;
 			 World_Container.scaleY = 2;
 		 }
 		 timer++;
+	     	
 		 stage.update();
      }
  }
