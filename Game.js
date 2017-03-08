@@ -15,10 +15,10 @@ window.onload = Init;
 
 var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
-    var tx = World_Container.x * -1;
-    var ty = World_Container.y * -1;
-    var cx = (int)tx/64;
-    var cy = (int)ty/64;
+    var tx = (int)(World_Container.x * -1);
+    var ty = (int)(World_Container.y * -1);
+    var cx = (int)(tx/64);
+    var cy = (int)(ty/64);
   try{
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
