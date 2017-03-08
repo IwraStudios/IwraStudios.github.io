@@ -17,15 +17,9 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     var tx = World_Container.x * -1;
     var ty = World_Container.y * -1;
-    var cx = tx/64;
-    var cy = ty/64;
+    var cx = (int)tx/64;
+    var cy = (int)ty/64;
   try{
-	if(moving != false){
-		return;
-	}
-	  but = false;
-	  moving = true;
-	  movetim = 0;
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({
@@ -49,10 +43,6 @@ document.addEventListener('keydown', function(event) {
 catch(e){
 console.log(e);
    }
-});
-
-document.addEventListener('keyup', function(event) {
-	moving = true;
 });
 
 var toType = function(obj) {
@@ -104,12 +94,6 @@ function Init(){
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
 	     	 if(timer % 4 ==0){
-			 if(moving == true){
-				mt++;
-				if(mt > 6){
-					moving = false;	
-				}
-			 }else{mt = 0;}
         		 World_Container.sortChildren(sortByLayer);
 			 World_Container.scaleX = 2;
 			 World_Container.scaleY = 2;
