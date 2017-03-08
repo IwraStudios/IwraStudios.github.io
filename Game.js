@@ -28,19 +28,19 @@ document.addEventListener('keydown', function(event) {
 	createjs.Tween.get(World_Container).to({
 		x:(World_Container.x+64).clamp(-10000,0)
 		}, 500, Ease.linear);
-	}
+	}else{console.log("blocked 37");}
     }else if(event.keyCode == 39) {
 	if(hitmap[cx-1][cy] != 1){
         createjs.Tween.get(World_Container).to({x:(World_Container.x-64).clamp(-10000,0)}, 500, Ease.linear);
-	}
+	}else{console.log("blocked 37");}
     }else if(event.keyCode == 38){
 	 if(hitmap[cx][cy+1] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y+64).clamp(-10000,0)}, 500, Ease.linear);   
-	 }
+	 }else{console.log("blocked 37");}
     }else if(event.keyCode == 40){
 	 if(hitmap[cx][cy-1] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
-	 }
+	 }else{console.log("blocked 37");}
     }
   }
 catch(e){
