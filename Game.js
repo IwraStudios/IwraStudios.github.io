@@ -8,6 +8,7 @@ var stage;
 var timer = 0;
 var grid = 32;
 var moving = false;
+var but = false;
 var movetim = 0;
 
 var World_Container;
@@ -23,6 +24,7 @@ document.addEventListener('keydown', function(event) {
 	if(moving != false){
 		return;
 	}
+	  but = false;
 	  moving = true;
 	  movetim = 0;
     if(event.keyCode == 37) {
@@ -51,7 +53,7 @@ console.log(e);
 });
 
 document.addEventListener('keyup', function(event) {
-	moving = false;
+	but = true;
 });
 
 var toType = function(obj) {
@@ -104,7 +106,7 @@ function Init(){
      if (!event.paused) {
 	     	 if(timer % 30 ==0){ //second
 			 movetim++;
-			 if(movetim >1){
+			 if(movetim > 1 && but == true){
 				movetim = 0;
 				moving = false;
 			 }
