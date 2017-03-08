@@ -20,6 +20,9 @@ document.addEventListener('keydown', function(event) {
     var cx = parseInt(tx/64);
     var cy = parseInt(ty/64);
   try{
+	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
+	  return;
+	  }
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({
