@@ -31,19 +31,19 @@ document.addEventListener('keydown', function(event) {
     pointChar(event.keyCode);
     if(event.keyCode == 37) {
 	if(hitmap[cy][cx+1] != 1){
-	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked 37");}
+	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 39) {
 	if(hitmap[cy][cx-1] != 1){
         createjs.Tween.get(World_Container).to({x:(World_Container.x-64).clamp(-10000,0)}, 500, Ease.linear);
-	}else{console.log("blocked 37");}
+	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
 	 if(hitmap[cy+1][cx] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y+64).clamp(-10000,0)}, 500, Ease.linear);   
-	 }else{console.log("blocked 37");}
+	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
 	 if(hitmap[cy-1][cx] != 1){
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
-	 }else{console.log("blocked 37");}
+	 }else{console.log("blocked" + String(event.keyCode));}
     }
 	stage.update();
   }
