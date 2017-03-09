@@ -20,14 +20,14 @@ document.addEventListener('keydown', function(event) {
     var ty = parseInt(World_Container.y * -1);
     var cx = parseInt(tx/64);
     var cy = parseInt(ty/64);
+    pointChar(event.keyCode);
   	try{
 	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
 	  }
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
-	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);
-	}else{console.log("blocked 37");}
+	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked 37");}
     }else if(event.keyCode == 39) {
 	if(hitmap[cx-1][cy] != 1){
         createjs.Tween.get(World_Container).to({x:(World_Container.x-64).clamp(-10000,0)}, 500, Ease.linear);
@@ -41,6 +41,7 @@ document.addEventListener('keydown', function(event) {
 	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
 	 }else{console.log("blocked 37");}
     }
+	stage.update();
   }
 catch(e){
 console.log(e);
@@ -51,10 +52,35 @@ var toType = function(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 
+function pointChar(dir){
+	switch(dir){
+		case 37:
+			char = new createjs.Bitmap("./images/char1/4.png");
+			char.name = "./images/char1/4.png";
+
+			break;
+		case 38:
+			char = new createjs.Bitmap("./images/char1/12.png");
+			char.name = "./images/char1/12.png";
+			break;
+		case 39:
+			char = new createjs.Bitmap("./images/char1/10.png");
+			char.name = "./images/char1/10.png";
+			break;
+		case 40
+			char = new createjs.Bitmap("./images/char1/0.png");
+			char.name = "./images/char1/0.png";
+			break;
+		
+			
+		  }
+	char.x = 256;
+	char.y = 256;
+}
+
 function loadf() { //Debug
 		var fileInput = document.getElementById('fileInput');
 		//var fileDisplayArea = document.getElementById('fileDisplayArea');
-
 		fileInput.addEventListener('change', function(e) {
 			var file = fileInput.files[0];
 			var textType = /text.*/;
