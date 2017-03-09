@@ -29,7 +29,7 @@ document.addEventListener('keydown', function(event) {
     }else{allowedMove = false;}
 	
     pointChar(event.keyCode);
-    removeTweens(World_Container);
+    //removeTweens(World_Container);
 	
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx+1] != 1){
