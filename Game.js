@@ -24,7 +24,7 @@ document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
   	try{
-	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
+	  if(World_Container.x % 64 !=0 && World_Container.y % 64 !=0 && timer % 3 == 0){
 	  return;
 	  }
     pointChar(event.keyCode);
