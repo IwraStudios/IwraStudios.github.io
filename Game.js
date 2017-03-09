@@ -124,7 +124,7 @@ function Init(){
 	}
 	char = new createjs.Bitmap("./images/char1/0.png")
 	char.image = chararr[0].image;
-	char.x = 256;
+	char.x = 320;
 	char.y = 256;
 	stage.addChild(World_Container);
 	
