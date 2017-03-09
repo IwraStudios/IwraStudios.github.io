@@ -24,27 +24,28 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
+    pointChar(event.keyCode);
     if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0 || !allowedMove){
 	  return;
     }else{allowedMove = false;}
 	
-    pointChar(event.keyCode);
+    
     //removeTweens(World_Container);
 	
     if(event.keyCode == 37) {
-	if(hitmap[charty][chartx+1] != 1){
+	if(hitmap[charty][chartx-1] != 1){
 	chartx--;
 	}
     }else if(event.keyCode == 39) {
-	if(hitmap[charty][chartx-1] != 1){
+	if(hitmap[charty][chartx+1] != 1){
 	chartx++;
 	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
-	 if(hitmap[charty+1][chartx] != 1){
+	 if(hitmap[charty-1][chartx] != 1){
 	 charty--; 
 	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
-	 if(hitmap[charty-1][chartx] != 1){
+	 if(hitmap[charty+1][chartx] != 1){
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
