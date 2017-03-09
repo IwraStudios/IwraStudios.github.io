@@ -13,36 +13,39 @@ var char;
 var charx = 320;
 var chary = 256;
 var chararr;
-
+var chartx = 0;
+var charty = 0;
 
 var World_Container;
 window.onload = Init;
 
 var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
-    var tx = parseInt(World_Container.x * -1);
-    var ty = parseInt(World_Container.y * -1);
-    var cx = parseInt(Math.round(tx/64.0));
-    var cy = parseInt(Math.round(ty/64.0));
+    //var tx = parseInt(World_Container.x * -1);
+    //var ty = parseInt(World_Container.y * -1);
   	try{
 	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
 	  }
     pointChar(event.keyCode);
     if(event.keyCode == 37) {
-	if(hitmap[cy][cx+1] != 1){
-	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked" + String(event.keyCode));}
+	if(hitmap[charty][chartx+1] != 1){
+	chartx--;
+	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 39) {
-	if(hitmap[cy][cx-1] != 1){
-        createjs.Tween.get(World_Container).to({x:(World_Container.x-64).clamp(-10000,0)}, 500, Ease.linear);
+	if(hitmap[charty][chartx-1] != 1){
+	chartx++;
+        createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 500, Ease.linear);
 	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
-	 if(hitmap[cy+1][cx] != 1){
-	 createjs.Tween.get(World_Container).to({y:(World_Container.y+64).clamp(-10000,0)}, 500, Ease.linear);   
+	 if(hitmap[charty+1][chartx] != 1){
+	 charty--;
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 500, Ease.linear);   
 	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
-	 if(hitmap[cy-1][cx] != 1){
-	 createjs.Tween.get(World_Container).to({y:(World_Container.y-64).clamp(-10000,0)}, 500, Ease.linear);
+	 if(hitmap[charty-1][chartx] != 1){
+	 charty++;
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 500, Ease.linear);
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
 	stage.update();
@@ -189,6 +192,8 @@ function tp(x,y){
 		return;
 	}
 	console.log("tp" + (x).toString() + " " + (y).toString());
+	chartx = x;
+	charty = y;
 	World_Container.setTransform(-64*x,-64*y);
 	stage.update();
 }
