@@ -7,7 +7,6 @@ var objs = [];
 var stage;
 var timer = 0;
 var grid = 32;
-var moving = false;
 var mt = 0;
 var char;
 var charx = 320;
@@ -25,7 +24,7 @@ document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
     pointChar(event.keyCode);
-    if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0 || !allowedMove){
+    if(World_Container.x % 32 !=0 || World_Container.y % 32 !=0 || !allowedMove){
 	  return;
     }else{allowedMove = false;}
 	
@@ -49,7 +48,7 @@ document.addEventListener('keydown', function(event) {
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
-	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0), y:(charty*-64).clamp(-10000,0)}, 500, Ease.qaudOut).wait(250).call(handleComplete);
+	createjs.Tween.get(World_Container).to({x:(chartx*-32).clamp(-10000,0), y:(charty*-32).clamp(-10000,0)}, 500, Ease.qaudOut).wait(250).call(handleComplete);
 	stage.update();
 });
 
@@ -196,7 +195,7 @@ function tp(x,y){
 	console.log("tp" + (x).toString() + " " + (y).toString());
 	chartx = x;
 	charty = y;
-	World_Container.setTransform(-64*x,-64*y);
+	World_Container.setTransform(-32*x,-32*y);
 	stage.update();
 }
  
