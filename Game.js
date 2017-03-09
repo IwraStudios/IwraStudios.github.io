@@ -15,7 +15,7 @@ var chary = 256;
 var chararr;
 var chartx = 0;
 var charty = 0;
-var allowedMove = false;
+var allowedMove = true;
 
 var World_Container;
 window.onload = Init;
@@ -32,21 +32,21 @@ document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx+1] != 1){
 	chartx--;
-	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);;}else{console.log("blocked" + String(event.keyCode));}
+	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 39) {
 	if(hitmap[charty][chartx-1] != 1){
 	chartx++;
-        createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);;
+        createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);
 	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
 	 if(hitmap[charty+1][chartx] != 1){
 	 charty--;
-	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);;   
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);;  
 	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
 	 if(hitmap[charty-1][chartx] != 1){
 	 charty++;
-	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);;
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.qaudOut).call(handleComplete);
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
 	stage.update();
