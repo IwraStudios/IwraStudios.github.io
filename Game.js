@@ -23,11 +23,11 @@ document.addEventListener('keydown', function(event) {
     var ty = parseInt(World_Container.y * -1);
     var cx = parseInt(tx/64);
     var cy = parseInt(ty/64);
-    pointChar(event.keyCode);
   	try{
 	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
 	  }
+    pointChar(event.keyCode);
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
 	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked 37");}
