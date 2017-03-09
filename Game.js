@@ -67,7 +67,7 @@ function pointChar(dir){
 			char = new createjs.Bitmap("./images/char1/10.png");
 			char.name = "./images/char1/10.png";
 			break;
-		case 40
+		case 40:
 			char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png";
 			break;
