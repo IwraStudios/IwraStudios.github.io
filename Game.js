@@ -81,7 +81,7 @@ function pointChar(dir){
 		
 			
 		  }
-	char.x = 256;
+	char.x = 320;
 	char.y = 256;
 	stage.update();
 }
