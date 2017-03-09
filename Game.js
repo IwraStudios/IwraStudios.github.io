@@ -58,23 +58,23 @@ var toType = function(obj) {
 function pointChar(dir){
 	switch(dir){
 		case 37:
-			char.image = chararr[4].image;
+			char.image = chararr[10].image;
 			//char = new createjs.Bitmap("./images/char1/4.png");
 			char.name = "./images/char1/4.png";
 
 			break;
 		case 38:
-			char.image = chararr[12].image;
+			char.image = chararr[0].image;
 			//char = new createjs.Bitmap("./images/char1/12.png");
 			char.name = "./images/char1/12.png";
 			break;
 		case 39:
-			char.image = chararr[10].image;
+			char.image = chararr[4].image;
 			//char = new createjs.Bitmap("./images/char1/10.png");
 			char.name = "./images/char1/10.png";
 			break;
 		case 40:
-			char.image = chararr[0].image;
+			char.image = chararr[12].image;
 			//char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png";
 			break;
