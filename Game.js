@@ -9,6 +9,7 @@ var timer = 0;
 var grid = 32;
 var moving = false;
 var mt = 0;
+var char;
 
 var World_Container;
 window.onload = Init;
@@ -19,15 +20,13 @@ document.addEventListener('keydown', function(event) {
     var ty = parseInt(World_Container.y * -1);
     var cx = parseInt(tx/64);
     var cy = parseInt(ty/64);
-  try{
+  	try{
 	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
 	  }
     if(event.keyCode == 37) {
 	if(hitmap[cx+1][cy] != 1){
-	createjs.Tween.get(World_Container).to({
-		x:(World_Container.x+64).clamp(-10000,0)
-		}, 500, Ease.linear);
+	createjs.Tween.get(World_Container).to({x:(World_Container.x+64).clamp(-10000,0)}, 500, Ease.linear);
 	}else{console.log("blocked 37");}
     }else if(event.keyCode == 39) {
 	if(hitmap[cx-1][cy] != 1){
@@ -83,9 +82,16 @@ function Init(){
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
-	
+
 	World_Container = new createjs.Container();
+	
+	char = new createjs.Bitmap("./images/char1/0.png");
+	char.name = "./images/char1/0.png";
+	char.x = 256;
+	cahr.y = 256;
 	stage.addChild(World_Container);
+	
+	stage.addChild(char);
 	World_Container.scaleX = 2;
 	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
