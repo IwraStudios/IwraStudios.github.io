@@ -48,7 +48,7 @@ document.addEventListener('keydown', function(event) {
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
-	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0), y:(charty*-64).clamp(-10000,0)}, 500, Ease.qaudOut).wait(500).call(handleComplete);
+	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0), y:(charty*-64).clamp(-10000,0)}, 500, Ease.qaudOut).wait(250).call(handleComplete);
 	stage.update();
 });
 
