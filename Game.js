@@ -10,7 +10,8 @@ var grid = 32;
 var moving = false;
 var mt = 0;
 var char;
-
+var charx = 320;
+var chary = 256;
 var chararr;
 
 
@@ -81,8 +82,8 @@ function pointChar(dir){
 		
 			
 		  }
-	char.x = 320;
-	char.y = 256;
+	char.x = charx;
+	char.y = chary;
 	stage.update();
 }
 
@@ -124,8 +125,8 @@ function Init(){
 	}
 	char = new createjs.Bitmap("./images/char1/0.png")
 	char.image = chararr[0].image;
-	char.x = 320;
-	char.y = 256;
+	char.x = charx;
+	char.y = chary;
 	stage.addChild(World_Container);
 	
 	stage.addChild(char);
