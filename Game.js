@@ -24,15 +24,17 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
-  	try{
-	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0 || !allowedMove){
+    if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0 || !allowedMove){
 	  return;
-	  }else{allowedMove = false;}
+    }else{allowedMove = false;}
+	
     pointChar(event.keyCode);
     removeTweens(World_Container);
+	
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx+1] != 1){
 	chartx--;
+	}
     }else if(event.keyCode == 39) {
 	if(hitmap[charty][chartx-1] != 1){
 	chartx++;
@@ -48,10 +50,6 @@ document.addEventListener('keydown', function(event) {
     }
 	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0), y:(charty*-64).clamp(-10000,0)}, 500, Ease.qaudOut).wait(500).call(handleComplete);
 	stage.update();
-  }
-catch(e){
-console.log(e);
-   }
 });
 
 function handleComplete(){
