@@ -24,28 +24,28 @@ document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
   	try{
-	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0 || timer % 10 == 0){
+	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
 	  }
     pointChar(event.keyCode);
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx+1] != 1){
 	chartx--;
-	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 500, Ease.linear);}else{console.log("blocked" + String(event.keyCode));}
+	createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.linear);}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 39) {
 	if(hitmap[charty][chartx-1] != 1){
 	chartx++;
-        createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 500, Ease.linear);
+        createjs.Tween.get(World_Container).to({x:(chartx*-64).clamp(-10000,0)}, 1000, Ease.linear);
 	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
 	 if(hitmap[charty+1][chartx] != 1){
 	 charty--;
-	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 500, Ease.linear);   
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.linear);   
 	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
 	 if(hitmap[charty-1][chartx] != 1){
 	 charty++;
-	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 500, Ease.linear);
+	 createjs.Tween.get(World_Container).to({y:(charty*-64).clamp(-10000,0)}, 1000, Ease.linear);
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
 	stage.update();
