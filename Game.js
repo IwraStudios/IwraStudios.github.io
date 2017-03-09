@@ -122,6 +122,7 @@ function Init(){
 	for(var l=0; l<16;l++){
 	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
 	}
+	char = new createjs.Bitmap("./images/char1/0.png")
 	char.image = chararr[0].image;
 	char.x = 256;
 	char.y = 256;
