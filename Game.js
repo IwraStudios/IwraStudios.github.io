@@ -22,8 +22,8 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', function(event) {
     var tx = parseInt(World_Container.x * -1);
     var ty = parseInt(World_Container.y * -1);
-    var cx = parseInt(tx/64);
-    var cy = parseInt(ty/64);
+    var cx = parseInt(Math.ceil(tx/64.0));
+    var cy = parseInt(Math.ceil(ty/64.0));
   	try{
 	  if(World_Container.x % 64 !=0 || World_Container.y % 64 !=0){
 	  return;
