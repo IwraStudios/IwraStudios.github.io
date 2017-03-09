@@ -11,6 +11,9 @@ var moving = false;
 var mt = 0;
 var char;
 
+var chararr;
+
+
 var World_Container;
 window.onload = Init;
 
@@ -55,20 +58,24 @@ var toType = function(obj) {
 function pointChar(dir){
 	switch(dir){
 		case 37:
-			char = new createjs.Bitmap("./images/char1/4.png");
+			char.image = chararr[4].image;
+			//char = new createjs.Bitmap("./images/char1/4.png");
 			char.name = "./images/char1/4.png";
 
 			break;
 		case 38:
-			char = new createjs.Bitmap("./images/char1/12.png");
+			char.image = chararr[12].image;
+			//char = new createjs.Bitmap("./images/char1/12.png");
 			char.name = "./images/char1/12.png";
 			break;
 		case 39:
-			char = new createjs.Bitmap("./images/char1/10.png");
+			char.image = chararr[10].image;
+			//char = new createjs.Bitmap("./images/char1/10.png");
 			char.name = "./images/char1/10.png";
 			break;
 		case 40:
-			char = new createjs.Bitmap("./images/char1/0.png");
+			char.image = chararr[0].image;
+			//char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png";
 			break;
 		
@@ -76,6 +83,7 @@ function pointChar(dir){
 		  }
 	char.x = 256;
 	char.y = 256;
+	stage.update();
 }
 
 function loadf() { //Debug
@@ -110,9 +118,11 @@ function Init(){
 	stage = new createjs.Stage("GameCanvas");
 
 	World_Container = new createjs.Container();
-	
-	char = new createjs.Bitmap("./images/char1/0.png");
-	char.name = "./images/char1/0.png";
+	chararr = [];
+	for(var l=0; l<16;l++){
+	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
+	}
+	char.image = chararr[0].image;
 	char.x = 256;
 	char.y = 256;
 	stage.addChild(World_Container);
