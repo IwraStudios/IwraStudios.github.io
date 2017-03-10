@@ -24,7 +24,7 @@ document.addEventListener('keydown', function(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
     pointChar(event.keyCode);
-    if(World_Container.x % 32 !=0 || World_Container.y % 32 !=0 || !allowedMove){
+    if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove){
 	  return;
     }else{allowedMove = false;}
 	
@@ -48,7 +48,7 @@ document.addEventListener('keydown', function(event) {
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
-	createjs.Tween.get(World_Container).to({x:(chartx* -1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 500, Ease.qaudOut).call(handleComplete);
+	createjs.Tween.get(World_Container).to({x:(chartx* -1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 350, Ease.qaudOut).wait(150).call(handleComplete);
 	stage.update();
 });
 
