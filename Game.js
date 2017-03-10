@@ -6,7 +6,7 @@ var current_map;
 var objs = [];
 var stage;
 var timer = 0;
-var grid = 32;
+var grid = 64;
 var mt = 0;
 var char;
 var charx = 320;
@@ -48,7 +48,7 @@ document.addEventListener('keydown', function(event) {
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
-	createjs.Tween.get(World_Container).to({x:(chartx*-32).clamp(-10000,0), y:(charty*-32).clamp(-10000,0)}, 500, Ease.qaudOut).call(handleComplete);
+	createjs.Tween.get(World_Container).to({x:(chartx* -1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 500, Ease.qaudOut).call(handleComplete);
 	stage.update();
 });
 
@@ -195,7 +195,7 @@ function tp(x,y){
 	console.log("tp" + (x).toString() + " " + (y).toString());
 	chartx = x;
 	charty = y;
-	World_Container.setTransform(-32*x,-32*y);
+	World_Container.setTransform(-1 * grid *x,-1* grid *y);
 	stage.update();
 }
  
