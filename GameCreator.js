@@ -4,7 +4,7 @@ var map2 = [];
 var map3 = [];
 var map4 = [];
 var hitmap;
-
+var exe;
 var stage;
 var gridsize = 32;
 //var circle = new createjs.Shape();
@@ -49,7 +49,7 @@ function loadf() {
 					//console.log(reader.result);
 				}
 
-				reader.readAsText(file);	
+				reader.readAsText(file);
 			} else {
 				console.log("File not supported!");
 			}
@@ -90,7 +90,7 @@ function InitDisp(){
 	ScratchNewDispenser("./images/0.png;2");
 	ScratchNewDispenser("./images/641.png;0");
 	stage.update();
-	
+
 }
 
 function ScratchNewDispenser(rID){
@@ -117,7 +117,7 @@ function MakeNewDispenser(ref,rpath, layer){
 		stage.update();
 	});
 	ref.on("pressup", function(evt) { a.x = a.x - (a.x %gridsize); a.y = a.y - (a.y %gridsize); stage.update();console.log(a.x + "," + a.y); copying = false; a.name = rpath + ";" + String(layer);})
-	
+
 }
 
 
@@ -125,9 +125,12 @@ function MakeNewDispenser(ref,rpath, layer){
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
 		 if(timer % 4 == 0){
+			 	 exe = document.getElementById("on_load").value;
          stage.sortChildren(sortByLayer);
+				 stage.update();
 		 }
 		 timer++;
+
      }
  }
 
@@ -144,7 +147,7 @@ function FloodGround(){
 			stage.addChild(a);
 			stage.update();
 		}
-		
+
 	}
 }
 
@@ -165,7 +168,10 @@ function SaveMap(){
 			}
 		}
 	}
-	var blob = new Blob([serialize(tmaps) + "?" + serialize(thmap)],{type: "text/plain;charset=utf-8"});
+	var eexe = JSON.parse(exe);
+	console.log(eexe, exe);
+	var sexe = serialize(eexe);
+	var blob = new Blob([serialize(tmaps) + "?" + serialize(thmap) + "?" + serialize(sexe)],{type: "text/plain;charset=utf-8"});
 	saveAs(blob,"map.fmap");
 }
 
@@ -201,7 +207,7 @@ function SaveToMap1(){
 	for(var i=0; i<objs.length;i++){
 		o = objs[i];
 		if(o.name != null && o.name != ""){
-		map1[o.x/32][o.y/32] = o.name; 
+		map1[o.x/32][o.y/32] = o.name;
 		}else{
 			map1[o.x/32][o.y/32] = "";
 		}
@@ -209,7 +215,7 @@ function SaveToMap1(){
 	console.log(String(map1));
 	var blob = new Blob([serialize(map1)],{type: "text/plain;charset=utf-8"});
 	saveAs(blob,"omap.gmap");
-	
+
 }
 
 
@@ -220,14 +226,14 @@ function StringToIntLookUp(str){
 			return 1;
 		case "./images/641.png":
 			return 2;
-			
+
 		default:
 			return 0;
-			
-		
+
+
 	}
-	
-	
+
+
 }
 
 function sortByZ(a,b) {
@@ -260,7 +266,7 @@ function InitHitMap(x,y){
 		for(var j=0; j<y; j++) {
 			matrix[i][j] = 1;
 	}
-	}	
+	}
 return matrix;
 }
 
@@ -329,9 +335,9 @@ function InitClone(obj){
 	});
 	obj.on("pressup", function(evt) { evt.target.x = evt.target.x - (evt.target.x %gridsize); evt.target.y = evt.target.y - (evt.target.y %gridsize); stage.update();console.log(evt.target.x + "," + evt.target.y);})
 }
-	
 
-function ToIndex(obj,relative, offset){ 
+
+function ToIndex(obj,relative, offset){
 	//numb must be lower than max
 	relative.setChildIndex( obj, relative.NumChildren-offset);
 }

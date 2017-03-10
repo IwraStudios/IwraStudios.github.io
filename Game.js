@@ -9,8 +9,8 @@ var timer = 0;
 var grid = 64;
 var mt = 0;
 var char;
-var charx = 320;
-var chary = 256;
+var charx = 288 + 32;
+var chary = 288;
 var chararr;
 var chartx = 0;
 var charty = 0;
@@ -27,10 +27,8 @@ document.addEventListener('keydown', function(event) {
     if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove){
 	  return;
     }else{allowedMove = false;}
-	
-    
     //removeTweens(World_Container);
-	
+
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx-1] != 1){
 	chartx--;
@@ -41,19 +39,21 @@ document.addEventListener('keydown', function(event) {
 	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 38){
 	 if(hitmap[charty-1][chartx] != 1){
-	 charty--; 
+	 charty--;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 40){
 	 if(hitmap[charty+1][chartx] != 1){
 	 charty++;
 	 }else{console.log("blocked" + String(event.keyCode));}
     }
-	createjs.Tween.get(World_Container).to({x:(chartx* -1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 350, Ease.qaudOut).wait(150).call(handleComplete);
+    var rchartx = chartx - 5;
+    var rcharty = charty - 5;
+	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
 });
 
 function handleComplete(){
-	allowedMove = true;	
+	allowedMove = true;
 }
 
 var toType = function(obj) {
@@ -83,8 +83,8 @@ function pointChar(dir){
 			//char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png";
 			break;
-		
-			
+
+
 		  }
 	char.x = charx;
 	char.y = chary;
@@ -98,17 +98,15 @@ function loadf() { //Debug
 			var file = fileInput.files[0];
 			var textType = /text.*/;
 
-			if (file.type.match(textType)) {
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
 					//Do stuff
 					LoadHitMap(deserialize(reader.result.split("?")[1]));
-					LoadMap(deserialize(reader.result.split("?")[0]), {"tp":"1,3"});
+					LoadMap(deserialize(reader.result.split("?")[0]), deserialize(reader.result.split("?")[2]));
 					//console.log(reader.result);
-				}
 
-				reader.readAsText(file);	
+				reader.readAsText(file);
 			} else {
 				console.log("File not supported!");
 			}
@@ -127,12 +125,12 @@ function Init(){
 	for(var l=0; l<16;l++){
 	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
 	}
-	char = new createjs.Bitmap("./images/char1/0.png")
+	char = new createjs.Bitmap("./images/char1/0.png");
 	char.image = chararr[0].image;
 	char.x = charx;
 	char.y = chary;
 	stage.addChild(World_Container);
-	
+
 	stage.addChild(char);
 	World_Container.scaleX = 2;
 	World_Container.scaleY = 2;
@@ -150,7 +148,7 @@ function Init(){
 			 World_Container.scaleY = 2;
 		 }
 		 timer++;
-	     	
+
 		 stage.update();
      }
  }
@@ -181,7 +179,7 @@ function LoadMap(tm, data){
 			}
 		}
 	}
-	
+
 	for(var l=0; l<Object.keys(data).length;l++){
 		var fname = Object.keys(data)[l];
 		window[fname](data[fname]);
@@ -193,12 +191,12 @@ function tp(x,y){
 		return;
 	}
 	console.log("tp" + (x).toString() + " " + (y).toString());
-	chartx = x;
-	charty = y;
-	World_Container.setTransform(-1 * grid *x,-1* grid *y);
+	chartx = x + 5;
+	charty = y + 5;
+	World_Container.setTransform(-1 * grid *chartx,-1* grid *charty);
 	stage.update();
 }
- 
+
 function sortByLayer(a,b){
 	try{
 	if (parseInt(a.name.split(";")[1]) < parseInt(b.name.split(";")[1])) return -1;
