@@ -97,7 +97,7 @@ function loadf() {
 
 		fileInput.addEventListener('change', function(e) {
 			var file = fileInput.files[0];
-			var textType = /*.*/;
+			var textType = '*.*';
 
 			if (file.type.match(textType)) {
 				var reader = new FileReader();
