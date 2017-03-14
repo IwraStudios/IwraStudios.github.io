@@ -105,9 +105,9 @@ function loadf() { //Debug
 					LoadHitMap(deserialize(reader.result.split("?")[1]));
 					LoadMap(deserialize(reader.result.split("?")[0]), deserialize(reader.result.split("?")[2]));
 					//console.log(reader.result);
-
-				reader.readAsText(file);
 				}
+				reader.readAsText(file);
+				
 		});
 }
 
