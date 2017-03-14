@@ -107,9 +107,6 @@ function loadf() { //Debug
 					//console.log(reader.result);
 
 				reader.readAsText(file);
-			} else {
-				console.log("File not supported!");
-			}
 		});
 }
 
