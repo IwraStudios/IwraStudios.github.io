@@ -107,6 +107,7 @@ function loadf() { //Debug
 					//console.log(reader.result);
 
 				reader.readAsText(file);
+				}
 		});
 }
 
