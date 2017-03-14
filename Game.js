@@ -91,25 +91,32 @@ function pointChar(dir){
 	stage.update();
 }
 
-function loadf() { //Debug
+function loadf() {
 		var fileInput = document.getElementById('fileInput');
 		//var fileDisplayArea = document.getElementById('fileDisplayArea');
+
 		fileInput.addEventListener('change', function(e) {
 			var file = fileInput.files[0];
 			var textType = /text.*/;
+
 			if (file.type.match(textType)) {
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
 					//Do stuff
-					LoadHitMap(deserialize(reader.result.split("?")[1]));
+					try{
+					LoadHitMap(deserialize(reader.result.split("?")[1])); 
 					LoadMap(deserialize(reader.result.split("?")[0]), deserialize(reader.result.split("?")[2]));
-					//console.log(reader.result);
+					}catch(e){
+						console.log("could not parse file", e);	
 					}
+					//console.log(reader.result);
+				}
 
 				reader.readAsText(file);
+			} else {
+				console.log("File not supported!");
 			}
-				
 		});
 }
 
