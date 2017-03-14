@@ -99,7 +99,6 @@ function loadf() {
 			var file = fileInput.files[0];
 			var textType = '*.*';
 
-			if (file.type.match(textType)) {
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
@@ -114,9 +113,6 @@ function loadf() {
 				}
 
 				reader.readAsText(file);
-			} else {
-				console.log("File not supported!");
-			}
 		});
 }
 
