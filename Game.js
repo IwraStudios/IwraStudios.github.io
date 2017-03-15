@@ -107,7 +107,7 @@ function loadf() {
 					try{
 					LoadHitMap(deserialize(reader.result.split("?")[1])); 
 						try{
-						    x = deserialize(reader.result.split("?")[2]);
+						    x = JSON.parse(reader.result.split("?")[2]);
 						}catch(ee){
 							console.log(e);
 						}
