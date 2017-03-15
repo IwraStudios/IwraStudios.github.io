@@ -206,7 +206,7 @@ function tp(x,y){
 	console.log("tp" + (x).toString() + " " + (y).toString());
 	chartx = x + 5;
 	charty = y + 5;
-	World_Container.setTransform(-1 * grid *chartx,-1* grid *charty);
+	World_Container.setTransform(-1 * grid *x,-1* grid *y);
 	stage.update();
 }
 
