@@ -103,9 +103,19 @@ function loadf() {
 
 				reader.onload = function(e) {
 					//Do stuff
+					var x;
 					try{
 					LoadHitMap(deserialize(reader.result.split("?")[1])); 
-					LoadMap(deserialize(reader.result.split("?")[0]), deserialize(reader.result.split("?")[2]));
+						try{
+						    x = deserialize(reader.result.split("?")[2]);
+						}catch(ee){
+							console.log(e);
+						}
+					if(x != null){
+					LoadMap(deserialize(reader.result.split("?")[0]), x);
+					}else{
+					LoadMap(deserialize(reader.result.split("?")[0]), {});
+					}
 					}catch(e){
 						console.log("could not parse file", e);	
 					}
