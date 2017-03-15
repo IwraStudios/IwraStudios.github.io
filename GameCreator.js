@@ -171,7 +171,7 @@ function SaveMap(){
 	var eexe = JSON.parse(exe);
 	console.log(eexe, exe);
 	var sexe = serialize(eexe);
-	var blob = new Blob([serialize(tmaps) + "?" + serialize(thmap) + "?" + serialize(sexe)],{type: "text/plain;charset=utf-8"});
+	var blob = new Blob([serialize(tmaps) + "?" + serialize(thmap) + "?" + exe],{type: "text/plain;charset=utf-8"});
 	saveAs(blob,"map.fmap");
 }
 
