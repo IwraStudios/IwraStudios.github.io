@@ -17,6 +17,8 @@ var grnd = new createjs.Bitmap("./images/641.png");
 grnd.x = 1100;
 grnd.y = 300;*/
 var objs = [];
+var servObj;
+var texobj;
 var copying;
 //0 = Occupied space
 //1 = Tree
@@ -126,7 +128,10 @@ function MakeNewDispenser(ref,rpath, layer){
      if (!event.paused) {
 		 if(timer % 4 == 0){
 			 	 exe = document.getElementById("on_load").value;
-         stage.sortChildren(sortByLayer);
+			 	 if(servObj != null){
+					 servObj.name = document.getElementById("block").value;
+				 }
+         			 stage.sortChildren(sortByLayer);
 				 stage.update();
 		 }
 		 timer++;
@@ -331,6 +336,8 @@ function InitClone(obj){
 	obj.on("pressmove", function(evt) {
 		evt.target.x = evt.stageX;
 		evt.target.y = evt.stageY;
+		document.getElementById("block").value = evt.target.name;
+		servObj = evt.target;
 		stage.update();
 	});
 	obj.on("pressup", function(evt) { evt.target.x = evt.target.x - (evt.target.x %gridsize); evt.target.y = evt.target.y - (evt.target.y %gridsize); stage.update();console.log(evt.target.x + "," + evt.target.y);})
