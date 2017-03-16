@@ -287,7 +287,7 @@ function GenerateHitMap(){
 				switch(StringToIntLookUp(o.name.split(";")[0])){
 					case 1:
 						try{
-						hmap = FillRect(hmap,o.x/32,o.y/32,(o.x + o.getBounds().width)/32, (o.y+o.getBounds().height)/(32), 1);
+						hmap = FillRect(hmap,o.x/32,o.y/32,(o.x + o.getBounds().width)/32, (o.y+o.getBounds().height)/(32*2), 1);//half the y size so you can walk behind
 						}catch(e){console.log(e);}
 						break;
 					case 0:
