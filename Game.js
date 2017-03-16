@@ -229,7 +229,7 @@ function tp(x,y){
 	chartx = x + 5;
 	charty = y + 5;
 	World_Container.setTransform(-1 * grid *x,-1* grid *y);
-	char.setTransform(-1 * grid *chartx,-1*gird*charty);
+	char.setTransform(-1 * grid *chartx,-1*grid*charty);
 	stage.update();
 }
 
