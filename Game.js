@@ -85,23 +85,23 @@ function pointChar(dir){
 		case 37:
 			char.image = chararr[10].image;
 			//char = new createjs.Bitmap("./images/char1/4.png");
-			char.name = "./images/char1/4.png";
+			char.name = "./images/char1/4.png;3";
 
 			break;
 		case 38:
 			char.image = chararr[0].image;
 			//char = new createjs.Bitmap("./images/char1/12.png");
-			char.name = "./images/char1/12.png";
+			char.name = "./images/char1/12.png;3";
 			break;
 		case 39:
 			char.image = chararr[4].image;
 			//char = new createjs.Bitmap("./images/char1/10.png");
-			char.name = "./images/char1/10.png";
+			char.name = "./images/char1/10.png;3";
 			break;
 		case 40:
 			char.image = chararr[12].image;
 			//char = new createjs.Bitmap("./images/char1/0.png");
-			char.name = "./images/char1/0.png";
+			char.name = "./images/char1/0.png;3";
 			break;
 
 
@@ -158,7 +158,7 @@ function Init(){
 	for(var l=0; l<16;l++){
 	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
 	}
-	char = new createjs.Bitmap("./images/char1/0.png");
+	char = new createjs.Bitmap("./images/char1/0.png;3");
 	char.image = chararr[0].image;
 	char.x = charx;
 	char.y = chary;
