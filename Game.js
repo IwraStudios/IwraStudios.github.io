@@ -49,8 +49,6 @@ document.addEventListener('keydown', function(event) {
     var rchartx = chartx - 5;
     var rcharty = charty - 5;
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
-	var npoint = char.globalToLocal(chartx *-1 * grid, charty* -1 * grid);
-	createjs.Tween.get(char).to({x:(npoint.x).clamp(-10000,0), y:(npoint.y).clamp(-10000,0)}, 350, Ease.Linear).wait(50);
 	stage.update();
 	ExecTile(chartx,charty);
 });
@@ -108,8 +106,8 @@ function pointChar(dir){
 
 
 		  }
-	char.x = -1 * grid *chartx;
-	char.y = -1 * grid *charty;
+	char.x = charx;
+	char.y = chary;
 	stage.update();
 }
 
@@ -162,14 +160,12 @@ function Init(){
 	}
 	char = new createjs.Bitmap("./images/char1/0.png");
 	char.image = chararr[0].image;
-	char.x = -1 * grid *chartx;
-	char.y = -1 * grid *charty;
-	char.scaleX = 0.5;
-	char.scaleY = 0.5;
+	char.x = charx;
+	char.y = chary;
 	char.name = "./images/char1/0.png;3";
 	stage.addChild(World_Container);
 
-	World_Container.addChild(char);
+	stage.addChild(char);
 	World_Container.scaleX = 2;
 	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
@@ -232,7 +228,6 @@ function tp(x,y){
 	chartx = x + 5;
 	charty = y + 5;
 	World_Container.setTransform(-1 * grid *x,-1* grid *y);
-	char.setTransform(-1 * grid *chartx,-1*grid*charty);
 	stage.update();
 }
 
