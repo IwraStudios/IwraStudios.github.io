@@ -56,6 +56,9 @@ document.addEventListener('keydown', function(event) {
 function ExecTile(x,y){
 	try{
 	for(var l=0; l<current_map.length;l++){
+		if(current_map[l][x][y] == null){
+			continue;	
+		}
 		if(current_map[l][x][y].name != null && current_map[l][x][y].name.split(";")[2] != null){
 			var data = JSON.parse(current_map[l][x][y].name.split(";")[2]);
 			for(var l=0; l<Object.keys(data).length;l++){
