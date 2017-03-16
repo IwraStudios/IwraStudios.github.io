@@ -107,8 +107,8 @@ function pointChar(dir){
 
 
 		  }
-	char.x = charx;
-	char.y = chary;
+	char.x = -1 * grid *chartx;
+	char.y = -1 * grid *charty;
 	stage.update();
 }
 
