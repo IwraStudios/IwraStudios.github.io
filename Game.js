@@ -49,7 +49,7 @@ document.addEventListener('keydown', function(event) {
     var rchartx = chartx - 5;
     var rcharty = charty - 5;
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
-	createjs.Tween.get(char).to({x:(chartx *-1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 350, Ease.Linear.wait(50));
+	createjs.Tween.get(char).to({x:(chartx *-1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 350, Ease.Linear).wait(50);
 	stage.update();
 	ExecTile(chartx,charty);
 });
