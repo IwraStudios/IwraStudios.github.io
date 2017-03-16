@@ -158,10 +158,11 @@ function Init(){
 	for(var l=0; l<16;l++){
 	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
 	}
-	char = new createjs.Bitmap("./images/char1/0.png;3");
+	char = new createjs.Bitmap("./images/char1/0.png");
 	char.image = chararr[0].image;
 	char.x = charx;
 	char.y = chary;
+	char.name = "./images/char1/0.png;3";
 	stage.addChild(World_Container);
 
 	stage.addChild(char);
