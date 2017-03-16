@@ -32,7 +32,7 @@ document.addEventListener('keydown', function(event) {
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx-1] != 1){
 	chartx--;
-	}
+	}else{console.log("blocked" + String(event.keyCode));}
     }else if(event.keyCode == 39) {
 	if(hitmap[charty][chartx+1] != 1){
 	chartx++;
@@ -50,8 +50,25 @@ document.addEventListener('keydown', function(event) {
     var rcharty = charty - 5;
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
+	ExecTile(chartx,charty);
 });
 
+function ExecTile(x,y){
+	try{
+	for(var l=0; l<current_map.length;l++){
+		if(current_map[l][x][y].name != null && current_map[l][x][y].name.split(";")[2] != null){
+			var data = JSON.parse(current_map[l][x][y].name.split(";")[2]);
+			for(var l=0; l<Object.keys(data).length;l++){
+				var fname = Object.keys(data)[l];
+				window[fname](data[fname]);
+			}
+		}		
+	}
+	}catch(e){
+	console.log(e);	
+	}	
+}
+	
 function handleComplete(){
 	allowedMove = true;
 }
@@ -192,7 +209,7 @@ function LoadMap(tm, data){
 			}
 		}
 	}
-
+	current_map = tm;
 	for(var l=0; l<Object.keys(data).length;l++){
 		var fname = Object.keys(data)[l];
 		window[fname](data[fname]);
