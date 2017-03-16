@@ -176,7 +176,7 @@ function Init(){
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
 	     	 if(timer % 4 ==0){
-        		 World_Container.sortChildren(sortByLayer);
+        		 stage.sortChildren(sortByLayer);
 			 World_Container.scaleX = 2;
 			 World_Container.scaleY = 2;
 		 }
