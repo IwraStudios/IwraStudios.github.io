@@ -49,7 +49,8 @@ document.addEventListener('keydown', function(event) {
     var rchartx = chartx - 5;
     var rcharty = charty - 5;
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
-	createjs.Tween.get(char).to({x:(chartx *-1 * grid).clamp(-10000,0), y:(charty* -1 * grid).clamp(-10000,0)}, 350, Ease.Linear).wait(50);
+	var npoint = char.globalToLocal(chartx *-1 * grid, charty* -1 * grid);
+	createjs.Tween.get(char).to({x:(npoint.x).clamp(-10000,0), y:(npoint.y).clamp(-10000,0)}, 350, Ease.Linear).wait(50);
 	stage.update();
 	ExecTile(chartx,charty);
 });
@@ -163,6 +164,8 @@ function Init(){
 	char.image = chararr[0].image;
 	char.x = -1 * grid *chartx;
 	char.y = -1 * grid *charty;
+	char.scaleX = 0.5;
+	char.scaleY = 0.5;
 	char.name = "./images/char1/0.png;3";
 	stage.addChild(World_Container);
 
