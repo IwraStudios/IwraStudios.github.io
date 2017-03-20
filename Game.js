@@ -60,8 +60,8 @@ function ExecTile(x,y){
 			console.log("skipped" + String(l));
 			continue;	
 		}
-		if(current_map[l][x][y].name != null && current_map[l][x][y].name.split(";")[2] != null){
-			var data = JSON.parse(current_map[l][x][y].name.split(";")[2]);
+		if(current_map[l][x][y].split(";")[2] != null){
+			var data = JSON.parse(current_map[l][x][y].split(";")[2]);
 			for(var l=0; l<Object.keys(data).length;l++){
 				var fname = Object.keys(data)[l];
 				window[fname](data[fname]);
