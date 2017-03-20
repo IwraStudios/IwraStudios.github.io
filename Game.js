@@ -57,6 +57,7 @@ function ExecTile(x,y){
 	try{
 	for(var l=0; l<current_map.length;l++){
 		if(current_map[l][x][y] == null){
+			console.log("skipped" + String(l));
 			continue;	
 		}
 		if(current_map[l][x][y].name != null && current_map[l][x][y].name.split(";")[2] != null){
