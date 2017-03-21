@@ -20,7 +20,9 @@ var World_Container;
 window.onload = Init;
 
 var Ease = createjs.Ease;
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', pdown);
+
+function pdown(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
     pointChar(event.keyCode);
@@ -51,7 +53,7 @@ document.addEventListener('keydown', function(event) {
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
 	ExecTile(chartx,charty);
-});
+}
 
 function ExecTile(x,y){
 	try{
