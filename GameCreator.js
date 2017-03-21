@@ -90,6 +90,11 @@ function InitDisp(){
 	/*MakeNewDispenser(bitmap,"./images/0.png",2);
 	MakeNewDispenser(grnd,"./images/641.png",0); */
 	ScratchNewDispenser("./images/0.png;2");
+	ScratchNewDispenser("./images/399.png;1");
+	ScratchNewDispenser("./images/565.png;0");
+	ScratchNewDispenser("./images/564.png;0");
+	ScratchNewDispenser("./images/563.png;0");
+	
 	ScratchNewDispenser("./images/641.png;0");
 	stage.update();
 
@@ -229,6 +234,10 @@ function StringToIntLookUp(str){
 	switch(str){
 		case "./images/0.png":
 			return 1;
+		case "./images/565.png":
+		case "./images/563.png":
+		case "./images/564.png":
+		case "./images/399.png":
 		case "./images/641.png":
 			return 2;
 
