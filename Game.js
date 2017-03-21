@@ -233,9 +233,8 @@ function tp(x,y){
 	World_Container.setTransform(-1 * grid *x,-1* grid *y);
 	var rchartx = chartx - 5;
         var rcharty = charty - 5;
-	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
+	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete).wait(500).call(pdown);
 	stage.update();
-	pdown(null);
 }
 
 function sortByLayer(a,b){
