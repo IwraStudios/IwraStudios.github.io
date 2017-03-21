@@ -235,6 +235,7 @@ function tp(x,y){
         var rcharty = charty - 5;
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
+	pdown(null);
 }
 
 function sortByLayer(a,b){
