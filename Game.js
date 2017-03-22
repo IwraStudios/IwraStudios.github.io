@@ -157,9 +157,9 @@ function Init(){
 	stage = new createjs.Stage("GameCanvas");
 
 	World_Container = new createjs.Container();
-	chararr = [];
+	chararr = [16];
 	for(var l=0; l<16;l++){
-	chararr.splice(0, 0, new createjs.Bitmap("./images/char1/"+ String(l) +".png"));
+	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
 	}
 	char = new createjs.Bitmap("./images/char1/0.png");
 	char.image = chararr[0].image;
