@@ -228,12 +228,11 @@ function tp(x,y){
 		return;
 	}
 	console.log("tp" + (x).toString() + " " + (y).toString());
-	chartx = x + 5;
-	charty = y + 5;
-	World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
-	var rchartx = chartx - 5;
-        var rcharty = charty - 5;
-	//createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete).wait(200).call(pdown);
+	chartx = x;
+	charty = y;
+	
+	//World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
+	pdown(null);
 	stage.update();
 }
 
