@@ -144,8 +144,8 @@ function MakeNewDispenser(ref,rpath, layer){
 function FloodGround(){
 	for(var i=0; i<32; i++) {
 		for(var j=0; j<32; j++) {
-			a = new createjs.Bitmap("./images/641.png");
-			a.name = "./images/641.png;0";
+			a = new createjs.Bitmap("./images/563.png");
+			a.name = "./images/563.png;0";
 			a.x = i * 32;
 			a.y = j * 32;
 			objs.splice(0, 0, a);
