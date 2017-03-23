@@ -149,6 +149,32 @@ function loadf() {
 		});
 }
 
+function LoadMapFURL(aurl){
+	var reader = new FileReader();
+	reader.onload = function(e) {
+	try{
+		reader.onload = function(e) {
+		var x;
+		try{
+			LoadHitMap(deserialize(reader.result.split("?")[1])); 
+			try{
+				x = JSON.parse(reader.result.split("?")[2]);
+			}catch(ee){
+				console.log(e);
+			}
+			if(x != null){
+				LoadMap(deserialize(reader.result.split("?")[0]), x);
+			}else{
+				LoadMap(deserialize(reader.result.split("?")[0]), {});
+			}
+			}catch(e){
+				console.log("could not parse file", e);	
+			}
+		}	
+	}
+	reader.readAsText(aurl);	
+	
+}
 
 function Init(){
 	loadf();
