@@ -152,8 +152,6 @@ function loadf() {
 function LoadMapFURL(aurl){
 	var reader = new FileReader();
 	reader.onload = function(e) {
-	try{
-		reader.onload = function(e) {
 		var x;
 		try{
 			LoadHitMap(deserialize(reader.result.split("?")[1])); 
@@ -171,7 +169,6 @@ function LoadMapFURL(aurl){
 				console.log("could not parse file", e);	
 			}
 		}	
-	}
 	reader.readAsText(aurl);	
 	
 }
