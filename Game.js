@@ -175,7 +175,7 @@ function LoadMapFURL(aurl){
 
 function Init(){
 	//loadf();
-	LoadMapFURL("./map%20(2).fmap");
+	LoadMapFURL("blob:https://iwrastudios.github.io/map%20(2).fmap");
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
