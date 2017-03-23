@@ -150,6 +150,20 @@ function loadf() {
 }
 
 function LoadMapFURL(aurl){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', aurl, true);
+	xhr.responseType = 'blob';
+	xhr.onload = function(e) {
+  	if (this.status == 200) {
+   		 var myBlob = this.response;
+		 LoadBlob(myBlob);
+    // myBlob is now the blob that the object URL pointed to.
+  	}
+	};
+	xhr.send();
+}
+
+function LoadBlob(blob){
 	var reader = new FileReader();
 	reader.onload = function(e) {
 		var x;
@@ -169,13 +183,12 @@ function LoadMapFURL(aurl){
 				console.log("could not parse file", e);	
 			}
 		}	
-	reader.readAsText(aurl);	
-	
+	reader.readAsText(blob);
 }
 
 function Init(){
 	//loadf();
-	LoadMapFURL("blob:https://iwrastudios.github.io/map%20(2).fmap");
+	LoadMapFURL("https://iwrastudios.github.io/map%20(2).fmap");
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
