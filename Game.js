@@ -25,6 +25,9 @@ document.addEventListener('keydown', pdown);
 function pdown(event) {
     //var tx = parseInt(World_Container.x * -1);
     //var ty = parseInt(World_Container.y * -1);
+    var LastChartx = chartx;
+    var LastCharty = charty;
+
     pointChar(event.keyCode);
     if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove){
 	  return;
@@ -50,17 +53,25 @@ function pdown(event) {
     }
     var rchartx = chartx - 5;
     var rcharty = charty - 5;
+    if(LastCharty != charty || LastChartx != chartx){
+      ChangedChart(LastChartx - chartx, LastCharty - charty);
+    }
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
 	ExecTile(chartx,charty);
 }
+
+function ChangedChart(dx,dy){
+//TODO: Move Exlusive move functions here
+}
+
 
 function ExecTile(x,y){
 	try{
 	for(var l=0; l<current_map.length;l++){
 		if(current_map[l][x][y] == null){
 			//console.log("skipped" + String(l));
-			continue;	
+			continue;
 		}
 		if(current_map[l][x][y].split(";")[2] != null){
 			var data = JSON.parse(current_map[l][x][y].split(";")[2]);
@@ -68,13 +79,13 @@ function ExecTile(x,y){
 				var fname = Object.keys(data)[l];
 				window[fname](data[fname]);
 			}
-		}		
+		}
 	}
 	}catch(e){
-	console.log(e);	
-	}	
+	console.log(e);
+	}
 }
-	
+
 function handleComplete(){
 	allowedMove = true;
 }
@@ -128,7 +139,7 @@ function loadf() {
 					//Do stuff
 					var x;
 					try{
-					LoadHitMap(deserialize(reader.result.split("?")[1])); 
+					LoadHitMap(deserialize(reader.result.split("?")[1]));
 						try{
 						    x = JSON.parse(reader.result.split("?")[2]);
 						}catch(ee){
@@ -140,7 +151,7 @@ function loadf() {
 					LoadMap(deserialize(reader.result.split("?")[0]), {});
 					}
 					}catch(e){
-						console.log("could not parse file", e);	
+						console.log("could not parse file", e);
 					}
 					//console.log(reader.result);
 				}
@@ -168,7 +179,7 @@ function LoadBlob(blob){
 	reader.onload = function(e) {
 		var x;
 		try{
-			LoadHitMap(deserialize(reader.result.split("?")[1])); 
+			LoadHitMap(deserialize(reader.result.split("?")[1]));
 			try{
 				x = JSON.parse(reader.result.split("?")[2]);
 			}catch(ee){
@@ -180,9 +191,9 @@ function LoadBlob(blob){
 				LoadMap(deserialize(reader.result.split("?")[0]), {});
 			}
 			}catch(e){
-				console.log("could not parse file", e);	
+				console.log("could not parse file", e);
 			}
-		}	
+		}
 	reader.readAsText(blob);
 }
 
@@ -267,7 +278,7 @@ function tp(x,y){
 	console.log("tp" + (x).toString() + " " + (y).toString());
 	chartx = x;
 	charty = y;
-	
+
 	//World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
 	pdown(null);
 	stage.update();
