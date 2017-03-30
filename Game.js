@@ -68,19 +68,19 @@ function ChangedChart(dx,dy){
 }
 
 function UpdateWalkAnim(state, dx, dy){
-  if(dx >= 1){
+  if(dx >= 1){ //left
 
       return;
   }
-  if(dx <= -1){
+  if(dx <= -1){ //right
 
     return;
   }
-  if(dy >= 1){
+  if(dy >= 1){ //up
 
     return;
   }
-  if(dy <= -1){
+  if(dy <= -1){ //down
 
     return;
   }
