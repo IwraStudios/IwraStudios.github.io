@@ -58,13 +58,34 @@ function pdown(event) {
     }
 	createjs.Tween.get(World_Container).to({x:(rchartx* -1 * grid).clamp(-10000,288), y:(rcharty* -1 * grid).clamp(-10000,288)}, 350, Ease.Linear).wait(50).call(handleComplete);
 	stage.update();
-	ExecTile(chartx,charty);
+
 }
 
 function ChangedChart(dx,dy){
 //TODO: Move Exlusive move functions here
+  ExecTile(chartx,charty);
+  UpdateWalkAnim(0,dx,dy);
 }
 
+function UpdateWalkAnim(state, dx, dy){
+  if(dx >= 1){
+
+      return;
+  }
+  if(dx <= -1){
+
+    return;
+  }
+  if(dy >= 1){
+
+    return;
+  }
+  if(dy <= -1){
+
+    return;
+  }
+
+}
 
 function ExecTile(x,y){
 	try{
@@ -229,9 +250,9 @@ function Init(){
      if (!event.paused) {
 	     	 if(timer % 4 ==0){
         		 stage.sortChildren(sortByLayer);
-			 World_Container.scaleX = 2;
-			 World_Container.scaleY = 2;
-		 }
+			       World_Container.scaleX = 2;
+			       World_Container.scaleY = 2;
+		    }
 		 timer++;
 
 		 stage.update();
