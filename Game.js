@@ -28,7 +28,7 @@ function pdown(event) {
     var LastChartx = chartx;
     var LastCharty = charty;
 
-    pointChar(event.keyCode);
+    //pointChar(event.keyCode);
     if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove){
 	  return;
     }
@@ -64,7 +64,7 @@ function pdown(event) {
 function ChangedChart(dx,dy){
   allowedMove = false;
   ExecTile(chartx,charty);
-  createjs.Tween.get(World_Container).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(1,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(200).call(handleComplete);
+  createjs.Tween.get(World_Container).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(1,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(3,dx,dy); } ).wait(200).call(function () { UpdateWalkAnim(0,dx,dy); } ).call(handleComplete);
   //UpdateWalkAnim(0,dx,dy);
 }
 
