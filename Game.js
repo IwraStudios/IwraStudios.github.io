@@ -62,28 +62,25 @@ function pdown(event) {
 }
 
 function ChangedChart(dx,dy){
-//TODO: Move Exlusive move functions here
   ExecTile(chartx,charty);
-  UpdateWalkAnim(0,dx,dy);
+  createjs.Tween.get(World_Container).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(87).call(function () { UpdateWalkAnim(1,dx,dy); } ).wait(87).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(87).call(function () { UpdateWalkAnim(2,dx,dy); } );
+  //UpdateWalkAnim(0,dx,dy);
 }
 
 function UpdateWalkAnim(state, dx, dy){
   if(dx >= 1){ //left
-
-      return;
+    state += 4;
   }
   if(dx <= -1){ //right
-
-    return;
+    state += 8;
   }
   if(dy >= 1){ //up
-
-    return;
+    state += 12;
   }
-  if(dy <= -1){ //down
-
-    return;
+  if(dy <= -1){ //down : OK
   }
+  char.image = chararr[state].image;
+  char.name = "./images/char1/" + String(state) + ".png;3";
 
 }
 
@@ -117,23 +114,23 @@ var toType = function(obj) {
 
 function pointChar(dir){
 	switch(dir){
-		case 37:
+		case 37: //left
 			char.image = chararr[4].image;
 			//char = new createjs.Bitmap("./images/char1/4.png");
 			char.name = "./images/char1/4.png;3";
 
 			break;
-		case 38:
+		case 38://up
 			char.image = chararr[12].image;
 			//char = new createjs.Bitmap("./images/char1/12.png");
 			char.name = "./images/char1/12.png;3";
 			break;
-		case 39:
-			char.image = chararr[10].image;
+		case 39: //right
+			char.image = chararr[8].image;
 			//char = new createjs.Bitmap("./images/char1/10.png");
 			char.name = "./images/char1/10.png;3";
 			break;
-		case 40:
+		case 40: //down
 			char.image = chararr[0].image;
 			//char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png;3";
