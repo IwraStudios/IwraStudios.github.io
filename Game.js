@@ -64,7 +64,7 @@ function pdown(event) {
 function ChangedChart(dx,dy){
   allowedMove = false;
   ExecTile(chartx,charty);
-  createjs.Tween.get(World_Container).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(150).call(function () { UpdateWalkAnim(1,dx,dy); } ).wait(150).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(150).call(function () { UpdateWalkAnim(3,dx,dy); } ).wait(100).call(function () { UpdateWalkAnim(0,dx,dy); } ).call(handleComplete);
+  createjs.Tween.get(World_Container).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(100).call(function () { UpdateWalkAnim(1,dx,dy); } ).wait(100).call(function () { UpdateWalkAnim(2,dx,dy); } ).wait(100).call(function () { UpdateWalkAnim(3,dx,dy); } ).wait(100).call(function () { UpdateWalkAnim(0,dx,dy); } ).wait(100).call(handleComplete);
   //UpdateWalkAnim(0,dx,dy);
 }
 
