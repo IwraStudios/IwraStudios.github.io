@@ -345,3 +345,25 @@ function sortByLayer(a,b){
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
+
+/////Pjokemon side
+
+var MyPjokemon = [];
+var EPjokemon = [];
+EPjokemon.push({
+    ID: "0",
+    LVL:   "0",
+    MHP: "0",
+    HP: "0",
+    ATK: "0",
+    DEF: "0",
+    EATK: "0",
+    EDEF: "0",
+    SPD: "0",
+    EFX: "None"
+});
+
+function GenerateRandomPjokemon(place){
+	
+}
+
