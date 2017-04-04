@@ -241,6 +241,11 @@ function Init(){
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	LoadMusic();
+	createjs.Sound.on("fileload", handleLoad, this);
+	
+}
+
+function handleLoad(){
 	createjs.Sound.play("New Bark Town", {loop: -1});
 }
 
