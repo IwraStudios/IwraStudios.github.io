@@ -241,22 +241,41 @@ function Init(){
 	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
-	createjs.Sound.registerPlugins([createjs.WebAudioPlugin, createjs.HTMLAudioPlugin, createjs.FlashPlugin]);
-	createjs.Sound.on("fileload", handleLoad, this);
-	LoadMusic();
+	sinit();
+}
+var context;
+var bufferLoader;
+
+function sinit() {
+  // Fix up prefixing
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+
+  bufferLoader = new BufferLoader(
+    context,
+    [
+      '../Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.wav',
+      '../Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.wav',
+      '../Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.wav',
+      '../Music/Pokemon HGSS Music - Vermillion City.wav',
+    ],
+    finishedLoading
+    );
+
+  bufferLoader.load();
 }
 
-function handleLoad(){
-	if(!soundInstance){
-	soundInstance = createjs.Sound.play("New Bark Town", {loop: -1});
-	}
-}
+function finishedLoading(bufferList) {
+  // Create two sources and play them both together.
+  var source1 = context.createBufferSource();
+  var source2 = context.createBufferSource();
+  source1.buffer = bufferList[0];
+  source2.buffer = bufferList[1];
 
-function LoadMusic(){
-	createjs.Sound.registerSound("Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.wav", "New Bark Town");
-	createjs.Sound.registerSound("Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.wav", "Ruins of Alph");
-	createjs.Sound.registerSound("Music/Pokemon HGSS Music - Vermillion City.wav", "Vermillion City");
-	createjs.Sound.registerSound("Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.wav", "Saffron City-Pewter City-Viridian City");
+  source1.connect(context.destination);
+  source2.connect(context.destination);
+  source1.start(0);
+  //source2.start(0);
 }
 
 
