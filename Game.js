@@ -275,6 +275,7 @@ function finishedLoading(bufferList) {
   source1.connect(context.destination);
   source2.connect(context.destination);
   source1.start(0);
+  source1.loop = true;
   //source2.start(0);
 }
 
