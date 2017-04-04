@@ -253,10 +253,10 @@ function handleLoad(){
 }
 
 function LoadMusic(){
-	createjs.Sound.registerSound("Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.mp3", "New Bark Town");
-	createjs.Sound.registerSound("Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.mp3", "Ruins of Alph");
-	createjs.Sound.registerSound("Music/Pokemon HGSS Music - Vermillion City.mp3", "Vermillion City");
-	createjs.Sound.registerSound("Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.mp3", "Saffron City-Pewter City-Viridian City");
+	createjs.Sound.registerSound("Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.wav", "New Bark Town");
+	createjs.Sound.registerSound("Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.wav", "Ruins of Alph");
+	createjs.Sound.registerSound("Music/Pokemon HGSS Music - Vermillion City.wav", "Vermillion City");
+	createjs.Sound.registerSound("Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.wav", "Saffron City-Pewter City-Viridian City");
 }
 
 
@@ -364,6 +364,5 @@ EPjokemon.push({
 });
 
 function GenerateRandomPjokemon(place){
-	
-}
 
+}
