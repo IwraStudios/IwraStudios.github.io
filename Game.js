@@ -241,9 +241,9 @@ function Init(){
 	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
-	LoadMusic();
+	createjs.Sound.registerPlugins([createjs.WebAudioPlugin, createjs.HTMLAudioPlugin, createjs.FlashPlugin]);
 	createjs.Sound.on("fileload", handleLoad, this);
-	
+	LoadMusic();
 }
 
 function handleLoad(){
