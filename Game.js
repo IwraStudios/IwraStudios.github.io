@@ -316,7 +316,7 @@ function tp(x,y){
 	charty = y;
 
 	//World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
-	pdown(null);
+	//pdown(null);
 	stage.update();
 }
 
