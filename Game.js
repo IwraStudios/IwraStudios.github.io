@@ -15,6 +15,7 @@ var chararr;
 var chartx = 0;
 var charty = 0;
 var allowedMove = true;
+var soundInstance;
 
 var World_Container;
 window.onload = Init;
@@ -246,7 +247,9 @@ function Init(){
 }
 
 function handleLoad(){
-	createjs.Sound.play("New Bark Town", {loop: -1});
+	if(!soundInstance){
+	soundInstance = createjs.Sound.play("New Bark Town", {loop: -1});
+	}
 }
 
 function LoadMusic(){
