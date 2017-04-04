@@ -240,6 +240,15 @@ function Init(){
 	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
+	LoadMusic();
+	createjs.Sound.play("New Bark Town", {loop: -1});
+}
+
+function LoadMusic(){
+	createjs.Sound.registerSound("Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.mp3", "New Bark Town");
+	createjs.Sound.registerSound("Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.mp3", "Ruins of Alph");
+	createjs.Sound.registerSound("Music/Pokemon HGSS Music - Vermillion City.mp3", "Vermillion City");
+	createjs.Sound.registerSound("Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.mp3", "Saffron City-Pewter City-Viridian City");
 }
 
 
