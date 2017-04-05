@@ -393,7 +393,7 @@ function StartBattle(cPID){
 	battlearena.scaleX = 1.5;
 	battlearena.scaleY = 1.5;
 	stage.addChild(battlearena);
-	var graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(600, 357, 600, 100);
+	var graphics = new createjs.Graphics().beginFill("#ffffff").drawRect(600, 0, 600, 357);
 	var shape = new createjs.Shape(graphics);
 	shape.alpha = 0.5;
 	stage.addChild(shape);
