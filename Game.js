@@ -16,6 +16,8 @@ var chartx = 0;
 var charty = 0;
 var allowedMove = true;
 var soundInstance;
+var inBattle = false;
+
 
 var World_Container;
 window.onload = Init;
@@ -30,7 +32,7 @@ function pdown(event) {
     var LastCharty = charty;
 
     //pointChar(event.keyCode);
-    if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove){
+    if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove || inBattle){
 	  return;
     }
     //removeTweens(World_Container);
@@ -371,20 +373,56 @@ Number.prototype.clamp = function(min, max) {
 var MyPjokemon = [];
 var EPjokemon = [];
 EPjokemon.push({
-    ID: "0",
-    LVL:   "0",
-    MHP: "0",
-    HP: "0",
-    ATK: "0",
-    DEF: "0",
-    EATK: "0",
-    EDEF: "0",
-    SPD: "0",
+    ID: 0,
+    LVL: 0,
+    MHP: 0,
+    HP: 0,
+    ATK: 0,
+    DEF: 0,
+    EATK: 0,
+    EDEF: 0,
+    SPD: 0,
     EFX: "None"
 });
 
-function GenerateRandomPjokemon(place){
+function StartBattle(cPID){
+	inBattle = true;
+	stage.removeAllChildren();
+	stage.update();
+	var battlearena = new createjs.Bitmap("./images/Battle/pokemon_x_y_battle_scene_by_jenske05-d5ynr9c.png");
+	battlearena.scaleX = 1.5;
+	battlearena.scaleY = 1.5;
+	stage.addChild(battlearena);
+	stage.update;
+}
 
+
+
+function GenerateRandomPjokemon(PID){
+	var RPjokemon = [];
+	var ID = Math.floor(Math.random() * 10) + 1;
+	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
+	var MHP = LVL * Math.floor(Math.random() * 5) + 5;
+	var HP = MHP;
+	var ATK = LVL * Math.floor(Math.random() * 5) + 5;
+	var DEF =  LVL * Math.floor(Math.random() * 5) + 5;
+	var EATK = LVL * Math.floor(Math.random() * 5) + 5;
+	var EDEF = LVL * Math.floor(Math.random() * 5) + 5;
+	var SPD = LVL * Math.floor(Math.random() * 5) + 5;
+	var EFX = "None"
+	RPjokemon.push({
+		ID: ID,
+		LVL: LVL,
+		MHP: MHP,
+		HP: HP,
+		ATK: ATK,
+		DEF: DEF,
+		EATK: EATK,
+		EDEF: EDEF,
+		SPD: SPD,
+		EFX: EFX,
+	});
+	return RPjokemon;
 }
 
 
