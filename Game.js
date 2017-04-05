@@ -285,7 +285,7 @@ function finishedLoading(bufferList) {
  function handleTick(event) {
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
-	     	 if(timer % 4 ==0){
+	     	 if(timer % 4 ==0 && !inBattle){
         		 stage.sortChildren(sortByLayer);
 			       World_Container.scaleX = 2;
 			       World_Container.scaleY = 2;
@@ -393,6 +393,8 @@ function StartBattle(cPID){
 	battlearena.scaleX = 1.5;
 	battlearena.scaleY = 1.5;
 	stage.addChild(battlearena);
+	var rect = new createjs.Rectangle(0, 0, 100, 100);
+	stage.addChild(rect);
 	stage.update;
 }
 
