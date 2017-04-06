@@ -397,10 +397,10 @@ function StartBattle(cPID){
 	var shape = new createjs.Shape(graphics);
 	shape.alpha = 0.5;
 	stage.addChild(shape);
-	var graphics1 = new createjs.Graphics().beginFill("#ffffff").drawRect(50, 257, 225, 100);
+	var graphics1 = new createjs.Graphics().beginFill("#ffffff").drawRect(10, 267, 225, 40);
 	var shape1 = new createjs.Shape(graphics);
 	stage.addChild(shape1);
-	var graphics2 = new createjs.Graphics().beginFill("#ffffff").drawRect(325, 257, 225, 100);
+	var graphics2 = new createjs.Graphics().beginFill("#ffffff").drawRect(300, 267, 225, 50);
 	var shape2 = new createjs.Shape(graphics);
 	stage.update;
 }
