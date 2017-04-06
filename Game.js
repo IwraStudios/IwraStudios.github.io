@@ -437,13 +437,24 @@ function StartBattle(cPID){
 				window["B" + String(i)].addChild(text);
 				break;
 			}
-		text.x = (246/2)/2;
+		text.x = (246/2)/1.5;
 		text.y = 15;
+		window["B" + String(i)].on("mousedown", onButtonDown);
+		window["B" + String(i)].on("pressup", onButtonUp);
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
 }
 
+function onButtonUp(event){
+	//event.target
+	alert("up");
+}
+							 
+function onButtonDown(event){
+	createjs.Tween.get(event.target).to({alpha: 0},350, createjs.Ease.getPowInOut(2));	
+			
+}
 
 
 function GenerateRandomPjokemon(PID){
