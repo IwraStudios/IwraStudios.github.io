@@ -437,8 +437,8 @@ function StartBattle(cPID){
 				window["B" + String(i)].addChild(text);
 				break;
 			}
-		text.x = 246;
-		text.y = 47;
+		text.x = 246/2;
+		text.y = 10;
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
