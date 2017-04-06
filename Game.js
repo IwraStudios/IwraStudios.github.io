@@ -446,7 +446,7 @@ function StartBattle(cPID){
 }
 					 
 function onButtonDown(event){
-	createjs.Tween.get(event.target).to({alpha: 0.5},750, createjs.Ease.getPowInOut(2)).wait(250).to({alpha: 1},500, createjs.Ease.getPowInOut(2)).wait(250);	
+	createjs.Tween.get(event.target).to({alpha: 0.5},500, createjs.Ease.getPowInOut(2)).wait(200).to({alpha: 1},250, createjs.Ease.getPowInOut(2)).wait(250);	
 			
 }
 
