@@ -410,6 +410,7 @@ function StartBattle(cPID){
 	stage.addChild(shape1);
 	var graphics2 = new createjs.Graphics().beginFill("#ffffff").drawRect(300, 267, 225, 50);
 	var shape2 = new createjs.Shape(graphics);
+	stage.addChild(shape2);
 	stage.update;
 }
 
