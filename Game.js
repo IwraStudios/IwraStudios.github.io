@@ -404,36 +404,36 @@ function StartBattle(cPID){
 	stage.addChild(battlearena);
 	
 	for (var i = 0; i < 4; ++i){
-		window["B" + String(i))] = new createjs.Container();
+		window["B" + String(i)] = new createjs.Container();
 		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
-		window["B" + String(i))].x = 20;
+		window["B" + String(i)].x = 20;
 		if(i % 2 != 0){
-		window["B" + String(i))].x += 310;
+		window["B" + String(i)].x += 310;
 		}
-		window["B" + String(i))].y = 360;
+		window["B" + String(i)].y = 360;
 		if(i>= 2){
-			window["B" + String(i))].y += 50;
+			window["B" + String(i)].y += 50;
 		}
 		
 		button1.scaleX = 0.4;
 		button1.scaleY = 0.5;
-		window["B" + String(i))].addChild(button1);
+		window["B" + String(i)].addChild(button1);
 		switch(i){
 			case 0:
 				var text = new createjs.Text("Fight", "20px Arial", "#ff7700");
-				window["B" + String(i))].addChild(text);
+				window["B" + String(i)].addChild(text);
 				break;
 			case 1:
 				var text = new createjs.Text("Item", "20px Arial", "#ff7700");
-				window["B" + String(i))].addChild(text);
+				window["B" + String(i)].addChild(text);
 				break;
 			case 2:
 				var text = new createjs.Text("Pjokemon", "20px Arial", "#ff7700");
-				window["B" + String(i))].addChild(text);
+				window["B" + String(i)].addChild(text);
 				break;
 			case 3:
 				var text = new createjs.Text("Flee", "20px Arial", "#ff7700");
-				window["B" + String(i))].addChild(text);
+				window["B" + String(i)].addChild(text);
 				break;
 				
 				
