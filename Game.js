@@ -340,8 +340,8 @@ function tp(x,y){
 	charty = y;
 
 	//World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
-	var event;
-	event.keyCode = 27;
+	var event = [];
+	event['keyCode'] = 27;
 	pdown(event);
 	stage.update();
 }
