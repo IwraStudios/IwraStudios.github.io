@@ -403,12 +403,21 @@ function StartBattle(cPID){
 	battlearena.scaleX = 1.5;
 	battlearena.scaleY = 1.5;
 	stage.addChild(battlearena);
-	var button1 = new createjs.Bitmap("./images/live-button-blank.png");
-	button1.x = 20;
-	button1.y = 400;
-	button1.scaleX = 0.4;
-	button1.scaley = 0.5;
-	stage.addChild(button1);
+	for (var i = 0; i < 4; ++i){
+		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
+		button1.x = 20;
+		if(i % 2 != 0){
+		button1.x += 340;
+		}
+		button1.y = 350;
+		if(i>= 2){
+			button1.y += 115;
+		}
+		
+		button1.scaleX = 0.4;
+		button1.scaley = 0.5;
+		stage.addChild(button1);
+	}
 	stage.update;
 }
 
