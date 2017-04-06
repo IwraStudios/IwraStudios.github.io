@@ -462,6 +462,10 @@ function PostStartBattle(){
 	oPjok.y = Arena.localToGlobal(0,80).y;
 	Arena.addChild(mPjok);
 	Arena.addChild(oPjok);
+	oPjok.scaleX = 2;
+	oPjok.scaleY = 2;
+	mPjok.scaleX = 2;
+	mPjok.scaleY = 2;
 	stage.update();
 	//alert("started");
 }
