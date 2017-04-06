@@ -289,9 +289,11 @@ function finishedLoading(bufferList) {
         		 stage.sortChildren(sortByLayer);
 			       World_Container.scaleX = 2;
 			       World_Container.scaleY = 2;
-		    }
+		  }
+	     	 if(timer %4 ==0 && inBattle){
+			stage.sortChildren(sortByY);
+		 }
 		 timer++;
-
 		 stage.update();
      }
  }
@@ -349,6 +351,12 @@ function sortByLayer(a,b){
 	}catch(e){
 	}
 	if (a.y < b.y) return -1;
+    if (a.y > b.y) return 1;
+    return 0;
+}
+
+function sortByY(a,b){
+    if (a.y < b.y) return -1;
     if (a.y > b.y) return 1;
     return 0;
 }
