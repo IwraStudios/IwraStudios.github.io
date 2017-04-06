@@ -438,6 +438,7 @@ function StartBattle(cPID){
 				
 				
 			}
+		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
 }
