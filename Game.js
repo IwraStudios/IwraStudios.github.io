@@ -449,10 +449,11 @@ function StartBattle(cPID){
 function onButtonUp(event){
 	//event.target
 	alert("up");
+	createjs.Tween.get(event.target).to({alpha: 1},500, createjs.Ease.getPowInOut(2));	
 }
 							 
 function onButtonDown(event){
-	createjs.Tween.get(event.target).to({alpha: 0},350, createjs.Ease.getPowInOut(2));	
+	createjs.Tween.get(event.target).to({alpha: 0.5},1000, createjs.Ease.getPowInOut(2));	
 			
 }
 
