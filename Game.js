@@ -473,7 +473,6 @@ function onButtonDown(event){
 
 
 function GenerateRandomPjokemon(PID){
-	var RPjokemon = {};
 	var ID = Math.floor(Math.random() * 10) + 1;
 	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
 	var MHP = LVL * Math.floor(Math.random() * 5) + 5;
@@ -484,7 +483,7 @@ function GenerateRandomPjokemon(PID){
 	var EDEF = LVL * Math.floor(Math.random() * 5) + 5;
 	var SPD = LVL * Math.floor(Math.random() * 5) + 5;
 	var EFX = "None"
-	RPjokemon.push({
+	return {
 		ID: ID,
 		LVL: LVL,
 		MHP: MHP,
@@ -495,8 +494,7 @@ function GenerateRandomPjokemon(PID){
 		EDEF: EDEF,
 		SPD: SPD,
 		EFX: EFX,
-	});
-	return RPjokemon;
+	};
 }
 
 
