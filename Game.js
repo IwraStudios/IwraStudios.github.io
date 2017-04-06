@@ -403,12 +403,11 @@ function StartBattle(cPID){
 	battlearena.scaleX = 1.5;
 	battlearena.scaleY = 1.5;
 	stage.addChild(battlearena);
-	var graphics1 = new createjs.Graphics().beginFill("#ffffff").drawRect(10, 267, 225, 40);
-	var shape1 = new createjs.Shape(graphics1);
-	stage.addChild(shape1);
-	var graphics2 = new createjs.Graphics().beginFill("#ffffff").drawRect(300, 267, 225, 50);
-	var shape2 = new createjs.Shape(graphics2);
-	stage.addChild(shape2);
+	var button1 = new createjs.Bitmap("./images/live-button-blank.png");
+	button1.x = 30;
+	button1.y = 267;
+	button1.scaleX = 0.5;
+	stage.addChild(button1);
 	stage.update;
 }
 
