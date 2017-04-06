@@ -421,19 +421,19 @@ function StartBattle(cPID){
 		var text;
 		switch(i){
 			case 0:
-				text = new createjs.Text("Fight", "20px Arial", "#0000000");
+				text = new createjs.Text("Fight", "20px Arial", "#ffffff");
 				window["B" + String(i)].addChild(text);
 				break;
 			case 1:
-				text = new createjs.Text("Item", "20px Arial", "#000000");
+				text = new createjs.Text("Item", "20px Arial", "#ffffff");
 				window["B" + String(i)].addChild(text);
 				break;
 			case 2:
-				text = new createjs.Text("Pjokemon", "20px Arial", "#000000");
+				text = new createjs.Text("Pjokemon", "20px Arial", "#ffffff");
 				window["B" + String(i)].addChild(text);
 				break;
 			case 3:
-				text = new createjs.Text("Flee", "20px Arial", "#000000");
+				text = new createjs.Text("Flee", "20px Arial", "#ffffff");
 				window["B" + String(i)].addChild(text);
 				break;
 			}
