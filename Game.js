@@ -439,21 +439,14 @@ function StartBattle(cPID){
 			}
 		text.x = (246/2)/1.5;
 		text.y = 15;
-		window["B" + String(i)].on("mousedown", onButtonDown);
-		window["B" + String(i)].on("pressup", onButtonUp);
+		window["B" + String(i)].on("click", onButtonDown);
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
 }
-
-function onButtonUp(event){
-	//event.target
-	alert("up");
-	createjs.Tween.get(event.target).to({alpha: 1},500, createjs.Ease.getPowInOut(2));	
-}
-							 
+					 
 function onButtonDown(event){
-	createjs.Tween.get(event.target).to({alpha: 0.5},1000, createjs.Ease.getPowInOut(2));	
+	createjs.Tween.get(event.target).to({alpha: 0.5},750, createjs.Ease.getPowInOut(2)).wait(250).to({alpha: 1},500, createjs.Ease.getPowInOut(2)).wait(250);	
 			
 }
 
