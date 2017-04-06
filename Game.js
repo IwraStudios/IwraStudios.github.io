@@ -404,9 +404,10 @@ function StartBattle(cPID){
 	battlearena.scaleY = 1.5;
 	stage.addChild(battlearena);
 	var button1 = new createjs.Bitmap("./images/live-button-blank.png");
-	button1.x = 30;
-	button1.y = 267;
-	button1.scaleX = 0.5;
+	button1.x = 20;
+	button1.y = 400;
+	button1.scaleX = 0.4;
+	button1.scaley = 0.5;
 	stage.addChild(button1);
 	stage.update;
 }
