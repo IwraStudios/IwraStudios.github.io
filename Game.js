@@ -415,7 +415,7 @@ function StartBattle(cPID){
 		}
 		
 		button1.scaleX = 0.4;
-		button1.scaley = 0.1;
+		button1.scaleY = 0.5;
 		stage.addChild(button1);
 	}
 	stage.update;
