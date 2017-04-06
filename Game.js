@@ -439,14 +439,14 @@ function StartBattle(cPID){
 			}
 		text.x = (246/2)/1.5;
 		text.y = 15;
-		window["B" + String(i)].on("click", onButtonDown);
+		button1.on("click", onButtonDown);
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
 }
 					 
 function onButtonDown(event){
-	createjs.Tween.get(event.target).to({alpha: 0.5},500, createjs.Ease.getPowInOut(2)).wait(200).to({alpha: 1},250, createjs.Ease.getPowInOut(2)).wait(250);	
+	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},250, createjs.Ease.getPowInOut(2)).wait(125);	
 			
 }
 
