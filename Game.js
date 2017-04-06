@@ -457,13 +457,13 @@ function PostStartBattle(){
 	var cPjokemon = MyPjokemon[0];
 	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[0].ID) + "b.png");
 	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + "f.png");
-	//mPjok.y = Arena.localToGlobal(0,240).y;
-	//oPjok.x = Arena.localToGlobal(400,0).x;
-	//oPjok.y = Arena.localToGlobal(0,80).y;
+	mPjok.y = Arena.localToGlobal(0,240).y;
+	oPjok.x = Arena.localToGlobal(400,0).x;
+	oPjok.y = Arena.localToGlobal(0,80).y;
 	Arena.addChild(mPjok);
 	Arena.addChild(oPjok);
 	stage.update();
-	alert("started");
+	//alert("started");
 }
 
 function onButtonDown(event){
