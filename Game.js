@@ -244,6 +244,7 @@ function Init(){
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	sinit();
+	MyPjokemon.push(GenerateRandomPjokemon(2));
 }
 var context;
 var bufferLoader;
@@ -381,6 +382,9 @@ Number.prototype.clamp = function(min, max) {
 /////Pjokemon side
 
 var MyPjokemon = [];
+
+
+
 var EPjokemon = [];
 EPjokemon.push({
     ID: 0,
@@ -446,7 +450,7 @@ function StartBattle(cPID){
 }
 					 
 function onButtonDown(event){
-	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},250, createjs.Ease.getPowInOut(2)).wait(125);	
+	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
 			
 }
 
