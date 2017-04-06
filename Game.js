@@ -407,15 +407,15 @@ function StartBattle(cPID){
 		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
 		button1.x = 20;
 		if(i % 2 != 0){
-		button1.x += 340;
+		button1.x += 310;
 		}
-		button1.y = 350;
+		button1.y = 360;
 		if(i>= 2){
-			button1.y += 115;
+			button1.y += 50;
 		}
 		
 		button1.scaleX = 0.4;
-		button1.scaley = 0.5;
+		button1.scaley = 0.25;
 		stage.addChild(button1);
 	}
 	stage.update;
