@@ -473,7 +473,7 @@ function onButtonDown(event){
 
 
 function GenerateRandomPjokemon(PID){
-	var RPjokemon = [];
+	var RPjokemon = {};
 	var ID = Math.floor(Math.random() * 10) + 1;
 	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
 	var MHP = LVL * Math.floor(Math.random() * 5) + 5;
