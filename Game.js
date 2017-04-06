@@ -455,8 +455,8 @@ function StartBattle(cPID){
 function PostStartBattle(){
 	var oPjokemon = GenerateRandomPjokemon(1);
 	var cPjokemon = MyPjokemon[0];
-	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[0].ID) + ".png");
-	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + ".png");
+	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[0].ID) + "b.png");
+	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + "f.png");
 	mPjok.y = 240;
 	oPjok.x = 400;
 	oPjok.y = 80;
