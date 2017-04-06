@@ -17,7 +17,7 @@ var charty = 0;
 var allowedMove = true;
 var soundInstance;
 var inBattle = false;
-
+var Arena;
 
 var World_Container;
 window.onload = Init;
@@ -405,8 +405,10 @@ function StartBattle(cPID){
 	var battlearena = new createjs.Bitmap("./images/Battle/pokemon_x_y_battle_scene_by_jenske05-d5ynr9c.png");
 	battlearena.scaleX = 1.5;
 	battlearena.scaleY = 1.5;
-	stage.addChild(battlearena);
-	
+	Arena = new createjs.Container();
+	Arena.setBounds(0,0,600,357);
+	Arena.addChild(battlearena);
+	stage.addChild(Arena);
 	for (var i = 0; i < 4; ++i){
 		window["B" + String(i)] = new createjs.Container();
 		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
@@ -447,8 +449,21 @@ function StartBattle(cPID){
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
+	PostStartBattle();
 }
-					 
+		
+function PostStartBattle(){
+	var oPjokemon = GenerateRandomPjokemon(1);
+	var cPjokemon = MyPjokemon[0];
+	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[0].ID) + ".png");
+	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + ".png");
+	mPjok.y = 240;
+	oPjok.x = 400;
+	oPjok.y = 80;
+	Arena.addChild(mPjok, oPjok);
+	alert("started");
+}
+
 function onButtonDown(event){
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
 			
