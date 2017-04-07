@@ -414,12 +414,10 @@ function StartBattle(cPID){
 	Arena.addChild(battlearena);
 	stage.addChild(Arena);
 	window["bar1"] = new createjs.Shape().set({x:20, y:200, scaleX:0});
-	window["bar2"] = new createjs.Shape().set({x:300, y:50, scaleX:0});
+	window["bar2"] = new createjs.Shape().set({x:270, y:50, scaleX:0});
 	window["bar1"].graphics.beginFill("green").drawRect(0,0,300,30);
 	window["bar2"].graphics.beginFill("green").drawRect(0,0,300,30);
 	Arena.addChild(window["bar1"], window["bar2"]);
-	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
-	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
 	for (var i = 0; i < 4; ++i){
 		window["B" + String(i)] = new createjs.Container();
 		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
@@ -465,10 +463,10 @@ function StartBattle(cPID){
 }
 		
 function PostStartBattle(){
-	var oPjokemon = GenerateRandomPjokemon(1);
-	var cPjokemon = MyPjokemon[0];
-	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[0].ID) + "b.png");
-	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + "f.png");
+	window["oPjokemon"] = GenerateRandomPjokemon(1);
+	window["cPjokemon"] = MyPjokemon[0];
+	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(window["cPjokemon"].ID) + "b.png");
+	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(window["oPjokemon"].ID) + "f.png");
 	mPjok.y = Arena.localToGlobal(0,220).y;
 	oPjok.x = Arena.localToGlobal(390,0).x;
 	oPjok.y = Arena.localToGlobal(0,70).y;
@@ -479,6 +477,8 @@ function PostStartBattle(){
 	mPjok.scaleX = 2;
 	mPjok.scaleY = 2;
 	stage.update();
+	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
+	createjs.Tween.get(window["bar2"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
 	//alert("started");
 }
 
@@ -487,6 +487,8 @@ function onButtonDown(event){
 	//TODO: check which button by pos
 	if(event.target.name == "B0"){
 		alert("fight");
+		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
+		createjs.Tween.get(window["bar1"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
 		//Simple takle for now
 	}else if(event.target.name == "B1"){
 		alert("item");
