@@ -488,7 +488,7 @@ function onButtonDown(event){
 	if(event.target.name == "B0"){
 		alert("fight");
 		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
-		createjs.Tween.get(window["bar1"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
+		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
 		//Simple takle for now
 	}else if(event.target.name == "B1"){
 		alert("item");
@@ -509,13 +509,13 @@ function onButtonDown(event){
 function GenerateRandomPjokemon(PID){
 	var ID = Math.floor(Math.random() * 10) + 1;
 	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
-	var MHP = LVL * Math.floor(Math.random() * 5) + 5;
+	var MHP = LVL * Math.floor(Math.random() * 4) + 2;
 	var HP = MHP;
-	var ATK = LVL * Math.floor(Math.random() * 5) + 5;
-	var DEF =  LVL * Math.floor(Math.random() * 5) + 5;
-	var EATK = LVL * Math.floor(Math.random() * 5) + 5;
-	var EDEF = LVL * Math.floor(Math.random() * 5) + 5;
-	var SPD = LVL * Math.floor(Math.random() * 5) + 5;
+	var ATK = LVL * Math.floor(Math.random() * 4) + 2;
+	var DEF =  LVL * Math.floor(Math.random() * 4) + 2;
+	var EATK = LVL * Math.floor(Math.random() * 4) + 2;
+	var EDEF = LVL * Math.floor(Math.random() * 4) + 2;
+	var SPD = LVL * Math.floor(Math.random() * 4) + 2;
 	var EFX = "None"
 	return {
 		ID: ID,
