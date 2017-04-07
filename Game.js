@@ -459,7 +459,7 @@ function PostStartBattle(){
 	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(oPjokemon.ID) + "f.png");
 	mPjok.y = Arena.localToGlobal(0,220).y;
 	oPjok.x = Arena.localToGlobal(390,0).x;
-	oPjok.y = Arena.localToGlobal(0,60).y;
+	oPjok.y = Arena.localToGlobal(0,70).y;
 	Arena.addChild(mPjok);
 	Arena.addChild(oPjok);
 	oPjok.scaleX = 2;
@@ -472,7 +472,7 @@ function PostStartBattle(){
 
 function onButtonDown(event){
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
-			
+	//TODO: check which button by pos	
 }
 
 
