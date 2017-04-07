@@ -479,15 +479,19 @@ function onButtonDown(event){
 	//TODO: check which button by pos
 	if(event.target.x == 20){
 		if(event.target.y == 360){
-			//ATTACK();	
+			//ATTACK();
+			alert("atk");
 		}else{
 			//CHANGEPJOK();	
+			alert("ch");
 		}
 	}else{
 		if(event.target.y == 360){
 			//USEITEM();
+			alert("usi");
 		}else{
-			//USEFLEE();	
+			//USEFLEE();
+			alert("usf");
 		}
 	}
 }
