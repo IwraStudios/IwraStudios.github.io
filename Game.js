@@ -495,7 +495,7 @@ function onButtonDown(event){
 		//alert("fight");
 		allowedMove = false;
 		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
-		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 1000, createjs.Ease.quadIn);
+		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn);
 		//Simple takle for now
 		//Opponent's turn
 		createjs.Tween.get(stage).wait(1250).call(opATK);
@@ -516,7 +516,7 @@ function onButtonDown(event){
 
 function opATK(){
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
-	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 1000, createjs.Ease.quadIn).call(handleComplete);
+	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 }
 
 function GenerateRandomPjokemon(PID){
