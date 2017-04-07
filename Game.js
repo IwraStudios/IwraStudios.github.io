@@ -428,6 +428,7 @@ function StartBattle(cPID){
 		button1.scaleX = 0.4;
 		button1.scaleY = 0.5;
 		window["B" + String(i)].addChild(button1);
+		button1.name = "B" + String(i);
 		var text;
 		switch(i){
 			case 0:
