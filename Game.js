@@ -424,7 +424,7 @@ function StartBattle(cPID){
 		if(i>= 2){
 			window["B" + String(i)].y += 50;
 		}
-		
+		window["B" + String(i)].name = "B" + String(i);
 		button1.scaleX = 0.4;
 		button1.scaleY = 0.5;
 		window["B" + String(i)].addChild(button1);
@@ -477,22 +477,14 @@ function PostStartBattle(){
 function onButtonDown(event){
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
 	//TODO: check which button by pos
-	if(event.target.x == 20){
-		if(event.target.y == 360){
-			//ATTACK();
-			alert("atk");
-		}else{
-			//CHANGEPJOK();	
-			alert("ch");
-		}
-	}else{
-		if(event.target.y == 360){
-			//USEITEM();
-			alert("usi");
-		}else{
-			//USEFLEE();
-			alert("usf");
-		}
+	if(event.target.name == "B0"){
+		alert("fight");
+	}else if(event.target.name == "B1"){
+		alert("item");
+	}else if(event.target.name == "B2"){
+		alert("Pjokemon");
+	}else if(event.target.name == "B3"){
+		alert("Flee");
 	}
 }
 
