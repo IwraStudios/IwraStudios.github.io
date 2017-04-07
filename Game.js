@@ -231,13 +231,6 @@ function Init(){
 	for(var l=0; l<16;l++){
 	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
 	}
-	char = new createjs.Bitmap("./images/char1/0.png");
-	char.image = chararr[0].image;
-	char.x = charx;
-	char.y = chary;
-	char.name = "./images/char1/0.png;3";
-
-	stage.addChild(char);
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	sinit();
@@ -245,6 +238,16 @@ function Init(){
 }
 var context;
 var bufferLoader;
+
+function charInit(){
+	char = new createjs.Bitmap("./images/char1/0.png");
+	char.image = chararr[0].image;
+	char.x = charx;
+	char.y = chary;
+	char.name = "./images/char1/0.png;3";
+
+	stage.addChild(char);
+}
 
 function sinit() {
   // Fix up prefixing
@@ -308,12 +311,14 @@ function LoadHitMap(thm){
 
  //LoadMap(string[][][],{"tp":"1,3"}
 function LoadMap(tm, data){
+	stage.removeAllChildren();
 	World_Container = new createjs.Container();
 	stage.addChild(World_Container);
 	World_Container.scaleX = 2;
 	World_Container.scaleY = 2;
 	objs = [];
 	World_Container.removeAllChildren();
+	charInit();
 	stage.update();
 	for(var l=0; l<tm.length;l++){
 		for(var i=0; i<tm[l].length;i++){
