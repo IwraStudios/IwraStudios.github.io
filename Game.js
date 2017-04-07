@@ -413,6 +413,13 @@ function StartBattle(cPID){
 	Arena.setBounds(0,0,600,357);
 	Arena.addChild(battlearena);
 	stage.addChild(Arena);
+	window["bar1"] = new createjs.Shape().set({x:20, y:200, scaleX:0});
+	window["bar2"] = new createjs.Shape().set({x:300, y:50, scaleX:0});
+	window["bar1"].graphics.beginFill("green").drawRect(0,0,300,30);
+	window["bar2"].graphics.beginFill("green").drawRect(0,0,300,30);
+	Arena.addChild(window["bar1"], window["bar2"]);
+	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
+	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
 	for (var i = 0; i < 4; ++i){
 		window["B" + String(i)] = new createjs.Container();
 		var button1 = new createjs.Bitmap("./images/live-button-blank.png");
@@ -480,12 +487,19 @@ function onButtonDown(event){
 	//TODO: check which button by pos
 	if(event.target.name == "B0"){
 		alert("fight");
+		//Simple takle for now
 	}else if(event.target.name == "B1"){
 		alert("item");
+		//target.getChildAt(1); change to item names
 	}else if(event.target.name == "B2"){
 		alert("Pjokemon");
+		//target.getChildAt(1); change to pjok names
 	}else if(event.target.name == "B3"){
-		alert("Flee");
+		if(Math.floor(Math.random() * 3) + 1 == 1){
+			alert("succesfully fleed");
+			LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
+			inBattle = false;
+		}
 	}
 }
 
