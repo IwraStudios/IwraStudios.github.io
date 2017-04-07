@@ -517,17 +517,18 @@ function onButtonDown(event){
 	}else if(event.target.name == "B3"){
 		if(Math.floor(Math.random() * 3) + 1 == 1){
 			alert("succesfully fleed");
-			LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 			inBattle = false;
+			allowedMove = true;
+			LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 		}
 	}
 }
 
 function opATK(){
 	if(window["oPjokemon"].HP <= 0){
-		Win();	
 		inBattle = false;
 		allowedMove = true;
+		Win();	
 		return;
 	}
 	
