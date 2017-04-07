@@ -221,16 +221,17 @@ function LoadBlob(blob){
 
 function Init(){
 	//loadf();
+	chararr = [16];
+	for(var l=0; l<16;l++){
+	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
+	}
 	LoadMapFURL("https://iwrastudios.github.io/map%20(2).fmap");
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
 
 	
-	chararr = [16];
-	for(var l=0; l<16;l++){
-	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
-	}
+
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	sinit();
