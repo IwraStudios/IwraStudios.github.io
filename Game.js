@@ -527,7 +527,7 @@ function opATK(){
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
 		alert("you lose");
-		Init();
+		window.location.reload(false);
 	}
 }
 
