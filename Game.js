@@ -226,7 +226,7 @@ function Init(){
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
 
-	World_Container = new createjs.Container();
+	
 	chararr = [16];
 	for(var l=0; l<16;l++){
 	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
@@ -236,7 +236,6 @@ function Init(){
 	char.x = charx;
 	char.y = chary;
 	char.name = "./images/char1/0.png;3";
-	stage.addChild(World_Container);
 
 	stage.addChild(char);
 	World_Container.scaleX = 2;
@@ -309,6 +308,8 @@ function LoadHitMap(thm){
 
  //LoadMap(string[][][],{"tp":"1,3"}
 function LoadMap(tm, data){
+	World_Container = new createjs.Container();
+	stage.addChild(World_Container);
 	objs = [];
 	World_Container.removeAllChildren();
 	stage.update();
@@ -515,8 +516,24 @@ function onButtonDown(event){
 }
 
 function opATK(){
+	if(window["oPjokemon"].HP <= 0){
+		Win();	
+		inBattle = false;
+		allowedMove = true;
+		return;
+	}
+	
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
+	if(window["cPjokemon"].HP <= 0){
+		alert("you lose");
+		Init();
+	}
+}
+
+function Win(){
+	alert("you win this battle");
+	LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 }
 
 function GenerateRandomPjokemon(PID){
