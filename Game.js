@@ -238,8 +238,6 @@ function Init(){
 	char.name = "./images/char1/0.png;3";
 
 	stage.addChild(char);
-	World_Container.scaleX = 2;
-	World_Container.scaleY = 2;
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	sinit();
@@ -310,6 +308,8 @@ function LoadHitMap(thm){
 function LoadMap(tm, data){
 	World_Container = new createjs.Container();
 	stage.addChild(World_Container);
+	World_Container.scaleX = 2;
+	World_Container.scaleY = 2;
 	objs = [];
 	World_Container.removeAllChildren();
 	stage.update();
