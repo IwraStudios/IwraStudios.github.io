@@ -289,8 +289,10 @@ function finishedLoading(bufferList) {
      if (!event.paused) {
 	     	 if(timer % 4 ==0 && !inBattle){
         		 stage.sortChildren(sortByLayer);
+			 try{
 			       World_Container.scaleX = 2;
 			       World_Container.scaleY = 2;
+			 }catch(e){}
 		  }
 	     	 if(timer %4 ==0 && inBattle){
 			stage.sortChildren(sortByY);
