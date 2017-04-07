@@ -472,7 +472,20 @@ function PostStartBattle(){
 
 function onButtonDown(event){
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
-	//TODO: check which button by pos	
+	//TODO: check which button by pos
+	if(event.target.x == 20){
+		if(event.target.y == 360){
+			//ATTACK();	
+		}else{
+			//CHANGEPJOK();	
+		}
+	}else{
+		if(event.target.y == 360){
+			//USEITEM();
+		}else{
+			//USEFLEE();	
+		}
+	}
 }
 
 
