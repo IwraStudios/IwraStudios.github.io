@@ -404,6 +404,7 @@ EPjokemon.push({
 });
 
 function StartBattle(cPID){
+	allowedMove = false;
 	inBattle = true;
 	stage.removeAllChildren();
 	var battlearena = new createjs.Bitmap("./images/Battle/pokemon_x_y_battle_scene_by_jenske05-d5ynr9c.png");
@@ -477,19 +478,27 @@ function PostStartBattle(){
 	mPjok.scaleX = 2;
 	mPjok.scaleY = 2;
 	stage.update();
-	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 3000, createjs.Ease.quadIn);
-	createjs.Tween.get(window["bar2"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
+	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 2000, createjs.Ease.quadIn);
+	createjs.Tween.get(window["bar2"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn).call(handleComplete);
 	//alert("started");
+	
 }
 
 function onButtonDown(event){
+	
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
 	//TODO: check which button by pos
+	if(!allowedMove){
+		return;
+	}
 	if(event.target.name == "B0"){
-		alert("fight");
+		//alert("fight");
+		allowedMove = false;
 		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
-		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 3000, createjs.Ease.quadIn);
+		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP)}, 1000, createjs.Ease.quadIn);
 		//Simple takle for now
+		//Opponent's turn
+		createjs.Tween.get(stage).wait(1250).call(opATK);
 	}else if(event.target.name == "B1"){
 		alert("item");
 		//target.getChildAt(1); change to item names
@@ -505,6 +514,10 @@ function onButtonDown(event){
 	}
 }
 
+function opATK(){
+	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
+	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 1000, createjs.Ease.quadIn).call(handleComplete);
+}
 
 function GenerateRandomPjokemon(PID){
 	var ID = Math.floor(Math.random() * 10) + 1;
