@@ -487,8 +487,8 @@ function PostStartBattle(){
 	mPjok.scaleX = 2;
 	mPjok.scaleY = 2;
 	stage.update();
-	createjs.Tween.get(window["bar1"]).to({scaleX:1}, 2000, createjs.Ease.quadIn);
-	createjs.Tween.get(window["bar2"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn).call(handleComplete);
+	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn);
+	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 2000, createjs.Ease.quadIn).call(handleComplete);
 	//alert("started");
 	
 }
