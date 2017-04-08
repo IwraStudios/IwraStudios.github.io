@@ -465,6 +465,7 @@ function StartBattle(cPID){
 			}
 		text.x = (246/2)/1.5;
 		text.y = 15;
+		window["B" + String(i)].text = text;
 		button1.on("click", onButtonDown);
 		stage.addChild(window["B" + String(i)]);
 	}
@@ -496,7 +497,6 @@ function PostStartBattle(){
 function onButtonDown(event){
 	
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
-	//TODO: check which button by pos
 	if(!allowedMove){
 		return;
 	}
@@ -510,9 +510,17 @@ function onButtonDown(event){
 		createjs.Tween.get(stage).wait(1250).call(opATK);
 	}else if(event.target.name == "B1"){
 		alert("item");
+		for (var i = 0; i < 4; ++i){
+			window["B" + String(i)].text = new createjs.Text("Flee", "20px Arial", "#ffffff");//Remap text
+			window["B" + String(i)].name = "B1i";//Remap function
+		}
 		//target.getChildAt(1); change to item names
 	}else if(event.target.name == "B2"){
 		alert("Pjokemon");
+		for (var i = 0; i < 4; ++i){
+			window["B" + String(i)].text = new createjs.Text("nFlee", "20px Arial", "#ffffff");//Remap text
+			window["B" + String(i)].name = "B1p";//Remap function
+		}
 		//target.getChildAt(1); change to pjok names
 	}else if(event.target.name == "B3"){
 		if(Math.floor(Math.random() * 3) + 1 == 1){
