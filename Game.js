@@ -230,7 +230,7 @@ function Init(){
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
 
-	
+
 
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
@@ -440,6 +440,7 @@ function StartBattle(cPID){
 			window["B" + String(i)].y += 50;
 		}
 		window["B" + String(i)].name = "B" + String(i);
+
 		button1.scaleX = 0.4;
 		button1.scaleY = 0.5;
 		window["B" + String(i)].addChild(button1);
@@ -465,14 +466,15 @@ function StartBattle(cPID){
 			}
 		text.x = (246/2)/1.5;
 		text.y = 15;
-		window["B" + String(i)].text = text;
+		window["B" + String(i)].txt = text;
+    window["B" + String(i)].but = button1;
 		button1.on("click", onButtonDown);
 		stage.addChild(window["B" + String(i)]);
 	}
 	stage.update;
 	PostStartBattle();
 }
-		
+
 function PostStartBattle(){
 	window["oPjokemon"] = GenerateRandomPjokemon(1);
 	window["cPjokemon"] = MyPjokemon[0];
@@ -491,12 +493,12 @@ function PostStartBattle(){
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn);
 	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 2000, createjs.Ease.quadIn).call(handleComplete);
 	//alert("started");
-	
+
 }
 
 function onButtonDown(event){
-	
-	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));	
+
+	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));
 	if(!allowedMove){
 		return;
 	}
@@ -509,18 +511,30 @@ function onButtonDown(event){
 		//Opponent's turn
 		createjs.Tween.get(stage).wait(1250).call(opATK);
 	}else if(event.target.name == "B1"){
-		alert("item");
-		for (var i = 0; i < 4; ++i){
-			window["B" + String(i)].text = new createjs.Text("Flee", "20px Arial", "#ffffff");//Remap text
-			window["B" + String(i)].name = "B1i";//Remap function
+		//alert("item");
+		for (var i = 0; i < 3; ++i){
+			window["B" + String(i)].but.name += "i";//Remap function
 		}
+    window["B0"].txt.text = "Pjokeball";//Remap text
+    window["B1"].txt.text = "Potion";//Remap text
+    window["B2"].txt.text = "MaxPotion";//Remap text
+    window["B3"].txt.text = "Back";//Remap text
+    window["B3"].but.name = "Bb";//Remap function
 		//target.getChildAt(1); change to item names
 	}else if(event.target.name == "B2"){
-		alert("Pjokemon");
-		for (var i = 0; i < 4; ++i){
-			window["B" + String(i)].text = new createjs.Text("nFlee", "20px Arial", "#ffffff");//Remap text
-			window["B" + String(i)].name = "B1p";//Remap function
+		//alert("Pjokemon");
+		for (var i = 0; i < 3; ++i){
+      try{
+      window["B" + String(i)].txt.text = aPjokemons[MyPjokemon[i].ID]; //TODO: exlude current
+      window["B" + String(i)].but.name += "p";//Remap function
+      }catch(e){
+      window["B" + String(i)].txt.text = "None";
+      window["B" + String(i)].but.name = "B";//Remap function
+      console.log("can't find pjok");
+      }
 		}
+    window["B3"].txt.text = "Back";//Remap text
+    window["B3"].but.name = "Bb";//Remap function
 		//target.getChildAt(1); change to pjok names
 	}else if(event.target.name == "B3"){
 		if(Math.floor(Math.random() * 3) + 1 == 1){
@@ -528,18 +542,54 @@ function onButtonDown(event){
 			inBattle = false;
 			allowedMove = true;
 			LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
-		}
-	}
+		}else{
+      opATK();
+    }
+	}else if(event.target.name == "Bb"){
+    for (var i = 0; i < 4; ++i){
+      window["B" + String(i)].but.name = "B" + String(i);
+    }
+    window["B0"].txt.text = "Fight";
+    window["B1"].txt.text = "Item";
+    window["B2"].txt.text = "Pjokemon";
+    window["B3"].txt.text = "Flee";
+  }else if(event.target.name == "B0i"){
+    TryCatch();
+  }else if(event.target.name == "B1i"){
+    if(window["potions"] > 0){ //TODO: Remember
+
+    }else{
+      alert("You don't have enough potions");
+    }
+  }else if(event.target.name == "B2i"){
+    if(window["Mpotions"] > 0){ //TODO: Remember
+
+    }else{
+      alert("You don't have enough Max potions");
+    }
+  }else if(event.target.name.includes("p")){
+    ChangePjok(event.target.name);
+  }
+}
+
+function ChangePjok(str){
+    //TODO: Make
+}
+
+function TryCatch(){
+    //TODO: make
+
+
 }
 
 function opATK(){
 	if(window["oPjokemon"].HP <= 0){
 		inBattle = false;
 		allowedMove = true;
-		Win();	
+		Win();
 		return;
 	}
-	
+
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
@@ -608,12 +658,12 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
                 loader.bufferList[index] = buffer;
                 if (++loader.loadCount == loader.urlList.length)
                     loader.onload(loader.bufferList);
-            }    
+            }
         );
     }
 
     request.onerror = function() {
-        alert('BufferLoader: XHR error');        
+        alert('BufferLoader: XHR error');
     }
 
     request.send();
@@ -623,4 +673,3 @@ BufferLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
 }
-
