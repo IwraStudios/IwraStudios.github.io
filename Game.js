@@ -480,6 +480,8 @@ function PostStartBattle(){
 	window["cPjokemon"] = MyPjokemon[0];
 	var mPjok = new createjs.Bitmap("./images/Pjokemons/" + String(window["cPjokemon"].ID) + "b.png");
 	var oPjok = new createjs.Bitmap("./images/Pjokemons/" + String(window["oPjokemon"].ID) + "f.png");
+  window["mPjok"] = mPjok;
+  window["oPjok"] = oPjok;
 	mPjok.y = Arena.localToGlobal(0,220).y;
 	oPjok.x = Arena.localToGlobal(390,0).x;
 	oPjok.y = Arena.localToGlobal(0,70).y;
@@ -523,9 +525,13 @@ function onButtonDown(event){
 		//target.getChildAt(1); change to item names
 	}else if(event.target.name == "B2"){
 		//alert("Pjokemon");
+    var j = 0;
 		for (var i = 0; i < 3; ++i){
       try{
-      window["B" + String(i)].txt.text = aPjokemons[MyPjokemon[i].ID]; //TODO: exlude current
+        if(MyPjokemon[i].ID == window["cPjokemon"].ID){
+          j++;
+        }
+      window["B" + String(i)].txt.text = aPjokemons[MyPjokemon[i+j].ID];
       window["B" + String(i)].but.name += "p";//Remap function
       }catch(e){
       window["B" + String(i)].txt.text = "None";
@@ -546,24 +552,24 @@ function onButtonDown(event){
       opATK();
     }
 	}else if(event.target.name == "Bb"){
-    for (var i = 0; i < 4; ++i){
-      window["B" + String(i)].but.name = "B" + String(i);
-    }
-    window["B0"].txt.text = "Fight";
-    window["B1"].txt.text = "Item";
-    window["B2"].txt.text = "Pjokemon";
-    window["B3"].txt.text = "Flee";
+    BackToMain();
   }else if(event.target.name == "B0i"){
     TryCatch();
   }else if(event.target.name == "B1i"){
-    if(window["potions"] > 0){ //TODO: Remember
-
+    if(window["potions"] > 0){
+        window["potions"]--;
+        window["cPjokemon"].HP = (window["cPjokemon"].HP + 20).clamp(0,window["cPjokemon"].MHP);
+        createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 1000, createjs.Ease.quadIn);
+        opATK();
     }else{
       alert("You don't have enough potions");
     }
   }else if(event.target.name == "B2i"){
-    if(window["Mpotions"] > 0){ //TODO: Remember
-
+    if(window["Mpotions"] > 0){
+        window["Mpotions"]--;
+        window["cPjokemon"].HP = window["cPjokemon"].MHP;
+        createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 1000, createjs.Ease.quadIn);
+        opATK();
     }else{
       alert("You don't have enough Max potions");
     }
@@ -573,13 +579,88 @@ function onButtonDown(event){
 }
 
 function ChangePjok(str){
-    //TODO: Make
+    var pstr = Number(str.match(/(\d+)sl(\d+)/));
+    try{//Try Save
+      for (var i = 0; i < 4; ++i){
+          if(MyPjokemon[i].ID == window["cPjokemon"].ID){
+              MyPjokemon[i]= window["cPjokemon"];
+        }
+      }
+    }catch(e){}
+    var j = 0;
+    for (var i = 0; i < 3; ++i){
+      try{
+        try{
+          if(MyPjokemon[i].ID == window["cPjokemon"].ID){
+            j++;
+          }
+        }catch(e){}
+        if(pstr == i){
+          var a = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[i+j].ID) + "b.png");
+          window["mPjok"].image = a.image;
+          window["cPjokemon"] = MyPjokemon[i+j];
+          createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP).clamp(0,1)}, 200, createjs.Ease.quadIn);
+          createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 200, createjs.Ease.quadIn);
+        }
+      }catch(e){
+        console.log("can't change pjokemon" + e);
+      }
+    }
+    BackToMain();
 }
 
 function TryCatch(){
-    //TODO: make
+    var catchrate = 30;//100
+    var hpgain = 30;//100
+    if(window["oPjokemon"].ID == window["cPjokemon"].ID){
+      console.log("can't overlap");
+      FailedCaught();
+      return;
+    }
+    var totchance  = catchrate;
+    if(window["oPjokemon"].HP < window["oPjokemon"].MHP/2){
+      totchance += hpgain;
+    }
+    var chance = (Math.floor(Math.random() * 100) + 1);
+    if(chance <= totchance){
+      Caught();
+    }else{
+      FailedCaught();
+    }
+}
 
+function FailedCaught(){
+    alert("failed to catch pjokemon" + '\n' + "try again");
+    opATK();
+}
 
+function BackToMain(){
+  for (var i = 0; i < 4; ++i){
+    window["B" + String(i)].but.name = "B" + String(i);
+  }
+  window["B0"].txt.text = "Fight";
+  window["B1"].txt.text = "Item";
+  window["B2"].txt.text = "Pjokemon";
+  window["B3"].txt.text = "Flee";
+}
+
+function Caught(){
+    alert("you win.... sort of" + '\n' + "At least you caught a pjokemon");
+    for (var i = 0; i < 4; ++i){
+      try{
+        var a = aPjokemons[MyPjokemon[i].ID];
+      }catch(e){
+        MyPjokemon[i]=window["oPjokemon"];
+        inBattle = false;
+        allowedMove = true;
+        LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
+        return;
+      }
+    }
+    alert("your backpack is full" + '\n'+ "to get new pjokemons restart the game");
+    inBattle = false;
+    allowedMove = true;
+    LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 }
 
 function opATK(){
@@ -593,9 +674,11 @@ function opATK(){
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
-		alert("you lose");
+		alert("you lose");//TODO: Make switch pjokemon and delete dead
 		window.location.reload(false);
 	}
+  BackToMain();
+
 }
 
 function Win(){
@@ -604,7 +687,7 @@ function Win(){
 }
 
 function GenerateRandomPjokemon(PID){
-	var ID = Math.floor(Math.random() * 10) + 1;
+	var ID = Math.floor(Math.random() * 99) + 1;
 	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
 	var MHP = LVL * Math.floor(Math.random() * 5) + 10;
 	var HP = MHP;
