@@ -690,17 +690,6 @@ function opATK(){
 
 }
 
-//Sorts MyPjokemon var
-function SortMyPjok(){
-	for (var i = 0; i < 4; ++i){
-		try{
-		var a =MyPjokemon[i];
-		
-		}catch(e){
-			
-		}
-	}
-}
 
 //Self-Explainitory
 function Win(){
