@@ -673,7 +673,7 @@ function opATK(){
 		var j = 10;
 		for (var i = 0; i < 4; ++i){
 			try{
-			var n = MyPjokemon[i];
+			var n = MyPjokemon[i].ID;
 			j = i;
 			break;
 			}catch(e){}
