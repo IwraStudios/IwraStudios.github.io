@@ -367,6 +367,17 @@ Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
 
+//For Cleaning MyPjokemon
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {         
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
 /////Pjokemon side
 //Self-explainitory
 var MyPjokemon = [];
@@ -649,12 +660,47 @@ function opATK(){
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
-		alert("you lose");//TODO: Make switch pjokemon and delete dead
+		alert(aPjokemons[window["cPjokemon"].ID] + "fainted");//TODO: Make switch pjokemon and delete dead
+		
+		    try{//Remove fainted pjokemon
+      			for (var i = 0; i < 4; ++i){
+          			if(MyPjokemon[i].ID == window["cPjokemon"].ID){
+              				MyPjokemon.splice(i, 1);
+        			}
+      			}
+    		}catch(e){}
+		MyPjokemon.clean(undefined);
+		var j = 10;
+		for (var i = 0; i < 4; ++i){
+			try{
+			var n = MyPjokemon[i];
+			j = i;
+			break;
+			}catch(e){}
+		}
+		if(j != 10){
+		ChangePjok("B0p");
+		}else{
+		alert("you lose, git gud");
 		window.location.reload(false);
+		}
 	}
   	BackToMain();
 
 }
+
+//Sorts MyPjokemon var
+function SortMyPjok(){
+	for (var i = 0; i < 4; ++i){
+		try{
+		var a =MyPjokemon[i];
+		
+		}catch(e){
+			
+		}
+	}
+}
+
 //Self-Explainitory
 function Win(){
 	alert("you win this battle");
@@ -775,3 +821,4 @@ BufferLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
 }
+
