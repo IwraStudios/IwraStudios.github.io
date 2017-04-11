@@ -680,6 +680,7 @@ function opATK(){
 		}
 		if(j != 10){
 		ChangePjok("B0p");
+		createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 		}else{
 		alert("you lose, git gud");
 		window.location.reload(false);
