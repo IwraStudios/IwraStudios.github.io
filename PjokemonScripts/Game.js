@@ -232,7 +232,7 @@ function Init(){
 	//loadf();
 	chararr = [16];
 	for(var l=0; l<16;l++){
-	chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
+	   chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
 	}
 	LoadMapFURL("https://iwrastudios.github.io/map%20(2).fmap");
 	serialize = serialijse.serialize;
@@ -244,7 +244,7 @@ function Init(){
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
 	sinit();
-	MyPjokemon.push(GenerateRandomPjokemon(2));
+	MyPjokemon.push(GenerateRandomPjokemon(3));
 }
 
 //Create character in map
@@ -370,7 +370,7 @@ Number.prototype.clamp = function(min, max) {
 //For Cleaning MyPjokemon
 Array.prototype.clean = function(deleteValue) {
   for (var i = 0; i < this.length; i++) {
-    if (this[i] == deleteValue) {         
+    if (this[i] == deleteValue) {
       this.splice(i, 1);
       i--;
     }
@@ -492,7 +492,7 @@ function onButtonDown(event){
 	if(event.target.name == "B0"){ //Fight button
 		//alert("fight");
 		allowedMove = false;
-		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
+		window["oPjokemon"].HP -= window["cPjokemon"].ATK;//Damage handling
 		createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn);
 		//Simple takle for now
 		//Opponent's turn
@@ -565,39 +565,40 @@ function onButtonDown(event){
 
 //Buttons for changing pjokemon
 function ChangePjok(str){
-    var pstr = Number(str.match(/(\d+)sl(\d+)/));
-    try{//Try Save
-      for (var i = 0; i < 4; ++i){
-          if(MyPjokemon[i].ID == window["cPjokemon"].ID){
-              MyPjokemon[i]= window["cPjokemon"];
+    var pstr = Number(str.match(/\d/g).join(""));
+    var pname = window["B" + pstr].txt.text;
+    _ChangePjok(pname);
+}
+
+function _ChangePjok(pname){
+  try{//Try Save
+    for (var i = 0; i < 4; ++i){
+        if(MyPjokemon[i] == undefined){
+            continue;
         }
-      }
-    }catch(e){}
-    var j = 0;
-    for (var i = 0; i < 3; ++i){
-      try{
-        try{
-          if(MyPjokemon[i].ID == window["cPjokemon"].ID){
-            j++;
-          }
-        }catch(e){}
-        if(pstr == i){
-          var a = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[i+j].ID) + "b.png");
-          window["mPjok"].image = a.image;
-          window["cPjokemon"] = MyPjokemon[i+j];
-          createjs.Tween.get(window["bar2"]).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP).clamp(0,1)}, 200, createjs.Ease.quadIn);
-          createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 200, createjs.Ease.quadIn);
-        }
-      }catch(e){
-        console.log("can't change pjokemon" + e);
+        if(MyPjokemon[i].ID == window["cPjokemon"].ID){
+            MyPjokemon[i]= window["cPjokemon"];
       }
     }
-    BackToMain();
+    for (var i = 0; i < 4; ++i){
+        if(MyPjokemon[i] == undefined){
+            continue;
+        }
+        if(aPjokemons[MyPjokemon[i].ID] == pname){
+          var a = new createjs.Bitmap("./images/Pjokemons/" + String(MyPjokemon[i].ID) + "b.png");
+          window["mPjok"].image = a.image;
+          window["cPjokemon"] = MyPjokemon[i];
+          createjs.Tween.get(window["bar2"], {override:true}).to({scaleX:(window["oPjokemon"].HP / window["oPjokemon"].MHP).clamp(0,1)}, 200, createjs.Ease.quadIn);
+          createjs.Tween.get(window["bar1"], {override:true}).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 200, createjs.Ease.quadIn);
+        }
+    }
+  }catch(e){}
+  BackToMain();
 }
 //Self-Explainitory
 function TryCatch(){
-    var catchrate = 30;//100
-    var hpgain = 30;//100
+    var catchrate = 40;//100
+    var hpgain = 40;//100
     if(window["oPjokemon"].ID == window["cPjokemon"].ID){
       console.log("can't overlap");
       FailedCaught();
@@ -660,27 +661,26 @@ function opATK(){
 	window["cPjokemon"].HP -= window["oPjokemon"].ATK;
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
-		alert(aPjokemons[window["cPjokemon"].ID] + "fainted");//TODO: Make switch pjokemon and delete dead
+    alert(aPjokemons[window["cPjokemon"].ID] + " fainted");
 		for (var i = 0; i < 4; ++i){
 		    try{//Remove fainted pjokemon
           			if(MyPjokemon[i].ID == window["cPjokemon"].ID){
               				MyPjokemon.splice(i, 1);
         			}
-
     		}catch(e){}
 		}
 		MyPjokemon.clean(undefined);
 		var j = 10;
 		for (var i = 0; i < 4; ++i){
 			try{
-			var n = MyPjokemon[i].ID;
+			if(MyPjokemon[i] != undefined){
 			j = i;
-			break;
+      break;
+      }
 			}catch(e){}
 		}
 		if(j != 10){
-		ChangePjok("B0p");
-		createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
+      _ChangePjok(aPjokemons[MyPjokemon[j].ID]);
 		}else{
 		alert("you lose, git gud");
 		window.location.reload(false);
@@ -699,14 +699,14 @@ function Win(){
 //PID = overal power/value
 function GenerateRandomPjokemon(PID){
 	var ID = Math.floor(Math.random() * 99) + 1;
-	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
+	var LVL = (PID + 1) * Math.floor(Math.random() * 2) + 1;
 	var MHP = LVL * Math.floor(Math.random() * 5) + 10;
 	var HP = MHP;
-	var ATK = LVL * Math.floor(Math.random() * 4) + 2;
-	var DEF =  LVL * Math.floor(Math.random() * 4) + 2;
-	var EATK = LVL * Math.floor(Math.random() * 4) + 2;
-	var EDEF = LVL * Math.floor(Math.random() * 4) + 2;
-	var SPD = LVL * Math.floor(Math.random() * 4) + 2;
+	var ATK = LVL * Math.floor(Math.random() * 3) + 4;
+	var DEF =  LVL * Math.floor(Math.random() * 3) + 4;
+	var EATK = LVL * Math.floor(Math.random() * 3) + 4;
+	var EDEF = LVL * Math.floor(Math.random() * 3) + 4;
+	var SPD = LVL * Math.floor(Math.random() * 3) + 4;
 	var EFX = "None"
 	return {
 		ID: ID,
@@ -811,4 +811,3 @@ BufferLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
 }
-
