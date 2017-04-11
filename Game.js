@@ -1,41 +1,50 @@
 //Game.js
-
-var position = 0;
+//Self-Explainitory
 var hitmap;
+//Self-Explainitory
 var current_map;
+//All objects in map
 var objs = [];
+//createjs stage
 var stage;
+//just a timer 1/30 ratio
 var timer = 0;
+//grid size (don't change)
 var grid = 64;
-var mt = 0;
+//Character
 var char;
+//Character offset
 var charx = 288 + 32;
 var chary = 288;
+//Character images
 var chararr;
+//Character position
 var chartx = 0;
 var charty = 0;
+//Self-Explainitory
 var allowedMove = true;
+//Self-Explainitory
 var soundInstance;
+//Self-Explainitory
 var inBattle = false;
+//Battle Arena
 var Arena;
-
+//Container for world it's not hard to get
 var World_Container;
 window.onload = Init;
-
+//Useless variable
 var Ease = createjs.Ease;
 document.addEventListener('keydown', pdown);
 
+
+//MAP, CONTROLS and ANIMATION
 function pdown(event) {
-    //var tx = parseInt(World_Container.x * -1);
-    //var ty = parseInt(World_Container.y * -1);
     var LastChartx = chartx;
     var LastCharty = charty;
 
-    //pointChar(event.keyCode);
     if(World_Container.x % grid !=0 || World_Container.y % grid !=0 || !allowedMove || inBattle){
 	  return;
     }
-    //removeTweens(World_Container);
 
     if(event.keyCode == 37) {
 	if(hitmap[charty][chartx-1] != 1){
@@ -64,6 +73,7 @@ function pdown(event) {
 
 }
 
+//Only when position of character changed in pdown
 function ChangedChart(dx,dy){
   allowedMove = false;
   ExecTile(chartx,charty);
@@ -71,6 +81,7 @@ function ChangedChart(dx,dy){
   //UpdateWalkAnim(0,dx,dy);
 }
 
+//Update Animation State
 function UpdateWalkAnim(state, dx, dy){
   if(dx >= 1){ //left
     state += 4;
@@ -88,11 +99,11 @@ function UpdateWalkAnim(state, dx, dy){
 
 }
 
+//If you land on a tile with a special function this will trigger it
 function ExecTile(x,y){
 	try{
 	for(var l=0; l<current_map.length;l++){
 		if(current_map[l][x][y] == null){
-			//console.log("skipped" + String(l));
 			continue;
 		}
 		if(current_map[l][x][y].split(";")[2] != null){
@@ -108,35 +119,33 @@ function ExecTile(x,y){
 	}
 }
 
+//Enable controls again
 function handleComplete(){
 	allowedMove = true;
 }
 
+//Get object type
 var toType = function(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
-
+//(Obsolete) point character in a direction
 function pointChar(dir){
 	switch(dir){
 		case 37: //left
 			char.image = chararr[4].image;
-			//char = new createjs.Bitmap("./images/char1/4.png");
 			char.name = "./images/char1/4.png;3";
 
 			break;
 		case 38://up
 			char.image = chararr[12].image;
-			//char = new createjs.Bitmap("./images/char1/12.png");
 			char.name = "./images/char1/12.png;3";
 			break;
 		case 39: //right
 			char.image = chararr[8].image;
-			//char = new createjs.Bitmap("./images/char1/10.png");
 			char.name = "./images/char1/10.png;3";
 			break;
 		case 40: //down
 			char.image = chararr[0].image;
-			//char = new createjs.Bitmap("./images/char1/0.png");
 			char.name = "./images/char1/0.png;3";
 			break;
 
@@ -147,6 +156,7 @@ function pointChar(dir){
 	stage.update();
 }
 
+//(Obsolete) Load map from html input
 function loadf() {
 		var fileInput = document.getElementById('fileInput');
 		//var fileDisplayArea = document.getElementById('fileDisplayArea');
@@ -175,13 +185,12 @@ function loadf() {
 					}catch(e){
 						console.log("could not parse file", e);
 					}
-					//console.log(reader.result);
 				}
 
 				reader.readAsText(file);
 		});
 }
-
+//Load map from url
 function LoadMapFURL(aurl){
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', aurl, true);
@@ -195,7 +204,7 @@ function LoadMapFURL(aurl){
 	};
 	xhr.send();
 }
-
+//Load map from blob
 function LoadBlob(blob){
 	var reader = new FileReader();
 	reader.onload = function(e) {
@@ -218,7 +227,7 @@ function LoadBlob(blob){
 		}
 	reader.readAsText(blob);
 }
-
+//INIT
 function Init(){
 	//loadf();
 	chararr = [16];
@@ -237,9 +246,8 @@ function Init(){
 	sinit();
 	MyPjokemon.push(GenerateRandomPjokemon(2));
 }
-var context;
-var bufferLoader;
 
+//Create character in map
 function charInit(){
 	char = new createjs.Bitmap("./images/char1/0.png");
 	char.image = chararr[0].image;
@@ -250,44 +258,7 @@ function charInit(){
 	stage.addChild(char);
 }
 
-function sinit() {
-  // Fix up prefixing
-  window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  context = new AudioContext();
-
-  bufferLoader = new BufferLoader(
-    context,
-    [
-      '../Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.wav',
-      '../Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.wav',
-      '../Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.wav',
-      '../Music/Pokemon HGSS Music - Vermillion City.wav',
-    ],
-    finishedLoading
-    );
-
-  bufferLoader.load();
-}
-
-function finishedLoading(bufferList) {
-  // Create two sources and play them both together.
-  var gainNode = context.createGain();
-  var source1 = context.createBufferSource();
-  var source2 = context.createBufferSource();
-  source1.buffer = bufferList[0];
-  source2.buffer = bufferList[1];
-
-  source1.connect(gainNode);
-  gainNode.connect(context.destination);
-  //source1.connect(context.destination);
-  source2.connect(context.destination);
-  source1.start(0);
-  source1.loop = true;
-  gainNode.gain.value = 0.5;
-  //source2.start(0);
-}
-
-
+//Update function: sort map
  function handleTick(event) {
      // Actions carried out each tick (aka frame)
      if (!event.paused) {
@@ -306,11 +277,12 @@ function finishedLoading(bufferList) {
      }
  }
 
+//Load and Change hitmap
 function LoadHitMap(thm){
 	hitmap = thm;
 }
 
- //LoadMap(string[][][],{"tp":"1,3"}
+//Load whole map
 function LoadMap(tm, data){
 	stage.removeAllChildren();
 	World_Container = new createjs.Container();
@@ -344,6 +316,8 @@ function LoadMap(tm, data){
 		window[fname](data[fname]);
 	}
 }
+
+//Teleport to (x,y)
 function tp(x,y){
 	if(toType(x) === toType("")){
 		tp(parseInt(x.split(",")[0]), parseInt(x.split(",")[1]));
@@ -353,13 +327,13 @@ function tp(x,y){
 	chartx = x;
 	charty = y;
 
-	//World_Container.setTransform(-1 * grid *x - 5,-1* grid *y - 5);
 	var event = [];
 	event['keyCode'] = 27;
 	pdown(event);
 	stage.update();
 }
 
+//Sort by layer and y value
 function sortByLayer(a,b){
 	try{
 	if (parseInt(a.name.split(";")[1]) < parseInt(b.name.split(";")[1])) return -1;
@@ -371,6 +345,7 @@ function sortByLayer(a,b){
     return 0;
 }
 
+//(Obsolete) sort by y value
 function sortByY(a,b){
     if (a.y < b.y) return -1;
     if (a.y > b.y) return 1;
@@ -393,11 +368,11 @@ Number.prototype.clamp = function(min, max) {
 };
 
 /////Pjokemon side
-
+//Self-explainitory
 var MyPjokemon = [];
 
 
-
+//Empty pjokemon array
 var EPjokemon = [];
 EPjokemon.push({
     ID: 0,
@@ -412,6 +387,7 @@ EPjokemon.push({
     EFX: "None"
 });
 
+//Start battle with certain difficulty(cPID)
 function StartBattle(cPID){
 	allowedMove = false;
 	inBattle = true;
@@ -474,7 +450,7 @@ function StartBattle(cPID){
 	stage.update;
 	PostStartBattle();
 }
-
+//Load Pjokemon after loading arena
 function PostStartBattle(){
 	window["oPjokemon"] = GenerateRandomPjokemon(1);
 	window["cPjokemon"] = MyPjokemon[0];
@@ -494,17 +470,15 @@ function PostStartBattle(){
 	stage.update();
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn);
 	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 2000, createjs.Ease.quadIn).call(handleComplete);
-	//alert("started");
 
 }
-
+//Button Controls
 function onButtonDown(event){
-
 	createjs.Tween.get(event.target).to({alpha: 0.5},250, createjs.Ease.getPowInOut(2)).wait(100).to({alpha: 1},150, createjs.Ease.getPowInOut(2));
 	if(!allowedMove){
 		return;
 	}
-	if(event.target.name == "B0"){
+	if(event.target.name == "B0"){ //Fight button
 		//alert("fight");
 		allowedMove = false;
 		window["oPjokemon"].HP -= window["cPjokemon"].ATK;
@@ -512,7 +486,7 @@ function onButtonDown(event){
 		//Simple takle for now
 		//Opponent's turn
 		createjs.Tween.get(stage).wait(1250).call(opATK);
-	}else if(event.target.name == "B1"){
+	}else if(event.target.name == "B1"){//Item Button
 		//alert("item");
 		for (var i = 0; i < 3; ++i){
 			window["B" + String(i)].but.name += "i";//Remap function
@@ -536,13 +510,13 @@ function onButtonDown(event){
       }catch(e){
       window["B" + String(i)].txt.text = "None";
       window["B" + String(i)].but.name = "B";//Remap function
-      console.log("can't find pjok");
+      //console.log("can't find pjok");
       }
 		}
     window["B3"].txt.text = "Back";//Remap text
     window["B3"].but.name = "Bb";//Remap function
 		//target.getChildAt(1); change to pjok names
-	}else if(event.target.name == "B3"){
+	}else if(event.target.name == "B3"){ //Flee Button
 		if(Math.floor(Math.random() * 3) + 1 == 1){
 			alert("succesfully fleed");
 			inBattle = false;
@@ -551,11 +525,11 @@ function onButtonDown(event){
 		}else{
       opATK();
     }
-	}else if(event.target.name == "Bb"){
+	}else if(event.target.name == "Bb"){//Items:Pjokemons/Back
     BackToMain();
-  }else if(event.target.name == "B0i"){
+  }else if(event.target.name == "B0i"){//Items/Pjokeball
     TryCatch();
-  }else if(event.target.name == "B1i"){
+  }else if(event.target.name == "B1i"){//Items/Potion button
     if(window["potions"] > 0){
         window["potions"]--;
         window["cPjokemon"].HP = (window["cPjokemon"].HP + 20).clamp(0,window["cPjokemon"].MHP);
@@ -564,7 +538,7 @@ function onButtonDown(event){
     }else{
       alert("You don't have enough potions");
     }
-  }else if(event.target.name == "B2i"){
+  }else if(event.target.name == "B2i"){//Items/MaxPotion Button
     if(window["Mpotions"] > 0){
         window["Mpotions"]--;
         window["cPjokemon"].HP = window["cPjokemon"].MHP;
@@ -573,11 +547,12 @@ function onButtonDown(event){
     }else{
       alert("You don't have enough Max potions");
     }
-  }else if(event.target.name.includes("p")){
+  }else if(event.target.name.includes("p")){//Any Pjokemon Button
     ChangePjok(event.target.name);
   }
 }
 
+//Buttons for changing pjokemon
 function ChangePjok(str){
     var pstr = Number(str.match(/(\d+)sl(\d+)/));
     try{//Try Save
@@ -608,7 +583,7 @@ function ChangePjok(str){
     }
     BackToMain();
 }
-
+//Self-Explainitory
 function TryCatch(){
     var catchrate = 30;//100
     var hpgain = 30;//100
@@ -628,12 +603,12 @@ function TryCatch(){
       FailedCaught();
     }
 }
-
+//Self-Explainitory
 function FailedCaught(){
     alert("failed to catch pjokemon" + '\n' + "try again");
     opATK();
 }
-
+//Show's default battle buttons
 function BackToMain(){
   for (var i = 0; i < 4; ++i){
     window["B" + String(i)].but.name = "B" + String(i);
@@ -643,7 +618,7 @@ function BackToMain(){
   window["B2"].txt.text = "Pjokemon";
   window["B3"].txt.text = "Flee";
 }
-
+//Self-Explainitory
 function Caught(){
     alert("you win.... sort of" + '\n' + "At least you caught a pjokemon");
     for (var i = 0; i < 4; ++i){
@@ -662,7 +637,7 @@ function Caught(){
     allowedMove = true;
     LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 }
-
+//Opponent's attack routine
 function opATK(){
 	if(window["oPjokemon"].HP <= 0){
 		inBattle = false;
@@ -677,15 +652,15 @@ function opATK(){
 		alert("you lose");//TODO: Make switch pjokemon and delete dead
 		window.location.reload(false);
 	}
-  BackToMain();
+  	BackToMain();
 
 }
-
+//Self-Explainitory
 function Win(){
 	alert("you win this battle");
 	LoadMap(current_map,{tp: String(chartx) + ',' + String(charty)});
 }
-
+//PID = overal power/value
 function GenerateRandomPjokemon(PID){
 	var ID = Math.floor(Math.random() * 99) + 1;
 	var LVL = (PID + 1) * Math.floor(Math.random() * 3) + 1;
@@ -713,8 +688,51 @@ function GenerateRandomPjokemon(PID){
 
 
 //SOUND
+//Necessary for smooth operation
+var context;
+var bufferLoader;
+
+//Finished loading soundbuffers
+function finishedLoading(bufferList) {
+  // Create two sources and play them both together.
+  var gainNode = context.createGain();
+  var source1 = context.createBufferSource();
+  var source2 = context.createBufferSource();
+  source1.buffer = bufferList[0];
+  source2.buffer = bufferList[1];
+
+  source1.connect(gainNode);
+  gainNode.connect(context.destination);
+  //source1.connect(context.destination);
+  source2.connect(context.destination);
+  source1.start(0);
+  source1.loop = true;
+  gainNode.gain.value = 0.5;
+  //source2.start(0);
+}
+
+//Turn up the music
+function sinit() {
+  // Fix up prefixing
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+
+  bufferLoader = new BufferLoader(
+    context,
+    [
+      '../Music/04 - Pokémon HeartGold & SoulSilver - New Bark Town.wav',
+      '../Music/30 - Pokémon HeartGold & SoulSilver - Ruins of Alph.wav',
+      '../Music/Pokemon HeartGold and SoulSilver - Saffron City-Pewter City-Viridian City.wav',
+      '../Music/Pokemon HGSS Music - Vermillion City.wav',
+    ],
+    finishedLoading
+    );
+
+  bufferLoader.load();
+}
 
 
+//Loads audio buffers
 function BufferLoader(context, urlList, callback) {
 	this.context = context;
     this.urlList = urlList;
@@ -723,6 +741,7 @@ function BufferLoader(context, urlList, callback) {
     this.loadCount = 0;
 }
 
+//Audio buffer Loader type: fill's buffer
 BufferLoader.prototype.loadBuffer = function(url, index) {
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
@@ -751,7 +770,7 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
 
     request.send();
 }
-
+//Audio buffer Loader type: load's audio from buffer
 BufferLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
