@@ -661,14 +661,14 @@ function opATK(){
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP).clamp(0,1)}, 1000, createjs.Ease.quadIn).call(handleComplete);
 	if(window["cPjokemon"].HP <= 0){
 		alert(aPjokemons[window["cPjokemon"].ID] + "fainted");//TODO: Make switch pjokemon and delete dead
-		
+		for (var i = 0; i < 4; ++i){
 		    try{//Remove fainted pjokemon
-      			for (var i = 0; i < 4; ++i){
           			if(MyPjokemon[i].ID == window["cPjokemon"].ID){
               				MyPjokemon.splice(i, 1);
         			}
-      			}
+
     		}catch(e){}
+		}
 		MyPjokemon.clean(undefined);
 		var j = 10;
 		for (var i = 0; i < 4; ++i){
