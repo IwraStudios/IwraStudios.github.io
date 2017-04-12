@@ -8,6 +8,7 @@ document.addEventListener('keydown', pdown);
 var b = [];
 var bu = [];
 var kill = 0;
+var lvl = 0;
 
 function Init(){
 	if(!confirm("Wanna play")){
@@ -36,6 +37,12 @@ function handleTick(){
 	bu.clean(undefined);
 	b.clean(undefined);
 	stage.update();
+	if(b.length == 0){
+		newGame();
+		lvl++;
+		document.getElementById("level").innerHTML="Level: " +String(lvl) + "  ";
+
+	}
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
 			//TODO: bounds hittest
@@ -55,6 +62,7 @@ function handleTick(){
 			}
 		}
 	}
+	document.getElementById("scoreboard").innerHTML="Kills: " +String(kill) + "  ";
 }
 
 function newGame(){
