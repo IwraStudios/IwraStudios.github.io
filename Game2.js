@@ -1,15 +1,24 @@
 var stage;
 var ticker;
+
+//Player
 var s;
+//Init on load
 window.onload = Init;
 //Useless variable
 var Ease = createjs.Ease;
+//Keymapping
 document.addEventListener('keydown', pdown);
+//Blocks
 var b = [];
+//Bullets
 var bu = [];
+//Kill amount/score
 var kill = 0;
+//Level
 var lvl = 1;
 
+//Function to start it all of
 function Init(){
 	if(!confirm("Wanna play")){
 		window.location.href = "https://google.com";
@@ -23,25 +32,32 @@ function Init(){
   
 }
 
+//Keypress handling
 function pdown(event){
     if(event.keyCode == 37) {
+	//Move left
 	createjs.Tween.get(s, {override:true}).to({x:(s.x - 50).clamp(0,640)}, 450, Ease.Linear);   
     }else if(event.keyCode == 39) {
-	   createjs.Tween.get(s, {override:true}).to({x:(s.x + 50).clamp(0,640)}, 450, Ease.Linear);   
+	 //Move right  
+	 createjs.Tween.get(s, {override:true}).to({x:(s.x + 50).clamp(0,640)}, 450, Ease.Linear);   
     }else if(event.keyCode == 32) {
 	   FireBullet();
     }
 }
 
+//periodic update function
 function handleTick(){
+	//Clean Garbage collected arrays
 	bu.clean(undefined);
 	b.clean(undefined);
 	stage.update();
+	//Next level on finish level
 	if(b.length == 0){
 		newGame();
 		lvl++;
 
 	}
+	//Hit test every block with every bullet
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
 			if(bu[j].x + 2.5 >= b[i].x&& bu[j].x +2.5 <= b[i].x +50 && bu[j].y +5 <= b[i].y + 30 && bu[j].y+5 >= b[i].y){
@@ -60,10 +76,12 @@ function handleTick(){
 			}
 		}
 	}
+	//Update scores
 	document.getElementById("scoreboard").innerHTML="Kills: " +String(kill) + "  ";
 	document.getElementById("level").innerHTML="Level: " +String(lvl) + "  ";
 }
 
+//Generates new level
 function newGame(){
 	for (var i = 0; i < 10; i++) {
   	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 58)*10 + 10, y:Math.floor(Math.random() * 4)*70, scaleX:1});
@@ -73,6 +91,7 @@ function newGame(){
 	}
 }
 
+//Fires bullet
 function FireBullet(){
 	var block = new createjs.Shape().set({x:s.x, y:s.y - 10, scaleX:1});
     	block.graphics.beginFill("green").drawRect(0,0,5,10);
@@ -81,6 +100,7 @@ function FireBullet(){
 	bu.splice(0,0,block);
 }
 
+//Makes Player
 function makePlayer(){
  var g = new createjs.Graphics();
     g.setStrokeStyle(1);
@@ -112,7 +132,7 @@ Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
 
-//For Cleaning MyPjokemon
+//For Cleaning array's with empty elements
 Array.prototype.clean = function(deleteValue) {
   for (var i = 0; i < this.length; i++) {
     if (this[i] == deleteValue) {
