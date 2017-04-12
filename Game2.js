@@ -37,7 +37,7 @@ function handleTick(){
 		for (var j = 0; j < bu.length; j++) {
 			//TODO: bounds hittest
 			if(bu[j].x >= b[i].x && bu[j].x <= b[i].x +50 && bu[j].y <= b[i].y + 30 && bu[j].y >= b[i].y){
-				alert("hit");
+				//alert("hit");
 				bu[j] = undefined;
 				b[i] = undefined;
 				kill++;
