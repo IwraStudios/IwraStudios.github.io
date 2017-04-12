@@ -25,9 +25,9 @@ function Init(){
 
 function pdown(event){
     if(event.keyCode == 37) {
-	createjs.Tween.get(s, {override:true}).to({x:(s.x - 50).clamp(0,500)}, 450, Ease.Linear);   
+	createjs.Tween.get(s, {override:true}).to({x:(s.x - 50).clamp(0,640)}, 450, Ease.Linear);   
     }else if(event.keyCode == 39) {
-	   createjs.Tween.get(s, {override:true}).to({x:(s.x + 50).clamp(0,500)}, 450, Ease.Linear);   
+	   createjs.Tween.get(s, {override:true}).to({x:(s.x + 50).clamp(0,640)}, 450, Ease.Linear);   
     }else if(event.keyCode == 32) {
 	   FireBullet();
     }
