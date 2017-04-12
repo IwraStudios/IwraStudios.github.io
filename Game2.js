@@ -38,6 +38,8 @@ function handleTick(){
 			//TODO: bounds hittest
 			if(bu[j].x >= b[i].x && bu[j].x <= b[i].x +50 && bu[j].y <= b[i].y + 30 && bu[j].y >= b[i].y){
 				//alert("hit");
+				stage.removeChild(bu[j]);
+				stage.removeChild(b[i]);
 				bu[j] = undefined;
 				b[i] = undefined;
 				kill++;
