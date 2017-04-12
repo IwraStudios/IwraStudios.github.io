@@ -15,6 +15,9 @@ function Init(){
   
 }
 
+function handleTick(){
+	
+}
 
 function newGame(){
   	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 580) + 10, y:Math.floor(Math.random() * 3)*100, scaleX:1});
