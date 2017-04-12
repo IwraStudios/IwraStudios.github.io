@@ -33,11 +33,11 @@ function handleTick(){
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
 			//TODO: bounds hittest
-			if(bu[j].y <= -100){
-				bu.splice(j, 1);
-			}
 			if(bu[j].x >= b[i].x && bu[j].x <= b[i].x +50 && bu[j].y <= b[i].y + 30 && bu[j].y >= b[i].y){
 				alert("hit");	
+			}
+			if(bu[j].y <= -100){
+				bu.splice(j, 1);
 			}
 		}
 	}
