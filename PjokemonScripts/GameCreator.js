@@ -90,7 +90,21 @@ function InitDisp(){
 	ScratchNewDispenser("./images/565.png;0");
 	ScratchNewDispenser("./images/564.png;0");
 	ScratchNewDispenser("./images/563.png;0");
-	
+	ScratchNewDispenser("./images/701.png;0");
+	ScratchNewDispenser("./images/709.png;0");
+	ScratchNewDispenser("./images/760.png;1");
+	ScratchNewDispenser("./images/761.png;1");
+	ScratchNewDispenser("./images/762.png;0");
+	ScratchNewDispenser("./images/768.png;1");
+	ScratchNewDispenser("./images/769.png;0");
+	ScratchNewDispenser("./images/770.png;0");
+	ScratchNewDispenser("./images/774.png;0");
+	ScratchNewDispenser("./images/775.png;0");
+	ScratchNewDispenser("./images/776.png;0");
+	ScratchNewDispenser("./images/777.png;0");
+	ScratchNewDispenser("./images/778.png;0");
+	ScratchNewDispenser("./images/782.png;0");
+	ScratchNewDispenser("./images/783.png;0");
 	ScratchNewDispenser("./images/641.png;0");
 	stage.update();
 
