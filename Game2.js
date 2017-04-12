@@ -36,9 +36,9 @@ function newGame(){
 }
 
 function FireBullet(){
-	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 580) + 10, y:Math.floor(Math.random() * 3)*100, scaleX:1});
-    	block.graphics.beginFill("green").drawRect(0,0,50,30);
-	createjs.Tween.get(block, {override:true}).to({y:(1000).clamp(0,1000)}, 3000, Ease.Linear); 
+	var block = new createjs.Shape().set({x:s.x, y:s.y - 10, scaleX:1});
+    	block.graphics.beginFill("green").drawRect(0,0,5,10);
+	createjs.Tween.get(block, {override:true}).to({y:(-1000).clamp(-1000,0)}, 3000, Ease.Linear); 
 	stage.addChild(block);	
 }
 
