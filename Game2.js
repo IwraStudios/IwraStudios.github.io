@@ -5,10 +5,13 @@ window.onload = Init;
 //Useless variable
 var Ease = createjs.Ease;
 document.addEventListener('keydown', pdown);
+var b;
+var bu;
 
 function Init(){
 	stage = new createjs.Stage("GameCanvas");
 	makePlayer();
+	newGame();
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
   	
@@ -27,19 +30,30 @@ function pdown(event){
 
 function handleTick(){
 	stage.update();
+	for (var i = 0; i < b.length; i++) {
+		for (var j = 0; j < bu.length; j++) {
+			if(bu[j].hitTest(b[i].x, b[i].y)){
+				alert("yes");
+			}
+		}
+	}
 }
 
 function newGame(){
+	for (var i = 0; i < 10; i++) {
   	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 580) + 10, y:Math.floor(Math.random() * 3)*100, scaleX:1});
     	block.graphics.beginFill("green").drawRect(0,0,50,30);
 	stage.addChild(block);
+	b[i] = block;
+	}
 }
 
 function FireBullet(){
 	var block = new createjs.Shape().set({x:s.x, y:s.y - 10, scaleX:1});
     	block.graphics.beginFill("green").drawRect(0,0,5,10);
 	createjs.Tween.get(block, {override:true}).to({y:(-1000).clamp(-1000,0)}, 3000, Ease.Linear); 
-	stage.addChild(block);	
+	stage.addChild(block);
+	bu.splice(0,0,block);
 }
 
 function makePlayer(){
