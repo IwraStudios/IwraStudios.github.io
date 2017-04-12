@@ -113,7 +113,7 @@ function InitDisp(){
 function ScratchNewDispenser(rID){
 	var tmp = new createjs.Bitmap(rID.split(";")[0]);
 	tmp.x = 1100 + (Math.floor(disp_counter/ 8) * 128);
-	tmp.y = disp_counter * 128;
+	tmp.y = (disp_counter%8) * 128;
 	MakeNewDispenser(tmp,rID.split(";")[0],parseInt(rID.split(";")[1]));
 	stage.addChild(tmp);
 	disp_counter++;
