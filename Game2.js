@@ -10,6 +10,9 @@ var bu = [];
 var kill = 0;
 
 function Init(){
+	if(!confirm("Wanna play")){
+		window.location.href = "https://google.com";
+	}
 	stage = new createjs.Stage("GameCanvas");
 	makePlayer();
 	newGame();
