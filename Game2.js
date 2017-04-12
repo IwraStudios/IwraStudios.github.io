@@ -7,6 +7,7 @@ var Ease = createjs.Ease;
 document.addEventListener('keydown', pdown);
 var b = [];
 var bu = [];
+var kill = 0;
 
 function Init(){
 	stage = new createjs.Stage("GameCanvas");
@@ -29,15 +30,21 @@ function pdown(event){
 }
 
 function handleTick(){
+	bu.clean(undefined);
+	b.clean(undefined);
 	stage.update();
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
 			//TODO: bounds hittest
 			if(bu[j].x >= b[i].x && bu[j].x <= b[i].x +50 && bu[j].y <= b[i].y + 30 && bu[j].y >= b[i].y){
-				alert("hit");	
+				alert("hit");
+				bu[j] = undefined;
+				b[i] = undefined;
+				kill++;
 			}
 			if(bu[j].y <= -100){
-				bu.splice(j, 1);
+				alert('you lose');
+				//bu.splice(j, 1);
 			}
 		}
 	}
