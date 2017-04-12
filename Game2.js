@@ -4,7 +4,7 @@ var ticker;
 window.onload = Init;
 //Useless variable
 var Ease = createjs.Ease;
-document.addEventListener('keydown', pdown);
+//document.addEventListener('keydown', pdown);
 
 function Init(){
 	stage = new createjs.Stage("GameCanvas");
