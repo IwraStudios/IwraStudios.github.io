@@ -40,7 +40,6 @@ function handleTick(){
 	if(b.length == 0){
 		newGame();
 		lvl++;
-		document.getElementById("level").innerHTML="Level: " +String(lvl) + "  ";
 
 	}
 	for (var i = 0; i < b.length; i++) {
@@ -63,6 +62,7 @@ function handleTick(){
 		}
 	}
 	document.getElementById("scoreboard").innerHTML="Kills: " +String(kill) + "  ";
+	document.getElementById("level").innerHTML="Level: " +String(lvl) + "  ";
 }
 
 function newGame(){
