@@ -8,7 +8,7 @@ document.addEventListener('keydown', pdown);
 var b = [];
 var bu = [];
 var kill = 0;
-var lvl = 0;
+var lvl = 1;
 
 function Init(){
 	if(!confirm("Wanna play")){
@@ -44,8 +44,7 @@ function handleTick(){
 	}
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
-			//TODO: bounds hittest
-			if(bu[j].x >= b[i].x && bu[j].x <= b[i].x +50 && bu[j].y <= b[i].y + 30 && bu[j].y >= b[i].y){
+			if(bu[j].x + 2.5 >= b[i].x&& bu[j].x +2.5 <= b[i].x +50 && bu[j].y +5 <= b[i].y + 30 && bu[j].y+5 >= b[i].y){
 				//alert("hit");
 				stage.removeChild(bu[j]);
 				stage.removeChild(b[i]);
