@@ -5,8 +5,8 @@ window.onload = Init;
 //Useless variable
 var Ease = createjs.Ease;
 document.addEventListener('keydown', pdown);
-var b;
-var bu;
+var b = [];
+var bu = [];
 
 function Init(){
 	stage = new createjs.Stage("GameCanvas");
