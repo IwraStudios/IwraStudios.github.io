@@ -15,7 +15,7 @@ function Init(){
   
 }
 
-function pdown(){
+function pdown(event){
     if(event.keyCode == 37) {
 	createjs.Tween.get(s, {override:true}).to({x:(s.x + 50).clamp(0,500)}, 450, Ease.Linear);   
     }else if(event.keyCode == 39) {
@@ -36,7 +36,10 @@ function newGame(){
 }
 
 function FireBullet(){
-		
+	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 580) + 10, y:Math.floor(Math.random() * 3)*100, scaleX:1});
+    	block.graphics.beginFill("green").drawRect(0,0,50,30);
+	createjs.Tween.get(block, {override:true}).to({y:(1000).clamp(0,1000)}, 3000, Ease.Linear); 
+	stage.addChild(block);	
 }
 
 function makePlayer(){
