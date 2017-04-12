@@ -32,7 +32,7 @@ function handleTick(){
 	stage.update();
 	for (var i = 0; i < b.length; i++) {
 		for (var j = 0; j < bu.length; j++) {
-			if(bu[j].hitTest(b[i].x, b[i].y)){
+			if(b[i].hitTest(bu[j].x, bu[j].y)){
 				alert("yes");
 			}
 		}
