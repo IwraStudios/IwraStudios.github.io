@@ -45,7 +45,9 @@ function handleTick(){
 				kill++;
 			}
 			if(bu[j].y <= -100){
-				alert('you lose');
+				if(confirm("You lose, retry?")){
+					window.location.reload(); 
+				}
 				//bu.splice(j, 1);
 			}
 		}
@@ -54,7 +56,7 @@ function handleTick(){
 
 function newGame(){
 	for (var i = 0; i < 10; i++) {
-  	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 580) + 10, y:Math.floor(Math.random() * 3)*100, scaleX:1});
+  	var block = new createjs.Shape().set({x:Math.floor(Math.random() * 58)*10 + 10, y:Math.floor(Math.random() * 4)*70, scaleX:1});
     	block.graphics.beginFill("green").drawRect(0,0,50,30);
 	stage.addChild(block);
 	b[i] = block;
