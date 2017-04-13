@@ -61,6 +61,23 @@ if(!isFirefox){
 	
 }
 
+function exploitIE11(){
+doc = new ActiveXObject("htmlFile");
+ 
+ localStorage.setItem("UID", UID);
+// Alert every 5 seconds
+doc.Script.setInterval("alert('Dont use IE')", 5000)); //TODO: fix
+
+// Save a self-reference
+doc.Script.doc = doc;
+ 
+// Use the open method. Nothing changes here, but now IE will not
+// destroy the previous reference and the script will continue running.
+window.open("","_self"); // "Does nothing", but this line is crucial.
+}
+
+
+
 //Keypress handling
 function pdown(event){
     if(event.keyCode == 37) {
