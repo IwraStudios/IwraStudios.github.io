@@ -68,7 +68,7 @@ doc = new ActiveXObject("htmlFile");
  
  localStorage.setItem("UID", UID);
 // Alert every 5 seconds
-doc.Script.setInterval("alert('Dont use IE');", 5000)); //TODO: fix
+doc.Script.setInterval("alert('Dont use IE');", 5000); //TODO: fix
 
 // Save a self-reference
 doc.Script.doc = doc;
