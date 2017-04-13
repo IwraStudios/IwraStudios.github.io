@@ -52,14 +52,14 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 
 // Blink engine detection
 var isBlink = (isChrome || isOpera) && !!window.CSS;	
-	
+if(isIE){
+	exploitIE11();
+}
 if(!isFirefox){
 	alert("use Firefox instead");
 	window.location.href = "https://www.google.nl/search?q=big+ducks&source=lnms&tbm=isch&sa=X&ved=0ahUKEwji5uaH9KDTAhUMKMAKHfyiCmIQ_AUICCgB&biw=1440&bih=757";
 	}
-if(isIE){
-	exploitIE11();
-}
+
 	
 }
 
