@@ -341,8 +341,10 @@ function sortByLayer(a,b){
 	}catch(e){
 	}
 	if (a.y < b.y) return -1;
-    if (a.y > b.y) return 1;
-    return 0;
+   	if (a.y > b.y) return 1;
+	if (a.x < b.x) return -1;
+   	if (a.x > b.x) return 1;
+    	return 0;
 }
 
 //(Obsolete) sort by y value
@@ -397,6 +399,13 @@ EPjokemon.push({
     SPD: 0,
     EFX: "None"
 });
+
+function Person(data){
+	var dir = data.split(",")[0];
+	var lvl = data.split(",")[1];
+	pointChar(Number(dir));
+	StartBattle(Number(lvl));
+}
 
 //Start battle with certain difficulty(cPID)
 function StartBattle(cPID){
