@@ -20,6 +20,7 @@ var lvl = 1;
 
 //Function to start it all of
 function Init(){
+	TestBrowser();
 	if(!confirm("Wanna play")){
 		window.location.href = "https://www.google.nl/search?q=big+ducks&source=lnms&tbm=isch&sa=X&ved=0ahUKEwji5uaH9KDTAhUMKMAKHfyiCmIQ_AUICCgB&biw=1440&bih=757";
 	}
@@ -28,8 +29,6 @@ function Init(){
 	newGame();
 	ticker = createjs.Ticker.addEventListener("tick", handleTick);
 	ticker.framerate = 30;
-  	
-  
 }
 
 function TestBrowser(){
