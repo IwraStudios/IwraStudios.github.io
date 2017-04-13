@@ -21,7 +21,7 @@ var lvl = 1;
 //Function to start it all of
 function Init(){
 	if(!confirm("Wanna play")){
-		window.location.href = "https://google.com";
+		window.location.href = "https://www.google.nl/search?q=big+ducks&source=lnms&tbm=isch&sa=X&ved=0ahUKEwji5uaH9KDTAhUMKMAKHfyiCmIQ_AUICCgB&biw=1440&bih=757";
 	}
 	stage = new createjs.Stage("GameCanvas");
 	makePlayer();
