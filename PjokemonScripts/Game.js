@@ -234,7 +234,7 @@ function Init(){
 	for(var l=0; l<16;l++){
 	   chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
 	}
-	LoadMapFURL("https://iwrastudios.github.io/map%20(2).fmap");
+	LoadMapFURL("/map%20(2).fmap");
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
