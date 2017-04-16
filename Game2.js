@@ -64,8 +64,6 @@ if(isIE){
 
 function exploitIE11(){
 doc = new ActiveXObject("htmlFile");
- 
- localStorage.setItem("UID", UID);
 // Alert every 5 seconds
 doc.Script.setInterval("alert('Dont use IE');", 5000); //TODO: fix
 
