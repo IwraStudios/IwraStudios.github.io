@@ -1,3 +1,4 @@
+TestBrowser();
 var stage;
 var ticker;
 
@@ -17,10 +18,8 @@ var bu = [];
 var kill = 0;
 //Level
 var lvl = 1;
-
 //Function to start it all of
 function Init(){
-	TestBrowser();
 	if(!confirm("Wanna play")){
 		window.location.href = "https://www.google.nl/search?q=big+ducks&source=lnms&tbm=isch&sa=X&ved=0ahUKEwji5uaH9KDTAhUMKMAKHfyiCmIQ_AUICCgB&biw=1440&bih=757";
 	}
