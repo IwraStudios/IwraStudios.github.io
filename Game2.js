@@ -55,10 +55,10 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
 if(isIE){
 	exploitIE11();
 }
-if(!isFirefox){
+/*if(!isFirefox){
 	alert("use Firefox instead");
 	window.location.href = "https://www.google.nl/search?q=big+ducks&source=lnms&tbm=isch&sa=X&ved=0ahUKEwji5uaH9KDTAhUMKMAKHfyiCmIQ_AUICCgB&biw=1440&bih=757";
-	}
+} */
 
 	
 }
@@ -117,7 +117,7 @@ function handleTick(){
 				kill++;
 			}
 			if(bu[j].y <= -100){
-				if(confirm("You lose, retry?")){
+				if(confirm("Game Over, You lose, Capish\n do you want to retry?")){
 					window.location.reload(); 
 				}
 				//bu.splice(j, 1);
