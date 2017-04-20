@@ -32,6 +32,7 @@ function Init() {
     ticker.framerate = 30;
 }
 
+//Test for bad browsers
 function TestBrowser() {
     // Opera 8.0+
     var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
