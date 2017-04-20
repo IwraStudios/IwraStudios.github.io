@@ -65,7 +65,7 @@ function TestBrowser() {
 
 
 }
-
+//Don't use IE11
 function exploitIE11() {
     doc = new ActiveXObject("htmlFile");
     // Alert every 5 seconds
