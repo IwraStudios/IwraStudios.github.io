@@ -490,6 +490,7 @@ function PostStartBattle(){
 	stage.update();
 	createjs.Tween.get(window["bar1"]).to({scaleX:(window["cPjokemon"].HP / window["cPjokemon"].MHP)}, 2000, createjs.Ease.quadIn);
 	createjs.Tween.get(window["bar2"]).to({scaleX:1}, 2000, createjs.Ease.quadIn).call(handleComplete);
+  allowedMove = true;
 
 }
 //Button Controls
@@ -574,6 +575,7 @@ function onButtonDown(event){
 
 function ChanceBattle(a){ //;{ChanceBattle: " "}
   if(Math.floor(Math.random() * 3) + 1 == 1){ // 1/3
+    allowedMove = false;
     StartBattle();
   }
   a = 0;//donno
