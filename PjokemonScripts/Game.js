@@ -234,7 +234,7 @@ function Init(){
 	for(var l=0; l<16;l++){
 	   chararr[l] = new createjs.Bitmap("./images/char1/"+ String(l) +".png");
 	}
-	LoadMapFURL("/map%20(2).fmap");
+	LoadMapFURL("/map%20(2).fmap"); //;{"LoadMapFURL":"./map2.fmap"}
 	serialize = serialijse.serialize;
 	deserialize = serialijse.deserialize;
 	stage = new createjs.Stage("GameCanvas");
@@ -570,6 +570,13 @@ function onButtonDown(event){
   }else if(event.target.name.includes("p")){//Any Pjokemon Button
     ChangePjok(event.target.name);
   }
+}
+
+function ChanceBattle(a){ //;{ChanceBattle: " "}
+  if(Math.floor(Math.random() * 3) + 1 == 1){ // 1/3
+    StartBattle();
+  }
+  a = 0;//donno
 }
 
 //Buttons for changing pjokemon

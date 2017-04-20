@@ -90,8 +90,8 @@ function InitDisp(){
 	ScratchNewDispenser("./images/565.png;0");
 	ScratchNewDispenser("./images/564.png;0");
 	ScratchNewDispenser("./images/563.png;0");
-	ScratchNewDispenser("./images/701.png;0");
-	ScratchNewDispenser("./images/709.png;0");
+	ScratchNewDispenser("./images/701.png;1");
+	ScratchNewDispenser("./images/709.png;1");
 	ScratchNewDispenser("./images/760.png;1");
 	ScratchNewDispenser("./images/761.png;1");
 	ScratchNewDispenser("./images/762.png;0");
