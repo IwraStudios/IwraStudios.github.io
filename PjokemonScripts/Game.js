@@ -261,20 +261,19 @@ function charInit(){
 //Update function: sort map
  function handleTick(event) {
      // Actions carried out each tick (aka frame)
-     if (!event.paused) {
 	     	 if(timer % 4 ==0 && !inBattle){
         		 stage.sortChildren(sortByLayer);
-			 try{
-			       World_Container.scaleX = 2;
-			       World_Container.scaleY = 2;
-			 }catch(e){}
-		  }
-	     	 if(timer %4 ==0 && inBattle){
+             try{
+                   World_Container.scaleX = 2;
+                   World_Container.scaleY = 2;
+             }catch(e){}
+           }
+	   if(timer %4 ==0 && inBattle){
 			stage.sortChildren(sortByY);
 		 }
 		 timer++;
 		 stage.update();
-     }
+
  }
 
 //Load and Change hitmap
