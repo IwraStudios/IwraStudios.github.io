@@ -1,16 +1,16 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A portfolio template that uses Material Design Lite.">
+    <meta name="description" content="A web modern web novel">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Stroy</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
     <link rel="stylesheet" href="styles.css" />
-
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -18,7 +18,7 @@
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
+            <div class="mdl-layout__header-row portfolio-logo-row">;
                 <span class="mdl-layout__title">
                     <div class="portfolio-logo"></div>
                     <span class="mdl-layout__title">Chivarly is dead</span>
@@ -146,7 +146,12 @@
                         <h2 class="mdl-card__title-text">Chapter VIII</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                      
+                        <div id="p1" class="mdl-progress mdl-js-progress"></div>
+                        <script>
+                            document.querySelector('#p1').addEventListener('mdl-componentupgraded', function () {
+                                this.MaterialProgress.setProgress(10);
+                            });
+                        </script>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" disabled>Read Chapter</a>
@@ -159,14 +164,14 @@
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter IX</h2>
                     </div>
-                    <div id="p1" class="mdl-progress mdl-js-progress"></div>
-                        <script>
-                            document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-                             this.MaterialProgress.setProgress(44);
-                                 });
-                        </script>
+
                     <div class="mdl-card__supporting-text">
-                      
+                        <div id="p2" class="mdl-progress mdl-js-progress"></div>
+                        <script>
+                            document.querySelector('#p2').addEventListener('mdl-componentupgraded', function () {
+                                this.MaterialProgress.setProgress(1);
+                            });
+                        </script>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" disabled>Read Chapter</a>
@@ -182,6 +187,7 @@
                         <li><a href="#">Help</a></li>
                         <li><a href="#">Privacy & Terms</a></li>
                     </ul>
+
                 </div>
             </footer>
         </main>
