@@ -85,10 +85,48 @@
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./../../contact.html"> Contact Us </a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="testB" style="float:right">Next Chapter</a>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
                         </div>
-                    <div class="mdl-card__actions mdl-card--border" align="right">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="Chapter8s.html">Next Chapter</a>
-                    </div>
+                        <script>
+                                'use strict';
+                                var snackbarContainer = document.querySelector('#demo-snackbar-example');
+                                var showSnackbarButton = document.querySelector('#testB');
+                                var foo = 0;
+                                var url = window.location.pathname;
+
+                                var handler = function(event) {
+                                    window.location.href = "./../../subscribe.html";
+                                };
+                                showSnackbarButton.addEventListener('click', function() {
+                                    'use strict';
+                                    var data = {
+                                    message: 'Consider subscribing for free updates',
+                                    timeout: 2000,
+                                    actionHandler: handler,
+                                    actionText: 'Subscribe!'
+                                    };
+                                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                                });
+                            
+                                function nextChapter()
+                                {
+                                var urlList = window.location.pathname.split("/");
+                                var filename = urlList[urlList.length - 1];
+                                var chaptNumber = filename.split(".")[0].substr(7);
+                                        console.log("Chapter"+String(Number(chaptNumber)+1)+".html");
+                                    if(Number(chaptNumber)%3 != 0 | foo == 1){
+                                        window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";
+                                    } else {
+                                        foo = 1
+                                    }
+                                }
+                                 
+                        </script>
+                    <div class="mdl-card__actions mdl-card--border" align="right"></div>
                     </div>
                 </div>
             </div>
