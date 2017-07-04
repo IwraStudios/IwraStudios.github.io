@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A modern web novel">
+    <meta name="description" content="I'm currently subscribing">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Chivarly is Dead</title>
+    <title>Subscribing...</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -36,7 +36,7 @@
             </div>
             <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="index.html">Volume I - Beautiful Disasters</a>
+                    <a class="mdl-navigation__link" href="index.html">Volume I - Beautiful Disasters</a>
                     <a class="mdl-navigation__link" href="about.html">About</a>
                     <a class="mdl-navigation__link" href="contact.html">Contact</a>
                 </nav>
@@ -44,39 +44,56 @@
         </header>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="index.html">Vol I</a>
-                <a class="mdl-navigation__link" href="blog.html">Blog</a>
+                <a class="mdl-navigation__link" href="index.html">Vol I</a>
                 <a class="mdl-navigation__link" href="about.html">About</a>
                 <a class="mdl-navigation__link" href="contact.html">Contact</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
-            <button type="button" class="mdl-button show-modal">Show Modal</button>
-  <dialog class="mdl-dialog">
-    <div class="mdl-dialog__content">
-      <p>
-        Allow this site to collect usage data to improve your experience?
-      </p>
-    </div>
-    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-      <button type="button" class="mdl-button">Agree</button>
-      <button type="button" class="mdl-button close">Disagree</button>
-    </div>
-  </dialog>
-  <script>
-    var dialog = document.querySelector('dialog');
-    var showModalButton = document.querySelector('.show-modal');
-    if (! dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-    }
-    showModalButton.addEventListener('click', function() {
-      dialog.showModal();
-    });
-    dialog.querySelector('.close').addEventListener('click', function() {
-      dialog.close();
-    });
-  </script>
-</dialog>
+            <div class="mdl-grid portfolio-max-width portfolio-contact">
+                <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+           
+           <form id="gform" method="POST" class="pure-form pure-form-stacked" action="https://script.google.com/macros/s/AKfycbzUl7bRpNfOHvH8wmfXdBkaCDe031ATFDi2rSjMdOAv0hLB6KU/exec">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="name" name="givenName" required>
+                            <label class="mdl-textfield__label" for="name">Name..</label>
+                            <span class="mdl-textfield__error">Would be nice to know how to adress you.</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                            <label class="mdl-textfield__label" for="email" >E-mail adress..</label>
+                            <span class="mdl-textfield__error">Are you trying to trick me? This is not an E-mail :(</span>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?.{10,}" id="number" name="phone">
+                            <label class="mdl-textfield__label" for="number">Phone number...</label>
+                            <span class="mdl-textfield__error">I'm starting to wonder if this is a Phone Numer :(</span>
+                        </div>
+
+                            <div id="keepMe">Yes please keep me updated via</div>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                            <input type="radio" id="option-1" class="mdl-radio__button" name="keepMe" value="Whatsapp" checked>
+                            <span class="mdl-radio__label">Whatsapp,</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                            <input type="radio" id="option-2" class="mdl-radio__button" name="keepMe" value="E-Mail">
+                            <span class="mdl-radio__label">E-mail.</span>
+                        </label>
+                        <div class="mdl-tooltip" data-mdl-for="keepMe">
+                            On <strong>new Chapters</strong> or website updates
+                        </div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Send
+                        </button>
+                        <br>
+                    </form>
+                        <div>
+                            <p>
+                        </div>
+                </div>
+            </div>
+
             <footer class="mdl-mini-footer">
                 <div class="mdl-mini-footer__left-section">
                     <div class="mdl-logo">Copyright 2017 IwraStudios Inc. All rights reserved.</div>

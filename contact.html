@@ -79,71 +79,72 @@
 
 
                     <h4 align="center">Fill me!</h4>
-                    <p align="center"> And don't worry, if you fill out everything seriously I <b>will</b> do anything in my power to respond.</p>
-                    <span align="center"><sub>Also this is all anonymous, and will not be posted on any online website</sub></span>
+                    <p align="center"> And don't worry, if you fill out everything seriously I <b>will</b> do anything in my power to respond.<br><sub>Also this is all anonymous, and will not be posted on any online website</sub></p>
                     <form id="gform" method="POST" class="pure-form pure-form-stacked" action="https://script.google.com/macros/s/AKfycbzUl7bRpNfOHvH8wmfXdBkaCDe031ATFDi2rSjMdOAv0hLB6KU/exec">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="name" name="givenName" required>
-                        <label class="mdl-textfield__label" for="name">Name..</label>
-                        <span class="mdl-textfield__error">Would be nice to know how to adress you.</span>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                        <label class="mdl-textfield__label" for="email" >E-mail adress..</label>
-                        <span class="mdl-textfield__error">Are you trying to trick me? This is not an E-mail :(</span>
-                    </div>
-
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
-                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?.{10,}" id="number" name="phone">
-                        <label class="mdl-textfield__label" for="number">Phone number...</label>
-                        <span class="mdl-textfield__error">I'm starting to wonder if this is a Phone Numer :(</span>
-                    </div>
-
-                        <div id="keepMe">Yes please keep me updated via</div>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                        <input type="radio" id="option-1" class="mdl-radio__button" name="keepMe" value="Whatsapp" checked>
-                        <span class="mdl-radio__label">Whatsapp,</span>
-                    </label>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                        <input type="radio" id="option-2" class="mdl-radio__button" name="keepMe" value="E-Mail">
-                        <span class="mdl-radio__label">E-mail.</span>
-                    </label>
-                    <div class="mdl-tooltip" data-mdl-for="keepMe">
-                        On <strong>new Chapters</strong> or website updates
-                    </div>
-                    <br>
-                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                        <input type="radio" id="option-3" class="mdl-radio__button" name="keepMe" value="Not">
-                        <span class="mdl-radio__label">No I would not like to be updated</span>
-                    </label>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="subject" name="subject" pattern=".{1,30}">
-                        <label class="mdl-textfield__label" for="subject">Subject:</label>
-                        <span class="mdl-textfield__error">Wowow slow down compadre, this is a bit overkill. Keep it under 30</span>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <textarea class="mdl-textfield__input" type="text" rows= "4" id="message" name="message" required pattern=".{10,30}"></textarea>
-                        <label class="mdl-textfield__label" for="message">Tell us whats up</label>
-                        <span class="mdl-textfield__error">Yea, the whole form is made around this. So, a little effort will ya</span>
-                    </div>
-                    <div id="rating">
-                        Rate my story. <sub> And leave in your message why</sub>
-                        <input class="mdl-slider mdl-js-slider" type="range" min="0" max="10" value="0" tabindex="0" name="rating">
-                        <div class="mdl-tooltip" data-mdl-for="rating">
-                            <i>Not Required</i>, but it helps me.
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="name" name="givenName" required>
+                            <label class="mdl-textfield__label" for="name">Name..</label>
+                            <span class="mdl-textfield__error">Would be nice to know how to adress you.</span>
                         </div>
-                        <span id="0out10" style="float:left">0/10</span>
-                        <span style="float:right">10/10</span>
-                        <div class="mdl-tooltip" data-mdl-for="0out10">
-                            This is <strong>NOT</strong> a rating. <br>If you hate it rate it <b>1</b>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                            <label class="mdl-textfield__label" for="email" >E-mail adress..</label>
+                            <span class="mdl-textfield__error">Are you trying to trick me? This is not an E-mail :(</span>
                         </div>
-                    </div>
-                    <br>
 
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    Send
-                    </button>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?.{10,}" id="number" name="phone">
+                            <label class="mdl-textfield__label" for="number">Phone number...</label>
+                            <span class="mdl-textfield__error">I'm starting to wonder if this is a Phone Numer :(</span>
+                        </div>
+
+                            <div id="keepMe">Yes please keep me updated via</div>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                            <input type="radio" id="option-1" class="mdl-radio__button" name="keepMe" value="Whatsapp" checked>
+                            <span class="mdl-radio__label">Whatsapp,</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                            <input type="radio" id="option-2" class="mdl-radio__button" name="keepMe" value="E-Mail">
+                            <span class="mdl-radio__label">E-mail.</span>
+                        </label>
+                        <div class="mdl-tooltip" data-mdl-for="keepMe">
+                            On <strong>new Chapters</strong> or website updates
+                        </div>
+                        <br>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                            <input type="radio" id="option-3" class="mdl-radio__button" name="keepMe" value="Not">
+                            <span class="mdl-radio__label">No I would not like to be updated</span>
+                        </label>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="subject" name="subject" pattern=".{1,30}">
+                            <label class="mdl-textfield__label" for="subject">Subject:</label>
+                            <span class="mdl-textfield__error">Wowow slow down compadre, this is a bit overkill. Keep it under 30</span>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <textarea class="mdl-textfield__input" type="text" rows= "4" id="message" name="message" required pattern=".{10,30}"></textarea>
+                            <label class="mdl-textfield__label" for="message">Tell us whats up</label>
+                            <span class="mdl-textfield__error">Yea, the whole form is made around this. So, a little effort will ya</span>
+                        </div>
+                        <div id="rating">
+                            Rate my story. <sub> And leave in your message why</sub>
+                            <input class="mdl-slider mdl-js-slider" type="range" min="0" max="10" value="0" tabindex="0" name="rating">
+                            <div class="mdl-tooltip" data-mdl-for="rating">
+                                <i>Not Required</i>, but it helps me.
+                            </div>
+                            <span id="0out10" style="float:left">0/10</span>
+                            <span style="float:right">10/10</span>
+                            <div class="mdl-tooltip" data-mdl-for="0out10">
+                                This is <strong>NOT</strong> a rating. <br>If you hate it rate it <b>1</b>
+                            </div>
+                        </div>
+                        <br>
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Send
+                        </button>
                     </form>
+
+
                     <br>
                     <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
                     </div>
