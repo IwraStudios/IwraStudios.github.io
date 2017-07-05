@@ -154,21 +154,10 @@ img.article-image {
   margin: auto;
 }
 
-.mdl-layout__drawer {
-    z-index: 1
+header {
+    z-index: -2 !important
 }
 
-.mdl-layout__header {
-    z-index: -2
-}
-
-main{
-    z-index: 1;
-}
-
-footer {
-    z-index: -2;
-}
 
 #particles-js {
     position: fixed;
