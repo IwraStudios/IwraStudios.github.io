@@ -28,39 +28,47 @@
 </head>
 
 <body>
-    
+    <div class="hidden-xs">
+        <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
+        </div>
+        <div style="height: 25%"></div>
+    </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div id="particles-js"></div>
-        
-        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
-                <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Chivarly is dead</span>
-                </span>
-            </div>
-            
-        </header>
-        <div class="mdl-layout__header mdl-layout__header--waterfall portfolio-header" style="min-height: 45px">
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only" style="z-index: 1">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="index.html">Volume I - Beautiful Disasters</a>
-                    <a class="mdl-navigation__link" href="about.html">About</a>
-                    <a class="mdl-navigation__link" href="contact.html">Leave a review</a>
-                    <div class="mdl-tooltip" data-mdl-for="Review" data-upgraded=",MaterialTooltip">
-                        It helps me writing.<br> It's nice to know people actually read this :)
+
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <!-- Top row, always visible -->
+
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Chivalry is Dead</span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-upgraded" data-upgraded=",MaterialTextfield">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp" data-upgraded=",MaterialButton">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" name="sample" id="waterfall-exp" type="text">
                     </div>
+                </div>
+            </div><!-- Bottom row, not visible on scroll -->
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link is-active" href="../../index.html"><b>VOLUME 1 - BEAUTIFUL DISASTERS</b></a>
+                    <a class="mdl-navigation__link" href="../../about.html"><b>ABOUT</b></a>
+                    <a class="mdl-navigation__link" href="../../contact.html"><b>LEAVE A REVIEW</b></a>
                 </nav>
             </div>
-        </div>
+        </header>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="index.html">Vol I</a>
-                  
-                <a class="mdl-navigation__link" href="about.html">About</a>
-                <a class="mdl-navigation__link" href="contact.html">Leave a review</a>
+                <a class="mdl-navigation__link is-active" href="../../index.html">Volume I</a>
+                <a class="mdl-navigation__link" href="../../about.html">About</a>
+                <a class="mdl-navigation__link" href="../../contact.html">Contact</a>
             </nav>
         </div>
+        <main clas
         <main class="mdl-layout__content">
             <div class="mdl-grid portfolio-max-width">
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
@@ -97,7 +105,7 @@
                         <h2 class="mdl-card__title-text">Chapter III</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                    
+
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter3.html">Read Chapter</a>
@@ -111,7 +119,7 @@
                         <h2 class="mdl-card__title-text">Chapter IV</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                    
+
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter4.html">Read Chapter</a>
@@ -125,7 +133,7 @@
                         <h2 class="mdl-card__title-text">Chapter V</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                    
+
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter5.html">Read Chapter</a>
@@ -139,7 +147,7 @@
                         <h2 class="mdl-card__title-text">Chapter VI</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                    
+
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter6.html">Read Chapter</a>
@@ -153,7 +161,7 @@
                         <h2 class="mdl-card__title-text">Chapter VII</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                      
+
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
                         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter7.html">Read Chapter</a>
@@ -194,9 +202,15 @@
                     </div>
 
                     <div class="mdl-card__supporting-text">
+                        <div id="p3" class="mdl-progress mdl-js-progress"></div>
+                        <script>
+                            document.querySelector('#p3').addEventListener('mdl-componentupgraded', function () {
+                                this.MaterialProgress.setProgress(10);
+                            });
+                        </script>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter10.html">Read Chapter</a>
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" disabled>Read Chapter</a>
                     </div>
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
@@ -211,7 +225,7 @@
                         <div id="p4" class="mdl-progress mdl-js-progress"></div>
                         <script>
                             document.querySelector('#p4').addEventListener('mdl-componentupgraded', function () {
-                                this.MaterialProgress.setProgress(10);
+                                this.MaterialProgress.setProgress(0);
                             });
                         </script>
                     </div>

@@ -27,33 +27,44 @@
 </head>     
 
 <body>
+    <div class="hidden-xs">
+        <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
+        </div>
+        <div style="height: 25%"></div>
+    </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div id="particles-js"></div>
-        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
-                <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Chivalry is dead</span>
-                </span>
-            </div>
-        </header>
-        <div class="mdl-layout__header mdl-layout__header--waterfall portfolio-header" style="min-height: 45px">
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only" style="z-index: 1">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="../../index.html">Volume I - Beautiful Disasters</a>
-                    <a class="mdl-navigation__link" href="../../about.html">About</a>
-                    <a class="mdl-navigation__link" href="../../contact.html">Leave a review</a>
-                    <div class="mdl-tooltip" data-mdl-for="Review" data-upgraded=",MaterialTooltip">
-                        It helps me writing.<br> It's nice to know people actually read this :)
+
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <!-- Top row, always visible -->
+
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Chivalry is Dead</span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-upgraded" data-upgraded=",MaterialTextfield">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp" data-upgraded=",MaterialButton">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" name="sample" id="waterfall-exp" type="text">
                     </div>
+                </div>
+            </div><!-- Bottom row, not visible on scroll -->
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link is-active" href="../../index.html"><b>VOLUME 1 - BEAUTIFUL DISASTERS</b></a>
+                    <a class="mdl-navigation__link" href="../../about.html"><b>ABOUT</b></a>
+                    <a class="mdl-navigation__link" href="../../contact.html"><b>LEAVE A REVIEW</b></a>
                 </nav>
             </div>
-        </div>
+        </header>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="../../index.html">Vol I</a>
-                <a class="mdl-navigation__link" href="../../about.html">Ab</a>
-                <a class="mdl-navigation__link" href="../../contact.html">Cont</a>
+                <a class="mdl-navigation__link is-active" href="../../index.html">Volume I</a>
+                <a class="mdl-navigation__link" href="../../about.html">About</a>
+                <a class="mdl-navigation__link" href="../../contact.html">Contact</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -73,16 +84,16 @@
                         <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Chapter II</h3>
                         <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
                             <p>
-                            So I think now is a good time to tell about myself. I’m Ryan and a few years back I was a shy, caring boy, who loved life and all people around it. I cared about everything and everyone, whilst still too afraid to talk out in the open. I did not have a lot of friends, and mostly at school I didn’t have the guts to talk. I was that guy who you mostly forget is even in your class, he is too normal to be a geek or cool. A quiet boy who you only ask for a pen, but not much more and sometimes not even that. Also I didn’t like the way the normal guys in our class went about, too violent for my taste. And because I’m raised a bunch by my sister and nieces, I see woman in a different perspective, rather than just their bodies. That made me different in their eyes, but the girls where actually easier for me to talk to anyways. I think that they talked back was because I was maybe pathetic but now I actually think they do it because of a gay-friend complex or so. But now you know a little about me in that time so…
+                                So I think now is a good time to tell about myself. I’m Ryan and a few years back I was a shy, caring boy, who loved life and all people around it. I cared about everything and everyone, whilst still too afraid to talk out in the open. I did not have a lot of friends, and mostly at school I didn’t have the guts to talk. I was that guy who you mostly forget is even in your class, he is too normal to be a geek or cool. A quiet boy who you only ask for a pen, but not much more and sometimes not even that. Also I didn’t like the way the normal guys in our class went about, too violent for my taste. And because I’m raised a bunch by my sister and nieces, I see woman in a different perspective, rather than just their bodies. That made me different in their eyes, but the girls where actually easier for me to talk to anyways. I think that they talked back was because I was maybe pathetic but now I actually think they do it because of a gay-friend complex or so. But now you know a little about me in that time so…
                             </p>
                             <p>
-                            I just stood there, no clue on what to do. It felt like minutes while it was actually just a split second. But in that second I looked at her everything disappeared. Stunned by amazement from that moment I dropped my phone on the hard stone ground. I snapped back into reality from my hour long journey in to the other realm, and picked up my phone. When I looked up again the beautiful dream was gone and I looked around. No clue of her existing, like she had disappeared into thin air. Confused I looked back on my phone. 4 messages where sent and read:
+                                I just stood there, no clue on what to do. It felt like minutes while it was actually just a split second. But in that second I looked at her everything disappeared. Stunned by amazement from that moment I dropped my phone on the hard stone ground. I snapped back into reality from my hour long journey in to the other realm, and picked up my phone. When I looked up again the beautiful dream was gone and I looked around. No clue of her existing, like she had disappeared into thin air. Confused I looked back on my phone. 4 messages where sent and read:
                             </p>
                         </div>
-                          <div class="mdl-card__title">
+                        <div class="mdl-card__title">
                             <h2 class="mdl-card__title-text">(Unknown Caller)</h2>
-                          </div>
-                          <div class="mdl-card__supporting-text">
+                        </div>
+                        <div class="mdl-card__supporting-text">
                             <span class="mdl-chip">
                                 <span class="mdl-chip__text">But he still I do like romantic stories</span>
                             </span>
@@ -103,134 +114,133 @@
                                 <span class="mdl-chip__text">Hey!? Are you ignoring me again?</span>
                             </span>
                             <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
-                            <p>
-                           I unlocked my phone as fast as I could, still amazed by the after image. I took a good hard look at the messages and replied:
-                           </p>
-                        </div>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                                <p>
+                                    I unlocked my phone as fast as I could, still amazed by the after image. I took a good hard look at the messages and replied:
+                                </p>
+                            </div>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">Yea, sorry dropped my phone</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">But romance is cool</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Phonedrop?</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">What happened?</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Is it broken?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">Walked into someone</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">And could I talk to you if it was?</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Oh yea,  duh</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Shut up</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">Aggressive</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">I said shut up</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">Okay, calm down</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">I'm calm enough</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">...</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Haha seriously?</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">You are going with the 3 dot?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
+                            </span>
+                            <br><br>
+                            <span class="mdl-chip" style="float:right; height: auto;">
                                 <span class="mdl-chip__text">You leave me no choice</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
+                            </span>
+                            <br>
+                            <span class="mdl-chip" style="height: auto;">
                                 <span class="mdl-chip__text">Haha?</span>
-                              </span>
-                          </div>
-                    <div class="mdl-card__actions mdl-card--border" align="left">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./../../contact.html" id="Review"> Leave a review </a>
+                            </span>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border" align="left">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./../../contact.html" id="Review"> Leave a review </a>
                             <div class="mdl-tooltip" data-mdl-for="Review">
                                 It helps me writing.<br> It's nice to know people actually read this :)
                             </div>
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="nextChapterButton" style="float:right">Next Chapter</a>
                             <br>
                             <a class="mdl-progress mdl-js-progress mdl-progress__indeterminate" id="progress" style="display:none;" invisible></a>
-    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-      <div class="mdl-snackbar__text"></div>
-      <button class="mdl-snackbar__action" type="button"></button>
-    </div>
+                            <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+                                <div class="mdl-snackbar__text"></div>
+                                <button class="mdl-snackbar__action" type="button"></button>
+                            </div>
                         </div>
                         <script>
-                                'use strict';
-                                var snackbarContainer = document.querySelector('#demo-snackbar-example');
-                                var showSnackbarButton = document.querySelector('#nextChapterButton');
-                                var foo = 0;
-                                var url = window.location.pathname;
-                                
-                                var handler = function(event) {
-                                    window.location.href = "./../../subscribe.html";
-                                };
-                            
-                                function nextChapter()
-                                {
+                            'use strict';
+                            var snackbarContainer = document.querySelector('#demo-snackbar-example');
+                            var showSnackbarButton = document.querySelector('#nextChapterButton');
+                            var foo = 0;
+                            var url = window.location.pathname;
+
+                            var handler = function (event) {
+                                window.location.href = "./../../subscribe.html";
+                            };
+
+                            function nextChapter() {
                                 var urlList = window.location.pathname.split("/");
                                 var filename = urlList[urlList.length - 1];
                                 var chaptNumber = filename.split(".")[0].substr(7);
-                                        console.log("Chapter"+String(Number(chaptNumber)+1)+".html");
-                                   // if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                       if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                        window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";
-                                    } else {
-                                        document.getElementById("progress").style = "width:133.17px;float:right";
-                                        document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
-                                        foo = 1;
-                                        'use strict';
-                                        var data = {
+                                console.log("Chapter" + String(Number(chaptNumber) + 1) + ".html");
+                                // if(Number(chaptNumber)%3 != 0 | foo === 1){
+                                if (Number(chaptNumber) % 3 != 0 | foo === 1) {
+                                    window.location.href = "Chapter" + String(Number(chaptNumber) + 1) + ".html";
+                                } else {
+                                    document.getElementById("progress").style = "width:133.17px;float:right";
+                                    document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
+                                    foo = 1;
+                                    'use strict';
+                                    var data = {
                                         message: 'Consider subscribing for free updates',
                                         timeout: 5000,
                                         actionHandler: handler,
                                         actionText: 'Subscribe!'
-                                        };
-                                        snackbarContainer.MaterialSnackbar.showSnackbar(data);
-                                        };
-                                        setTimeout(function(){ window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";; }, 6000);
+                                    };
+                                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
                                 };
+                                setTimeout(function () { window.location.href = "Chapter" + String(Number(chaptNumber) + 1) + ".html";; }, 6000);
+                            };
                         </script>
-                    <div class="mdl-card__actions mdl-card--border" align="right"></div>
+                        <div class="mdl-card__actions mdl-card--border" align="right"></div>
                     </div>
                 </div>
             </div>
@@ -247,6 +257,7 @@
             </footer>
         </main>
     </div>
+
     <script src="../../Particles.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>

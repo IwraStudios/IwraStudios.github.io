@@ -27,35 +27,47 @@
 </head>     
 
 <body>
+    <div class="hidden-xs">
+        <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
+        </div>
+        <div style="height: 25%"></div>
+    </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div id="particles-js"></div>
-        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
-                <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Chivalry is dead</span>
-                </span>
-            </div>
-        </header>
-        <div class="mdl-layout__header mdl-layout__header--waterfall portfolio-header" style="min-height: 45px">
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only" style="z-index: 1">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="../../index.html">Volume I - Beautiful Disasters</a>
-                    <a class="mdl-navigation__link" href="../../about.html">About</a>
-                    <a class="mdl-navigation__link" href="../../contact.html">Leave a review</a>
-                    <div class="mdl-tooltip" data-mdl-for="Review" data-upgraded=",MaterialTooltip">
-                        It helps me writing.<br> It's nice to know people actually read this :)
+
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <!-- Top row, always visible -->
+
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Chivalry is Dead</span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-upgraded" data-upgraded=",MaterialTextfield">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp" data-upgraded=",MaterialButton">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" name="sample" id="waterfall-exp" type="text">
                     </div>
+                </div>
+            </div><!-- Bottom row, not visible on scroll -->
+            <div class="mdl-layout__header-row">
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link is-active" href="../../index.html"><b>VOLUME 1 - BEAUTIFUL DISASTERS</b></a>
+                    <a class="mdl-navigation__link" href="../../about.html"><b>ABOUT</b></a>
+                    <a class="mdl-navigation__link" href="../../contact.html"><b>LEAVE A REVIEW</b></a>
                 </nav>
             </div>
-        </div>
+        </header>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="../../index.html">Vol I</a>
-                <a class="mdl-navigation__link" href="../../about.html">Ab</a>
-                <a class="mdl-navigation__link" href="../../contact.html">Cont</a>
+                <a class="mdl-navigation__link is-active" href="../../index.html">Volume I</a>
+                <a class="mdl-navigation__link" href="../../about.html">About</a>
+                <a class="mdl-navigation__link" href="../../contact.html">Contact</a>
             </nav>
         </div>
+        <main clas
         <main class="mdl-layout__content">
             <div class="mdl-grid portfolio-max-width">
                 <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
@@ -80,7 +92,7 @@
                                 </p>
                             <p>
                                 Just a couple of streets to go from home, I saw a familiar head. I couldn’t quite make up who it was but I knew that I had seen her before. As I went faster than usual people, which cycling with only yourself tends to do, I came up with an amazing plan to turn my head like I was looking at directions, which looked even stupider than you’d think. So I did, when I was almost next to her I started to turn my head to the left. But when I thought I was just going to look back the other way, she looked back and both our jaws dropped to the floor. Which wasn’t a good idea because in that moment she drove into the river.
-                                </p> 
+                                </p>
                         </div>
                         <div class="mdl-card__actions mdl-card--border" align="left">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
@@ -103,11 +115,11 @@
                                 var showSnackbarButton = document.querySelector('#nextChapterButton');
                                 var foo = 0;
                                 var url = window.location.pathname;
-                                
+
                                 var handler = function(event) {
                                     window.location.href = "./../../subscribe.html";
                                 };
-                            
+
                                 function nextChapter()
                                 {
                                 var urlList = window.location.pathname.split("/");
