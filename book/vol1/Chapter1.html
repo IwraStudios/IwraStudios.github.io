@@ -27,187 +27,203 @@
 </head>     
 
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div id="particles-js"></div>
-        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
-            <div class="mdl-layout__header-row portfolio-logo-row">
-                <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Chivalry is dead</span>
-                </span>
-            </div>
-        </header>
-        <div class="mdl-layout__header mdl-layout__header--waterfall portfolio-header" style="min-height: 45px">
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only" style="z-index: 1">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="index.html">Volume I - Beautiful Disasters</a>
-                    <a class="mdl-navigation__link" href="about.html">About</a>
-                    <a class="mdl-navigation__link" href="contact.html">Leave a review</a>
-                    <div class="mdl-tooltip" data-mdl-for="Review" data-upgraded=",MaterialTooltip">
-                        It helps me writing.<br> It's nice to know people actually read this :)
+    <div class="hidden-xs">
+        <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
+        </div>
+        <div style="height: 25%"></div>
+        </div> 
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+            <header class="mdl-layout__header mdl-layout__header--waterfall">
+                <!-- Top row, always visible -->
+
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Chivalry is Dead</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right is-upgraded" data-upgraded=",MaterialTextfield">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp" data-upgraded=",MaterialButton">
+                            <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                            <input class="mdl-textfield__input" name="sample" id="waterfall-exp" type="text">
+                        </div>
                     </div>
+                </div><!-- Bottom row, not visible on scroll -->
+                <div class="mdl-layout__header-row">
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link is-active" href="../../index.html"><b>VOLUME 1 - BEAUTIFUL DISASTERS</b></a>
+                        <a class="mdl-navigation__link" href="../../about.html"><b>ABOUT</b></a>
+                        <a class="mdl-navigation__link" href="../../contact.html"><b>LEAVE A REVIEW</b></a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <a class="mdl-navigation__link is-active" href="index.html">Vol I</a>
+                    <a class="mdl-navigation__link" href="about.html">Ab</a>
+                    <a class="mdl-navigation__link" href="contact.html">Cont</a>
                 </nav>
             </div>
-        </div>
-        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="index.html">Vol I</a>
-                <a class="mdl-navigation__link" href="about.html">Ab</a>
-                <a class="mdl-navigation__link" href="contact.html">Cont</a>
-            </nav>
-        </div>
-        <main class="mdl-layout__content">
-            <div class="mdl-grid portfolio-max-width">
-                <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Volume I  - Beautiful disasters</h2>
-                    </div>
-                    <div class="mdl-card__media">
-                        <img class="article-image" src="../../images/portfolio-example-01.jpg" border="0" alt="">
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <strong>Includes</strong>
-                        <span>UC</span>
-                    </div>
-                    <div class="mdl-grid portfolio-copy">
-                        <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Chapter I</h3>
-                        <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
-                            <p>
-                              8:37, I know exactly when it was. I know that because exactly 7 minutes earlier my stupid friend’s party started to run out of normal people, by which I meant not drunk to the rim people.So there I was standing with a lame cola on the side lines. Just me, my trusty coke and a lot of people making out with each other. But on that exact moment I got a strange message from an person I had never met before.
-                              No profile picture given and no credentials whatsoever. “Hey” the message read, as simple as that. Clueless as I was asked my friend if he had anything to do with it. “What!?” he yelled, wasted on alcohol “What do you see me for!?”
-                              “Useless as always” I whispered, hoping he didn’t hear me. My phone buzzed and I picked up to look
-                              “You actually receiving this?” the person said “or are you just ignoring me?”
-                              Quickly and insecure I replied: “He”, “Yea I do”. Whilst I walked outside drinking the last sip of my coke and putting it neatly back on the kitchen bar.
-                            </p>
+            <main class="mdl-layout__content">
+                <div class="mdl-grid portfolio-max-width">
+                    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Volume I  - Beautiful disasters</h2>
                         </div>
-                          <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">(Unknown Caller)</h2>
-                          </div>
-                          <div class="mdl-card__supporting-text">
-                            <span class="mdl-chip">
-                                <span class="mdl-chip__text">How are you doing?</span>
-                            </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
-                                <span class="mdl-chip__text">Fine I guess?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
-                                <span class="mdl-chip__text">You?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="height: auto;">
-                                <span class="mdl-chip__text">Great, just finishing up my essay</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
-                                <span class="mdl-chip__text">What are you writing about?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="height: auto;">
-                                <span class="mdl-chip__text">Oh you know, stupid Shake Spear <br>
-                                  For that stupid history class</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
-                                <span class="mdl-chip__text">Ugh, I can’t stand that guy</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
-                                <span class="mdl-chip__text">Why so??</span>
-                              </span>
-                              <br>
-                              <span class="mdl-chip" style="height: auto;">
-                                <span class="mdl-chip__text">He gets away with womanizing <br>
-                                And everybody seems to love him</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="float:right; height: auto;">
-                                <span class="mdl-chip__text">Don’t you think it’s nice?</span>
-                              </span>
-                              <br><br>
-                              <span class="mdl-chip" style="height: auto;">
-                                <span class="mdl-chip__text">You?</span>
-                              </span>
-                          </div>
-                        <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
-                            <p>
-                                I walked down the road, petted a few dogs and gazed dreamy up into the night sky while still keeping an eye on my phone from time to time to chat with this mysterious person. Accidently I bumped into a person. “Sorry” I said whilst still looking at the ground to avoid eye contact. When I finally decided to look up, I saw a slim girl with blond hair smiling at me as cute as a baby bunny smiling for the first time. I noticed that she was in a hurry when observing. Although that she did not move and just enjoy this moment.
-                            </p>
+                        <div class="mdl-card__media">
+                            <img class="article-image" src="../../images/portfolio-example-01.jpg" border="0" alt="">
                         </div>
-                        <div class="mdl-card__actions mdl-card--border" align="left">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./../../contact.html" id="Review2"> Leave a review </a>
-                            <div class="mdl-tooltip" data-mdl-for="Review">
-                                It helps me writing.<br> It's nice to know people actually read this :)
-                            </div>
-                            <div class="mdl-tooltip" data-mdl-for="Review2">
-                                It helps me writing.<br> It's nice to know people actually read this :)
-                            </div>
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="nextChapterButton" style="float:right">Next Chapter</a>
-                            <br>
-                            <a class="mdl-progress mdl-js-progress mdl-progress__indeterminate" id="progress" style="display:none;" invisible></a>
-                            <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-                                <div class="mdl-snackbar__text"></div>
-                                <button class="mdl-snackbar__action" type="button"></button>
-                            </div>
+                        <div class="mdl-card__supporting-text">
+                            <strong>Includes</strong>
+                            <span>UC</span>
                         </div>
-                        <script>
+                        <div class="mdl-grid portfolio-copy">
+                            <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Chapter I</h3>
+                            <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
+                                <p>
+                                    8:37, I know exactly when it was. I know that because exactly 7 minutes earlier my stupid friend’s party started to run out of normal people, by which I meant not drunk to the rim people.So there I was standing with a lame cola on the side lines. Just me, my trusty coke and a lot of people making out with each other. But on that exact moment I got a strange message from an person I had never met before.
+                                    No profile picture given and no credentials whatsoever. “Hey” the message read, as simple as that. Clueless as I was asked my friend if he had anything to do with it. “What!?” he yelled, wasted on alcohol “What do you see me for!?”
+                                    “Useless as always” I whispered, hoping he didn’t hear me. My phone buzzed and I picked up to look
+                                    “You actually receiving this?” the person said “or are you just ignoring me?”
+                                    Quickly and insecure I replied: “He”, “Yea I do”. Whilst I walked outside drinking the last sip of my coke and putting it neatly back on the kitchen bar.
+                                </p>
+                            </div>
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">(Unknown Caller)</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                <span class="mdl-chip">
+                                    <span class="mdl-chip__text">How are you doing?</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="float:right; height: auto;">
+                                    <span class="mdl-chip__text">Fine I guess?</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="float:right; height: auto;">
+                                    <span class="mdl-chip__text">You?</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="height: auto;">
+                                    <span class="mdl-chip__text">Great, just finishing up my essay</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="float:right; height: auto;">
+                                    <span class="mdl-chip__text">What are you writing about?</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="height: auto;">
+                                    <span class="mdl-chip__text">
+                                        Oh you know, stupid Shake Spear <br>
+                                        For that stupid history class
+                                    </span>
+                                </span>
+                                <br>
+                                <span class="mdl-chip" style="height: auto;">
+                                    <span class="mdl-chip__text">Ugh, I can’t stand that guy</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="float:right; height: auto;">
+                                    <span class="mdl-chip__text">Why so??</span>
+                                </span>
+                                <br>
+                                <span class="mdl-chip" style="height: auto;">
+                                    <span class="mdl-chip__text">
+                                        He gets away with womanizing <br>
+                                        And everybody seems to love him
+                                    </span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="float:right; height: auto;">
+                                    <span class="mdl-chip__text">Don’t you think it’s nice?</span>
+                                </span>
+                                <br><br>
+                                <span class="mdl-chip" style="height: auto;">
+                                    <span class="mdl-chip__text">You?</span>
+                                </span>
+                            </div>
+                            <div class="mdl-cell mdl-cell--12-col mdl-card__supporting-text no-padding">
+                                <p>
+                                    I walked down the road, petted a few dogs and gazed dreamy up into the night sky while still keeping an eye on my phone from time to time to chat with this mysterious person. Accidently I bumped into a person. “Sorry” I said whilst still looking at the ground to avoid eye contact. When I finally decided to look up, I saw a slim girl with blond hair smiling at me as cute as a baby bunny smiling for the first time. I noticed that she was in a hurry when observing. Although that she did not move and just enjoy this moment.
+                                </p>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border" align="left">
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="./../../contact.html" id="Review2"> Leave a review </a>
+                                <div class="mdl-tooltip" data-mdl-for="Review">
+                                    It helps me writing.<br> It's nice to know people actually read this :)
+                                </div>
+                                <div class="mdl-tooltip" data-mdl-for="Review2">
+                                    It helps me writing.<br> It's nice to know people actually read this :)
+                                </div>
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="nextChapterButton" style="float:right">Next Chapter</a>
+                                <br>
+                                <a class="mdl-progress mdl-js-progress mdl-progress__indeterminate" id="progress" style="display:none;" invisible></a>
+                                <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+                                    <div class="mdl-snackbar__text"></div>
+                                    <button class="mdl-snackbar__action" type="button"></button>
+                                </div>
+                            </div>
+                            <script>
                                 'use strict';
                                 var snackbarContainer = document.querySelector('#demo-snackbar-example');
                                 var showSnackbarButton = document.querySelector('#nextChapterButton');
                                 var foo = 0;
                                 var url = window.location.pathname;
-                                
-                                var handler = function(event) {
+
+                                var handler = function (event) {
                                     window.location.href = "./../../subscribe.html";
                                 };
-                            
-                                function nextChapter()
-                                {
-                                var urlList = window.location.pathname.split("/");
-                                var filename = urlList[urlList.length - 1];
-                                var chaptNumber = filename.split(".")[0].substr(7);
-                                        console.log("Chapter"+String(Number(chaptNumber)+1)+".html");
-                                   // if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                       if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                        window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";
+
+                                function nextChapter() {
+                                    var urlList = window.location.pathname.split("/");
+                                    var filename = urlList[urlList.length - 1];
+                                    var chaptNumber = filename.split(".")[0].substr(7);
+                                    console.log("Chapter" + String(Number(chaptNumber) + 1) + ".html");
+                                    // if(Number(chaptNumber)%3 != 0 | foo === 1){
+                                    if (Number(chaptNumber) % 3 != 0 | foo === 1) {
+                                        window.location.href = "Chapter" + String(Number(chaptNumber) + 1) + ".html";
                                     } else {
                                         document.getElementById("progress").style = "width:133.17px;float:right";
                                         document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
                                         foo = 1;
                                         'use strict';
                                         var data = {
-                                        message: 'Consider subscribing for free updates',
-                                        timeout: 5000,
-                                        actionHandler: handler,
-                                        actionText: 'Subscribe!'
+                                            message: 'Consider subscribing for free updates',
+                                            timeout: 5000,
+                                            actionHandler: handler,
+                                            actionText: 'Subscribe!'
                                         };
                                         snackbarContainer.MaterialSnackbar.showSnackbar(data);
-                                        };
-                                        setTimeout(function(){ window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";; }, 6000);
+                                    };
+                                    setTimeout(function () { window.location.href = "Chapter" + String(Number(chaptNumber) + 1) + ".html";; }, 6000);
                                 };
-                        </script>
-                    <div class="mdl-card__actions mdl-card--border" align="right"></div>
+                            </script>
+                            <div class="mdl-card__actions mdl-card--border" align="right"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <footer class="mdl-mini-footer">
-                <div class="mdl-mini-footer__left-section">
-                    <div class="mdl-logo">Simple portfolio website</div>
-                </div>
-                <div class="mdl-mini-footer__right-section">
-                    <ul class="mdl-mini-footer__link-list">
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Privacy & Terms</a></li>
-                    </ul>
-                </div>
-            </footer>
-        </main>
-    </div>
-    <script src="../../Particles.js"></script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo">Simple portfolio website</div>
+                    </div>
+                    <div class="mdl-mini-footer__right-section">
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                </footer>
+            </main>
+        </div>
+        <script src="../../Particles.js"></script>
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+
 </body>
 
 </html>
