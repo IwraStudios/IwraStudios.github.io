@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
     <link rel="stylesheet" href="../../styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"> </script>
     <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -27,6 +28,7 @@
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div id="particles-js"></div>
         <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
             <div class="mdl-layout__header-row portfolio-logo-row">
                 <span class="mdl-layout__title">
@@ -34,19 +36,24 @@
                     <span class="mdl-layout__title">Chivalry is dead</span>
                 </span>
             </div>
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+        </header>
+        <div class="mdl-layout__header mdl-layout__header--waterfall portfolio-header" style="min-height: 45px">
+            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only" style="z-index: 1">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href="../../index.html">Volume I</a>
-                    <a class="mdl-navigation__link" href="../../about.html">About</a>
-                    <a class="mdl-navigation__link" href="../../contact.html">Leave a review</a>
+                    <a class="mdl-navigation__link is-active" href="index.html">Volume I - Beautiful Disasters</a>
+                    <a class="mdl-navigation__link" href="about.html">About</a>
+                    <a class="mdl-navigation__link" href="contact.html">Leave a review</a>
+                    <div class="mdl-tooltip" data-mdl-for="Review" data-upgraded=",MaterialTooltip">
+                        It helps me writing.<br> It's nice to know people actually read this :)
+                    </div>
                 </nav>
             </div>
-        </header>
+        </div>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="../../index.html">Vol I</a>
-                <a class="mdl-navigation__link" href="../../about.html">Ab</a>
-                <a class="mdl-navigation__link" href="../../contact.html">Cont</a>
+                <a class="mdl-navigation__link is-active" href="index.html">Vol I</a>
+                <a class="mdl-navigation__link" href="about.html">Ab</a>
+                <a class="mdl-navigation__link" href="contact.html">Cont</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -199,6 +206,7 @@
             </footer>
         </main>
     </div>
+    <script src="../../Particles.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 

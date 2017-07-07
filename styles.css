@@ -1,6 +1,5 @@
 .portfolio-header {
   position: relative;
-  background-image: url(images/header-bg.jpg);
 }
 
 .portfolio-header .mdl-layout__header-row {
@@ -155,8 +154,15 @@ img.article-image {
   margin: auto;
 }
 
-footer {
-  background-image: url(images/footer-background.png);
-  background-size: cover;
+header {
+    z-index: -2 !important
 }
 
+
+#particles-js {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
