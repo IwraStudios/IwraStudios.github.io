@@ -23,6 +23,47 @@
 
         ga('create', 'UA-102031002-1', 'auto');
         ga('send', 'pageview');
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        
+        function dateProgress(from, end, chapter)
+        {
+            var progressB = "PrCh"+chapter
+            var tooltip = "TtCh"+chapter
+            var button = "BuCh"+chapter
+            var end = new Date(end);
+            var from = new Date(from);
+            var now = new Date();
+            var distance = end - now;
+            var fromDis = end - from;
+            if(Math.floor(((distance  / _second) / (fromDis/_second) * 10000 - 10000)*-1 ) < 0)
+            {
+                document.getElementById(tooltip).innerHTML = "Not even started yet :P"
+            }
+            else if (distance < 0) {
+                document.getElementById(tooltip).innerHTML = "Read it now!"
+                document.getElementById(progressB).className = "mdl-progress mdl-js-progress hidden";
+                document.getElementById(button).removeAttribute("disabled");
+                document.getElementById(button).href = "book/vol1/Chapter"+chapter+".html";
+            } else {
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+            var procent = Math.floor(((distance  / _second) / (fromDis/_second) * 10000 - 10000)*-1 );
+            document.getElementById(progressB).MaterialProgress.setProgress(Math.floor(procent/100));
+            document.getElementById(tooltip).innerHTML = "<strong>"+(procent/100) + '%</strong>, ';
+            document.getElementById(tooltip).innerHTML += hours + 'h ';
+            document.getElementById(tooltip).innerHTML += minutes + 'm ';
+            document.getElementById(tooltip).innerHTML += seconds + 's';
+            };
+        };
+        setInterval(dateProgress,-1000,"07/06/2017 15:01","07/07/2017 15:00","10");
+        setInterval(dateProgress,-1000,"07/07/2017 15:01","07/10/2017 15:00","11");
+        setInterval(dateProgress,-1000,"07/10/2017 15:01","07/11/2017 15:00","12");
     </script>
     
 </head>
@@ -200,12 +241,15 @@
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter X</h2>
                     </div>
-
-                    <div class="mdl-card__supporting-text">
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter10.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch10">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh10"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch10" id="TtCh10">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh10" disabled>Read Chapter</a>
+                        </div>
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
@@ -214,18 +258,15 @@
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XI</h2>
                     </div>
-
-                    <div class="mdl-card__supporting-text">
-                        <div id="p4" class="mdl-progress mdl-js-progress"></div>
-                        <script>
-                            document.querySelector('#p4').addEventListener('mdl-componentupgraded', function () {
-                                this.MaterialProgress.setProgress(0);
-                            });
-                        </script>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" disabled>Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch11">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh11"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch11" id="TtCh11">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh11" disabled>Read Chapter</a>
+                        </div>
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
@@ -234,18 +275,15 @@
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XII</h2>
                     </div>
-
-                    <div class="mdl-card__supporting-text">
-                        <div id="p5" class="mdl-progress mdl-js-progress"></div>
-                        <script>
-                            document.querySelector('#p5').addEventListener('mdl-componentupgraded', function () {
-                                this.MaterialProgress.setProgress(0);
-                            });
-                        </script>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" disabled>Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch12">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh12"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch12" id="TtCh12">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh12" disabled>Read Chapter</a>
+                        </div>
                 </div>
             </div>
             <footer class="mdl-mini-footer">
