@@ -50,7 +50,7 @@
                 document.getElementById(button).href = "book/vol1/Chapter"+chapter+".html";
             } else {
             var days = Math.floor(distance / _day);
-            var hours = Math.floor((distance % _day) / _hour);
+            var hours = Math.floor(distance / _hour);
             var minutes = Math.floor((distance % _hour) / _minute);
             var seconds = Math.floor((distance % _minute) / _second);
             var procent = Math.floor(((distance  / _second) / (fromDis/_second) * 10000 - 10000)*-1 );
@@ -64,8 +64,8 @@
         setInterval(dateProgress,-1000,"07/06/2017 15:01","07/07/2017 15:00","10");
         setInterval(dateProgress,-1000,"07/07/2017 15:01","07/10/2017 15:00","11");
         setInterval(dateProgress,-1000,"07/10/2017 15:01","07/13/2017 15:00","12");
-        setInterval(dateProgress,-1000,"07/13/2017 15:01","07/18/2017 15:00","13");
-        setInterval(dateProgress,-1000,"07/18/2017 15:01","07/21/2017 15:00","14");
+        setInterval(dateProgress,-1000,"07/13/2017 15:01","07/17/2017 16:00","13");
+        setInterval(dateProgress,-1000,"07/17/2017 16:01","07/21/2017 15:00","14");
         setInterval(dateProgress,-1000,"07/21/2017 15:01","07/24/2017 15:00","15");
     </script>
     
