@@ -26,7 +26,7 @@
     </script>
 </head>     
 
-<body>
+<body onload="read()">
     <div class="hidden-xs">
         <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
         </div>
@@ -245,8 +245,7 @@
                                 I was on the bike driving to a farm which sold strawberries. I got a pack and paid the farmer his fee. Driving further down the road to a house which was located on the end of the street. I knocked on the door and a white blond girl opened smiling like a sunshine over a plain field in the morning. I gave her the pack of strawberries and she kindly accepted it and invited me in. Although I couldn’t hear anything because it was muffled like everyone was underwater. But when I walked inside everything went black. When I could see again I was walking down the road with her. She was smiling whilst carefully pulling of the crowns from the strawberries. She had the most energetic and joyful face I could’ve imagined and talked like every day was magnificent to her. But when she talked I couldn’t understand as everything was still muffled. I didn’t need to understand as that I was caught up in her eyes, nothing was real to them and they would only see beauty in people. She stopped and when I finally realized where we were she sat down on the white railing of the bridge. I sat down next to her and she looked up, she pointed at a blinking light in the night sky and said “That star over there, it shines so bright.” To which I replied “I think you shine even brighter.” She looked at me with a stunned face. I immediately looked away but I could feel her smiling back at me with great eyes. “Well that is only because” she said while tilting up my head back in her eyes “you are here with me.”
                                 </p>
                             </div>
-
-
+                        
                         <div class="mdl-card__actions mdl-card--border" align="left">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://twitter.com/intent/tweet?text=Just%20Read%20Chivalry%20is%20Dead%20at%20IwraStudios.github.io"> Tweet About Us </a>
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FIwraStudios.github.io&display=popup&ref=plugin&src=like&kid_directed_site=0&app_id=113869198637480"> Facebook About Us? </a>
@@ -254,47 +253,79 @@
                             <div class="mdl-tooltip" data-mdl-for="Review">
                                 It helps me writing.<br> It's nice to know people actually read this :)
                             </div>
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="nextChapterButton" style="float:right">Next Chapter</a>
-
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" onclick="nextChapter()" id="nextChapterButton" style="float:right">Next Chapter</a>
+                            <br>
+                            <a class="mdl-progress mdl-js-progress mdl-progress__indeterminate" id="progress" style="display:none;" invisible></a>
                             <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-                                <div class="mdl-snackbar__text"></div>
-                                <button class="mdl-snackbar__action" type="button"></button>
+                            <div class="mdl-snackbar__text"></div>
+                            <button class="mdl-snackbar__action" type="button"></button>
                             </div>
                         </div>
                         <script>
-                                'use strict';
-                                var snackbarContainer = document.querySelector('#demo-snackbar-example');
-                                var showSnackbarButton = document.querySelector('#testB');
-                                var foo = 0;
-                                var url = window.location.pathname;
 
-                                var handler = function(event) {
-                                    window.location.href = "./../../subscribe.html";
-                                };
-                                showSnackbarButton.addEventListener('click', function() {
+                            function print(value) { console.log(value); };
+                            function setCookie(name, val) { document.cookie = name + "=" + val + ";path=/"; };
+                            function getCookie(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = decodeURIComponent(document.cookie);
+                                var ca = decodedCookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') {
+                                        c = c.substring(1);
+                                    }
+                                    if (c.indexOf(name) == 0) {
+                                        return c.substring(name.length, c.length);
+                                    }
+                                }
+                                return "";
+                            }
+
+
+                            var urlList = window.location.pathname.split("/");
+                            var volume = urlList[urlList.length - 2];
+                            var filename = urlList[urlList.length - 1];
+                            var filenameMinExt = filename.split(".")[0];
+                            if (filenameMinExt.length == 1) { filenameMinExt = "0" + filenameMinExt };
+                            function read() {
+                                if (getCookie(volume).indexOf(filenameMinExt) == -1) { setCookie(volume, getCookie(volume) + "/" + filenameMinExt); };
+                                print(getCookie(volume));
+                            };
+
+                            'use strict';
+                            var snackbarContainer = document.querySelector('#demo-snackbar-example');
+                            var showSnackbarButton = document.querySelector('#nextChapterButton');
+                            var foo = 0;
+                            var url = window.location.pathname;
+
+                            var handler = function(event) {
+                                window.location.href = "./../../subscribe.html";
+                            };
+
+                            function nextChapter()
+                            {
+                                var chaptNumber = filename.split(".")[0].substr(7);
+                                var theNextChapter = String(Number(chaptNumber) + 1);
+                                if (theNextChapter.length == 1) { theNextChapter = "0" + theNextChapter };
+                                console.log("Chapter"+theNextChapter+".html");
+                                if(Number(chaptNumber)%3 != 0 | foo === 1){
+                                    window.location.href = "Chapter" + theNextChapter + ".html";
+                                
+                                } else {
+                                    document.getElementById("progress").style = "width:133.17px;float:right";
+                                    document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
+                                    foo = 1;
                                     'use strict';
                                     var data = {
                                     message: 'Consider subscribing for free updates',
-                                    timeout: 2000,
+                                    timeout: 5000,
                                     actionHandler: handler,
                                     actionText: 'Subscribe!'
                                     };
                                     snackbarContainer.MaterialSnackbar.showSnackbar(data);
-                                });
-
-                                function nextChapter()
-                                {
-                                var urlList = window.location.pathname.split("/");
-                                var filename = urlList[urlList.length - 1];
-                                var chaptNumber = filename.split(".")[0].substr(7);
-                                        console.log("Chapter"+String(Number(chaptNumber)+1)+".html");
-                                    if(Number(chaptNumber)%3 != 0 | foo == 1){
-                                        window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";
-                                    } else {
-                                        foo = 1
-                                    }
-                                }
-
+                                    };
+                                setTimeout(function () { window.location.href = "Chapter" + theNextChapter + ".html";; }, 6000);
+                            };
                         </script>
                     <div class="mdl-card__actions mdl-card--border" align="right"></div>
                     </div>

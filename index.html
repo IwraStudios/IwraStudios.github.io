@@ -28,9 +28,12 @@
         var _minute = _second * 60;
         var _hour = _minute * 60;
         var _day = _hour * 24;
-        
+                                //VERY VERY VERY VERY VERY VERY VERY
+        var volume = "Vol1"  //VERY  IMPORTANTE MUST CHANGE  VERY
+                                //VERY VERY VERY VERY VERY VERY VERY
         function dateProgress(from, end, chapter)
         {
+            if (chapter.length == 1) { chapter = "0" + chapter; };
             var progressB = "PrCh"+chapter
             var tooltip = "TtCh"+chapter
             var button = "BuCh"+chapter
@@ -47,7 +50,7 @@
                 document.getElementById(tooltip).innerHTML = "Read it now!"
                 document.getElementById(progressB).className = "mdl-progress mdl-js-progress hidden";
                 document.getElementById(button).removeAttribute("disabled");
-                document.getElementById(button).href = "book/vol1/Chapter"+chapter+".html";
+                document.getElementById(button).href = "book/"+volume+"/Chapter"+chapter+".html";
             } else {
             var days = Math.floor(distance / _day);
             var hours = Math.floor(distance / _hour);
@@ -61,17 +64,103 @@
             document.getElementById(tooltip).innerHTML += seconds + 's';
             };
         };
-        setInterval(dateProgress,-1000,"07/06/2017 15:01","07/07/2017 15:00","10");
-        setInterval(dateProgress,-1000,"07/07/2017 15:01","07/10/2017 15:00","11");
-        setInterval(dateProgress,-1000,"07/10/2017 15:01","07/13/2017 15:00","12");
-        setInterval(dateProgress,-1000,"07/13/2017 15:01","07/17/2017 16:00","13");
-        setInterval(dateProgress,-1000,"07/17/2017 16:01","07/21/2017 15:00","14");
-        setInterval(dateProgress,-1000,"07/21/2017 15:01","07/24/2017 15:00","15");
+
+        function setCookie(cname,cvalue) {
+            document.cookie = cname + "=" + cvalue + ";path=/";
+        }
+        
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        
+        function changeColor(button){
+            var red = 255; //i.e. FF
+            var green = 0;
+            var stepSize = 10;//how many colors do you want?
+            function step(button){
+                if(green < 255)
+                {
+                    green += stepSize;
+                    if(green > 255) { green = 255; };
+                    button.style.color = "RGB("+red+", "+green+", 0)";
+                    setTimeout(step, 1, button);
+                    return;
+                }
+                else if(red > 0)
+                {
+                    red -= stepSize;
+                    if(red < 0) { red = 0; };
+                    button.style.color = "RGB("+red+", "+green+", 0)";
+                    setTimeout(step, 1, button);
+                    return;
+                };
+            };
+            step(button);
+
+        }
+
+        function CheckCookies() {
+            if (getCookie("firstTime") == "") {
+                var data = {
+                    message: 'YES! We use cookies, because we are cool like other websites',
+                    timeout: 2000
+                };
+                document.querySelector('#cookieMonster').MaterialSnackbar.showSnackbar(data);
+                setCookie("firstTime", "false")
+            }
+
+            var i = 0;
+            while (i < 15) {
+                i++;
+                if (String(i).length == 1) { var iName = "0" + i; } else { var iName = "" + i; };
+                if (getCookie(volume).indexOf("Chapter" + iName) >= 0) {
+                    setTimeout(changeColor, 500 * i, document.getElementById("BuCh" + iName));
+                };
+                console.log(getCookie(volume));
+            };
+        };
+
+
+            setInterval(dateProgress, 101, "07/07/2017 15:01", "07/10/2017 15:00", "01");
+            setInterval(dateProgress, 102, "07/10/2017 15:01", "07/13/2017 15:00", "02");
+            setInterval(dateProgress, 103, "07/13/2017 15:01", "07/17/2017 16:00", "03");
+            setInterval(dateProgress, 104, "07/13/2017 15:01", "07/17/2017 16:00", "04");
+            setInterval(dateProgress, 105, "07/13/2017 15:01", "07/17/2017 16:00", "05");
+            setInterval(dateProgress, 106, "07/13/2017 15:01", "07/17/2017 16:00", "06");
+            setInterval(dateProgress, 107, "07/13/2017 15:01", "07/17/2017 16:00", "07");
+            setInterval(dateProgress, 108, "07/13/2017 15:01", "07/17/2017 16:00", "08");
+            setInterval(dateProgress, 109, "07/13/2017 15:01", "07/17/2017 16:00", "09");
+            setInterval(dateProgress, 110, "07/13/2017 15:01", "07/17/2017 16:00", "10");
+            setInterval(dateProgress, 111, "07/13/2017 15:01", "07/17/2017 16:00", "11");
+            setInterval(dateProgress, 112, "07/13/2017 15:01", "07/17/2017 16:00", "12");
+            setInterval(dateProgress, 113, "07/13/2017 15:01", "07/17/2017 16:00", "13");
+            setInterval(dateProgress, 114, "07/13/2017 15:01", "07/17/2017 16:00", "14");
+            setInterval(dateProgress, 115, "07/13/2017 15:01", "07/17/2017 16:00", "15");
+        
+        
     </script>
     
 </head>
 
-<body>
+<body onload="CheckCookies()">
+
+    <div id="cookieMonster" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
     <div class="hidden-xs">
         <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
         </div>
@@ -116,131 +205,172 @@
         </div>
         <main class="mdl-layout__content">
             <div class="mdl-grid portfolio-max-width">
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter1.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter1.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter I</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter1.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch01">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh01"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch01" id="TtCh01">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh01" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter2.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter2.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter II</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter2.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch02">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh02"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch0" id="TtCh02">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh02" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter3.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter3.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter III</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter3.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch03">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh03"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch0" id="TtCh03">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh03" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter4.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter9.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter IV</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter4.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch04">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh04"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch0" id="TtCh04">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh04" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter5.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter5.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter V</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter5.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch05">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh05"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch0" id="TtCh05">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh05" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter6.png" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter6.png" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter VI</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter6.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch06">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh06"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch06" id="TtCh06">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh06" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter7.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter7.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter VII</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter7.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch07">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh07"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch07" id="TtCh07">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh07" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter8.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter8.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter VIII</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter8.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch08">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh08"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch08" id="TtCh08">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh08" disabled>Read Chapter</a>
+                        </div>
                 </div>
+                
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter9.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter IX</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="book/vol1/Chapter9.html">Read Chapter</a>
-                    </div>
+                        <div class="mdl-card__supporting-text" id="Ch09">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh09"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch09" id="TtCh09">
+                                Loading...
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh09" disabled>Read Chapter</a>
+                        </div>
                 </div>
+
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter10.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter X</h2>
@@ -257,7 +387,7 @@
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter11.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XI</h2>
@@ -274,7 +404,7 @@
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter12.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XII</h2>
@@ -291,7 +421,7 @@
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter13.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XIII</h2>
@@ -308,7 +438,7 @@
                 </div>
                  <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter14.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XIV</h2>
@@ -326,7 +456,7 @@
             
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Vol1/Chapter15.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Chapter XV</h2>

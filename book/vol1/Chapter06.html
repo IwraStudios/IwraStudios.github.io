@@ -26,7 +26,7 @@
     </script>
 </head>     
 
-<body>
+<body onload="read()">
     <div class="hidden-xs">
         <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
         </div>
@@ -110,40 +110,70 @@
                             </div>
                         </div>
                         <script>
-                                'use strict';
-                                var snackbarContainer = document.querySelector('#demo-snackbar-example');
-                                var showSnackbarButton = document.querySelector('#nextChapterButton');
-                                var foo = 0;
-                                var url = window.location.pathname;
 
-                                var handler = function(event) {
-                                    window.location.href = "./../../subscribe.html";
-                                };
+                            function print(value) { console.log(value); };
+                            function setCookie(name, val) { document.cookie = name + "=" + val + ";path=/"; };
+                            function getCookie(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = decodeURIComponent(document.cookie);
+                                var ca = decodedCookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') {
+                                        c = c.substring(1);
+                                    }
+                                    if (c.indexOf(name) == 0) {
+                                        return c.substring(name.length, c.length);
+                                    }
+                                }
+                                return "";
+                            }
 
-                                function nextChapter()
-                                {
-                                var urlList = window.location.pathname.split("/");
-                                var filename = urlList[urlList.length - 1];
+
+                            var urlList = window.location.pathname.split("/");
+                            var volume = urlList[urlList.length - 2];
+                            var filename = urlList[urlList.length - 1];
+                            var filenameMinExt = filename.split(".")[0];
+                            if (filenameMinExt.length == 1) { filenameMinExt = "0" + filenameMinExt };
+                            function read() {
+                                if (getCookie(volume).indexOf(filenameMinExt) == -1) { setCookie(volume, getCookie(volume) + "/" + filenameMinExt); };
+                                print(getCookie(volume));
+                            };
+
+                            'use strict';
+                            var snackbarContainer = document.querySelector('#demo-snackbar-example');
+                            var showSnackbarButton = document.querySelector('#nextChapterButton');
+                            var foo = 0;
+                            var url = window.location.pathname;
+
+                            var handler = function(event) {
+                                window.location.href = "./../../subscribe.html";
+                            };
+
+                            function nextChapter()
+                            {
                                 var chaptNumber = filename.split(".")[0].substr(7);
-                                        console.log("Chapter"+String(Number(chaptNumber)+1)+".html");
-                                   // if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                       if(Number(chaptNumber)%3 != 0 | foo === 1){
-                                        window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";
-                                    } else {
-                                        document.getElementById("progress").style = "width:133.17px;float:right";
-                                        document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
-                                        foo = 1;
-                                        'use strict';
-                                        var data = {
-                                        message: 'Consider subscribing for free updates',
-                                        timeout: 5000,
-                                        actionHandler: handler,
-                                        actionText: 'Subscribe!'
-                                        };
-                                        snackbarContainer.MaterialSnackbar.showSnackbar(data);
-                                        };
-                                        setTimeout(function(){ window.location.href = "Chapter"+String(Number(chaptNumber)+1)+".html";; }, 6000);
-                                };
+                                var theNextChapter = String(Number(chaptNumber) + 1);
+                                if (theNextChapter.length == 1) { theNextChapter = "0" + theNextChapter };
+                                console.log("Chapter"+theNextChapter+".html");
+                                if(Number(chaptNumber)%3 != 0 | foo === 1){
+                                    window.location.href = "Chapter" + theNextChapter + ".html";
+                                
+                                } else {
+                                    document.getElementById("progress").style = "width:133.17px;float:right";
+                                    document.getElementById("nextChapterButton").setAttribute('disabled', 'disabled');
+                                    foo = 1;
+                                    'use strict';
+                                    var data = {
+                                    message: 'Consider subscribing for free updates',
+                                    timeout: 5000,
+                                    actionHandler: handler,
+                                    actionText: 'Subscribe!'
+                                    };
+                                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                                    };
+                                setTimeout(function () { window.location.href = "Chapter" + theNextChapter + ".html";; }, 6000);
+                            };
                         </script>
                     <div class="mdl-card__actions mdl-card--border" align="right"></div>
                     </div>

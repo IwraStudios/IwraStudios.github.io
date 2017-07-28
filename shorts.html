@@ -23,14 +23,17 @@
 
         ga('create', 'UA-102031002-1', 'auto');
         ga('send', 'pageview');
-
+        
         var _second = 1000;
         var _minute = _second * 60;
         var _hour = _minute * 60;
         var _day = _hour * 24;
-        
+                                //VERY VERY VERY VERY VERY VERY VERY
+        var volume = "shorts"  //VERY  IMPORTANTE MUST CHANGE  VERY
+                                //VERY VERY VERY VERY VERY VERY VERY
         function dateProgress(from, end, chapter)
         {
+            if (chapter.length == 1) { chapter = "0" + chapter; };
             var progressB = "PrCh"+chapter
             var tooltip = "TtCh"+chapter
             var button = "BuCh"+chapter
@@ -47,7 +50,7 @@
                 document.getElementById(tooltip).innerHTML = "Read it now!"
                 document.getElementById(progressB).className = "mdl-progress mdl-js-progress hidden";
                 document.getElementById(button).removeAttribute("disabled");
-                document.getElementById(button).href = "book/shorts/Chapter"+chapter+".html";
+                document.getElementById(button).href = "book/"+volume+"/Chapter"+chapter+".html";
             } else {
             var days = Math.floor(distance / _day);
             var hours = Math.floor(distance / _hour);
@@ -62,14 +65,76 @@
             };
         };
 
-        setInterval(dateProgress,-1000,"07/24/2017 15:01","07/25/2017 15:00","1");
-        setInterval(dateProgress,-1000,"07/25/2017 15:01","07/26/2017 15:00","2");
-        setInterval(dateProgress,-1000,"07/26/2017 15:01","07/27/2017 16:00","3");
+        function setCookie(cname,cvalue) {
+            document.cookie = cname + "=" + cvalue + ";path=/";
+        }
+        
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        
+        function changeColor(button){
+            var red = 255; //i.e. FF
+            var green = 0;
+            var stepSize = 10;//how many colors do you want?
+            function step(button){
+                if(green < 255)
+                {
+                    green += stepSize;
+                    if(green > 255) { green = 255; };
+                    button.style.color = "RGB("+red+", "+green+", 0)";
+                    setTimeout(step, 1, button);
+                    return;
+                }
+                else if(red > 0)
+                {
+                    red -= stepSize;
+                    if(red < 0) { red = 0; };
+                    button.style.color = "RGB("+red+", "+green+", 0)";
+                    setTimeout(step, 1, button);
+                    return;
+                };
+            };
+            step(button);
+
+        }
+
+        function CheckCookies() {
+
+            var i = 0;
+            while (i < 15) {
+                i++;
+                if (String(i).length == 1) { var iName = "0" + i; } else { var iName = "" + i; };
+                if (getCookie(volume).indexOf("Chapter" + iName) >= 0) {
+                    setTimeout(changeColor, 500 + 500 * i, document.getElementById("BuCh" + iName));
+                };
+                console.log(getCookie(volume));
+            };
+        };
+
+
+            setInterval(dateProgress, 101, "07/07/2017 15:01", "07/10/2017 15:00", "01");
+            setInterval(dateProgress, 102, "07/10/2017 15:01", "07/13/2017 15:00", "02");
+            setInterval(dateProgress, 103, "07/13/2017 15:01", "07/17/2017 16:00", "03");
+        
+        
     </script>
     
 </head>
 
-<body>
+<body onload="CheckCookies()">
     <div class="hidden-xs">
         <div id="particles-js" style=" position: absolute; width: 100%;z-index: 4;pointer-events: none;">
         </div>
@@ -116,54 +181,54 @@
             <div class="mdl-grid portfolio-max-width">
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Shorts/Chapter1.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">The best yet worst - I</h2>
                     </div>
-                        <div class="mdl-card__supporting-text" id="Ch1">
-                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh1"></div>
-                            <div class="mdl-tooltip" data-mdl-for="Ch1" id="TtCh1">
+                        <div class="mdl-card__supporting-text" id="Ch01">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh01"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch01" id="TtCh01">
                                 Loading...
                             </div>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh1" disabled>Read Chapter</a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh01" disabled>Read Chapter</a>
                         </div>
                 </div>
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Shorts/Chapter2.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">The best yet worst - II</h2>
                     </div>
-                        <div class="mdl-card__supporting-text" id="Ch2">
-                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh2"></div>
-                            <div class="mdl-tooltip" data-mdl-for="Ch2" id="TtCh2">
+                        <div class="mdl-card__supporting-text" id="Ch02">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh02"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch02" id="TtCh02">
                                 Loading...
                             </div>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh2" disabled>Read Chapter</a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh02" disabled>Read Chapter</a>
                         </div>
                 </div>
                 
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
-                        <img class="article-image" src=" images/ChapterPreviews/Chapter9.jpg" border="0" alt="">
+                        <img class="article-image" src=" images/ChapterPreviews/Shorts/Chapter3.jpg" border="0" alt="">
                     </div>
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">The best yet worst - III</h2>
                     </div>
-                        <div class="mdl-card__supporting-text" id="Ch3">
-                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh3"></div>
-                            <div class="mdl-tooltip" data-mdl-for="Ch3" id="TtCh3">
+                        <div class="mdl-card__supporting-text" id="Ch03">
+                            <div class="mdl-progress mdl-js-progress" href="" id="PrCh03"></div>
+                            <div class="mdl-tooltip" data-mdl-for="Ch03" id="TtCh03">
                                 Loading...
                             </div>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh3" disabled>Read Chapter</a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" id="BuCh03" disabled>Read Chapter</a>
                         </div>
                 </div>
                 
